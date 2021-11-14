@@ -1,19 +1,17 @@
-import React from "react";
 import "./App.css";
-import NavBar from "./components/navbar.js";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div>
+    <>
       <Router>
-          <NavBar />
-            <Switch>
-              <Route path="/" />
-            </Switch>
+          <Navbar />
+          <Routes>
+            <Route path='/' />
+          </Routes>
       </Router>
-    </div>
+    </>
   );
 }
-
 export default App;
