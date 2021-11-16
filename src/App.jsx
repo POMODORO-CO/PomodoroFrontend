@@ -13,10 +13,10 @@ function App() {
       <Router>
           <Navbar />
           <Routes>
-            <Route path='/' exact component={Home} />
-            <Route path='/miperfil' component={MiPerfil} />
-            <Route path='/gestionusuarios' component={GestionUsuarios} />
-            <Route path='/proyecto' component={Proyecto} />
+            <Route path="/" element={<Home/>}/>
+            <Route path="/MiPerfil" element={<MiPerfil/>}/>
+            <Route path="/GestionUsuarios" element={<GestionUsuarios/>}/>
+            <Route path="/Proyecto" element={<Proyecto/>}/>
           </Routes>
       </Router>
     </>
