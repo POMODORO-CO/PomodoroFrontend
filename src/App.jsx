@@ -1,10 +1,10 @@
 import "./App.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from './Pages/Home';
-import MiPerfil from './Pages/MiPerfil';
-import GestionUsuarios from './Pages/GestionUsuarios';
-import Proyecto from './Pages/Proyecto';
+import Home from './Pages/Home/Home';
+import MiPerfil from './Pages/Usuarios/Miperfil/MiPerfil';
+import GestionUsuarios from './Pages/Usuarios/GestionUsuarios/GestionUsuarios';
+import Proyecto from './Pages/Proyectos/Proyecto';
 
 
 function App() {

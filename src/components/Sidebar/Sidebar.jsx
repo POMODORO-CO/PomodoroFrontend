@@ -6,19 +6,19 @@ import * as RiIcons from "react-icons/ri";
 
 export const Sidebar = [
     {
-        title:'Home',
+        title:'Inicio',
         path:'/',
         icon:<AiIcons.AiFillHome />,
         cName: 'nav-text'
     },
     {
-        title:'MiPerfil',
+        title:'Mi Perfil',
         path:'/miperfil',
         icon:<CgIcons.CgProfile />,
         cName: 'nav-text'
     },
     {
-        title:'GestionUsuario',
+        title:'Gestion Usuario',
         path:'/gestionusuarios',
         icon:<FaIcons.FaUsersCog />,
         cName: 'nav-text'
