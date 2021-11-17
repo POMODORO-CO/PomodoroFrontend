@@ -6,22 +6,32 @@ import Input from './components/Input/Input';
 
 const Login = () => {
 
+    const [user, setUser] = useState('');
+    const [password, setPassword] = useState('');
+
 function handleChange(name, value){
-    if(name=='usuario')
+    if(name==='usuario'){
     setUser(value)
-}
+    } else {
+    setPassword(value)
+    }
+};
+
+console.log('usuario:', user)
+console.log('password:', password)
 
     return (
         <div className= 'login-container'>
-            <Title text='Soy un título' />
+            <Title text='Inicio de sesión' />
             <Label text='Usuario' />
             <Input 
             attribute={{
                     id: 'usuario',
-                    name: 'usuario',
+                    name: 'Usuario',
                     type: 'text',
-                    placeholder: 'Ingrese su usuarios'
+                    placeholder: 'Ingrese usuario'
             }}
+            handleChange={handleChange}
             />
             <Label text='Contraseña' />
             <Input 
@@ -29,11 +39,11 @@ function handleChange(name, value){
                     id: 'contraseña',
                     name: 'contraseña',
                     type: 'password',
-                    placeholder: 'Ingrese su contraseña'
+                    placeholder: 'Ingrese contraseña'
             }}
+            handleChange={handleChange}
             />
         </div>
     )
 }
-
 export default Login
