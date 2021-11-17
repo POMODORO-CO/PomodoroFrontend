@@ -8,26 +8,36 @@ const Login = () => {
 
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordError,setPasswordError] = useState(false);
 
-function handleChange(name, value){
-    if(name==='usuario'){
-    setUser(value)
-    } else {
-    setPassword(value)
+    function handleChange(name, value) {
+        if (name === 'usuario') {
+            setUser(value)
+        } else {
+            if (value.length<6) {
+                setPasswordError(true);
+            } else {
+                setPasswordError(false);
+                setPassword(value)
+            }
+        }
+    };
+
+function handleSubmit(){
+    let account = { user, password }
+    if(account){
+        console.log('account:',account)
     }
-};
-
-console.log('usuario:', user)
-console.log('password:', password)
+}
 
     return (
         <div className= 'login-container'>
-            <Title text='Inicio de sesión' />
+            <Title text='¡Bienvenido!' />
             <Label text='Usuario' />
             <Input 
             attribute={{
                     id: 'usuario',
-                    name: 'Usuario',
+                    name: 'usuario',
                     type: 'text',
                     placeholder: 'Ingrese usuario'
             }}
@@ -43,6 +53,9 @@ console.log('password:', password)
             }}
             handleChange={handleChange}
             />
+            <button onClick={handleSubmit}>
+            Ingresar
+            </button>
         </div>
     )
 }
