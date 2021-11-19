@@ -1,4 +1,4 @@
-import "./App.css";
+import "./index.css";
 import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './Pages/Home/Home';
@@ -14,8 +14,8 @@ function App() {
       <Router>
           <Navbar />
           <Routes>
-            <Route path="/Login" element={<Login/>}/>
-            <Route path="/" element={<Home/>}/>
+            <Route path="/" element={<Login/>}/>
+            <Route path="/Home" element={<Home/>}/>
             <Route path="/MiPerfil" element={<MiPerfil/>}/>
             <Route path="/GestionUsuarios" element={<GestionUsuarios/>}/>
             <Route path="/Proyecto" element={<Proyecto/>}/>
