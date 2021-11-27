@@ -12,7 +12,7 @@ import Landingpage from "./Pages/Landingpage/Landingpage";
 
 //pruebas del backend
 import IndexUsuarios from "./Pages/Users";
-import EditarUsuario from "./Pages/Users/Miperfil/editarUsuario";
+import EditarUsuario from "./Pages/Users/editarUsuario";
 
 // const httpLink=createHttpLink({
 //   uri:'https://servidor-gql-pomodoro.herokuapp.com/graphql'
