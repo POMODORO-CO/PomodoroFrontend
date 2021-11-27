@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Proyecto() {
+function Project() {
     return (
         <div className='proyecto'>
             <h1>PROYECTOS</h1>
@@ -8,4 +8,4 @@ function Proyecto() {
     )
 }
 
-export default Proyecto;
+export default Project;
