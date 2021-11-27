@@ -3,7 +3,7 @@ import React from 'react'
 function Proyecto() {
     return (
         <div className='proyecto'>
-            <h1>PROYECTO</h1>
+            <h1>PROYECTOS</h1>
         </div>
     )
 }

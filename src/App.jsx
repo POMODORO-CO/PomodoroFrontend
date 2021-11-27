@@ -5,6 +5,10 @@ import Home from './Pages/Home/Home';
 import MiPerfil from './Pages/Usuarios/Miperfil/MiPerfil';
 import GestionUsuarios from './Pages/Usuarios/GestionUsuarios/GestionUsuarios';
 import Proyecto from './Pages/Proyectos/Proyecto';
+import Consulta from "./Pages/Proyectos/Consulta";
+import Inscripciones from "./Pages/Proyectos/Inscripciones";
+import Avances from "./Pages/Proyectos/Avances";
+
 
 
 function App() {
@@ -17,6 +21,9 @@ function App() {
             <Route path="/MiPerfil" element={<MiPerfil/>}/>
             <Route path="/GestionUsuarios" element={<GestionUsuarios/>}/>
             <Route path="/Proyecto" element={<Proyecto/>}/>
+            <Route path="/Proyecto/Consulta" element={<Consulta/>}/>
+            <Route path="/Proyecto/Inscripciones" element={<Inscripciones/>}/>
+            <Route path="/Proyecto/Avances" element={<Avances/>}/>
           </Routes>
       </Router>
     </>
