@@ -6,13 +6,19 @@ import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@ap
 import MiPerfil from './Pages/Users/Miperfil/MiPerfil';
 import GestionUsuarios from './Pages/Users/GestionUsuarios/GestionUsuarios';
 import Proyecto from './Pages/Projects/Project';
+import Consulta from "./Pages/Projects/Consulta";
+import Inscripciones from "./Pages/Projects/Inscripciones";
 import Login from './Pages/Login/Login';
+<<<<<<< HEAD
+import Avances from './Pages/Projects/Avances';
+=======
 import Home from "./Pages/Home/Home";
 import Landingpage from "./Pages/Landingpage/Landingpage";
 
 //pruebas del backend
 import IndexUsuarios from "./Pages/Users";
 import EditarUsuario from "./Pages/Users/editarUsuario";
+>>>>>>> main
 
 // const httpLink=createHttpLink({
 //   uri:'https://servidor-gql-pomodoro.herokuapp.com/graphql'
@@ -29,6 +35,16 @@ function App() {
       <ApolloProvider client={client}>
         <Router>
           <Routes>
+<<<<<<< HEAD
+            <Route path="/Login" element={<Login/>}/>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/MiPerfil" element={<MiPerfil/>}/>
+            <Route path="/GestionUsuarios" element={<GestionUsuarios/>}/>
+            <Route path="/Proyecto" element={<Proyecto/>}/>
+            <Route path="/Proyecto/Consulta" element={<Consulta/>}/>
+            <Route path="/Proyecto/Inscripciones" element={<Inscripciones/>}/>
+            <Route path="/Proyecto/Avances" element={<Avances/>}/>
+=======
             <Route path="/" element={<Landingpage />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/MiPerfil" element={<MiPerfil />} />
@@ -38,6 +54,7 @@ function App() {
 
             <Route path="/pruebaBack" element={<IndexUsuarios />} />
             <Route path="/pruebaBack/editar/:_id" element={<EditarUsuario />} />
+>>>>>>> main
           </Routes>
         </Router>
       </ApolloProvider>
