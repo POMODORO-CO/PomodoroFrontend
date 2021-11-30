@@ -1,5 +1,5 @@
 import React from 'react'
-import "../../App.css";
+import "../../index.css";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as CgIcons from "react-icons/cg";
