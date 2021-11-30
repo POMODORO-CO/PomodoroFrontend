@@ -7,7 +7,7 @@ import * as RiIcons from "react-icons/ri";
 export const Sidebar = [
     {
         title:'Inicio',
-        path:'/',
+        path:'/Proyecto',
         icon:<AiIcons.AiFillHome />,
         cName: 'nav-text'
     },

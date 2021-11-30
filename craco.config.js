@@ -1,5 +1,6 @@
 module.exports = {
     style: {
+<<<<<<< HEAD
         postcss: {
             plugins: [
                 require('tailwindcss'),
@@ -8,3 +9,13 @@ module.exports = {
         },
     },
 }
+=======
+      postcss: {
+        plugins: [
+          require('tailwindcss'),
+          require('autoprefixer'),
+        ],
+      },
+    },
+  }
+>>>>>>> main

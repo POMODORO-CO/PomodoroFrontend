@@ -1,62 +1,43 @@
-import React, {useState} from 'react';
-import './Login.css';
-import Title from './components/Title/Title';
-import Label from './components/Label/Label';
-import Input from './components/Input/Input';
+import React from 'react'
 
 const Login = () => {
-
-    const [user, setUser] = useState('');
-    const [password, setPassword] = useState('');
-    const [passwordError,setPasswordError] = useState(false);
-
-    function handleChange(name, value) {
-        if (name === 'usuario') {
-            setUser(value)
-        } else {
-            if (value.length<6) {
-                setPasswordError(true);
-            } else {
-                setPasswordError(false);
-                setPassword(value)
-            }
-        }
-    };
-
-function handleSubmit(){
-    let account = { user, password }
-    if(account){
-        console.log('account:',account)
-    }
-}
-
     return (
-        <div className= 'login-container'>
-            <Title text='¡Bienvenido!' />
-            <Label text='Usuario' />
-            <Input 
-            attribute={{
-                    id: 'usuario',
-                    name: 'usuario',
-                    type: 'text',
-                    placeholder: 'Ingrese usuario'
-            }}
-            handleChange={handleChange}
-            />
-            <Label text='Contraseña' />
-            <Input 
-            attribute={{
-                    id: 'contraseña',
-                    name: 'contraseña',
-                    type: 'password',
-                    placeholder: 'Ingrese contraseña'
-            }}
-            handleChange={handleChange}
-            />
-            <button onClick={handleSubmit}>
-            Ingresar
-            </button>
+        <div className='min-h-screen grid place-content-center bg-gray-100'>
+            <div class="w-full max-w-xs m-6">
+                <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                    <div class="mb-4">
+                        <img class="w-20 h-20 rounded-full mx-auto m-5" src="https://images.pexels.com/photos/2589649/pexels-photo-2589649.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Profile image" />
+                        <label class="block text-blue-900 text-sm font-bold py-1" for="username">
+                            Correo electrónico
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Correo electrónico" />
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-blue-900 text-sm font-bold mb-2" for="password">
+                            Contraseña
+                        </label>
+                        <input class="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="*******" />
+                        <p class="text-yellow-400 text-xs italic p-1">Por favor ingrese su contraseña.</p>
+                        <button class="bg-blue-900 hover:bg-yellow-400 text-white font-bold w-full py-2 px-3 rounded focus:outline-none focus:shadow-outline" type="button">
+                            Ingresar
+                        </button>
+                    </div>
+                    <div>
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" class="form-checkbox"/>
+                            <span class="ml-2">Recordar contraseña</span>
+                        </label>
+                    </div>
+                    <div class="flex items-center justify-between my-3">
+                        <a class="inline-block align-baseline font-bold text-sm text-blue-900 hover:text-blue-800" href="#">
+                            Olvidó su contraseña?
+                        </a>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }
+
 export default Login
+
