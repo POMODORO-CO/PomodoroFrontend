@@ -7,6 +7,7 @@ import MiPerfil from './Pages/Users/Miperfil/MiPerfil';
 import GestionUsuarios from './Pages/Users/GestionUsuarios/GestionUsuarios';
 import Proyecto from './Pages/Projects/Project';
 import Login from './Pages/Login/Login';
+import Registro from "./Pages/Login/Registro";
 import Home from "./Pages/Home/Home";
 import Landingpage from "./Pages/Landingpage/Landingpage";
 
@@ -34,6 +35,7 @@ function App() {
             <Route path="/MiPerfil" element={<MiPerfil />} />
             <Route path="/GestionUsuarios" element={<GestionUsuarios />} />
             <Route path="/Proyecto" element={<Proyecto />} />
+            <Route path="/Registro" element={<Registro />} />
             <Route path="/Home" element={<Home />} />
 
             <Route path="/pruebaBack" element={<IndexUsuarios />} />
