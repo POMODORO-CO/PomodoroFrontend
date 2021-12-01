@@ -9,20 +9,26 @@ import { useEffect } from "react/cjs/react.development";
 
 const EditarUsuario = () => {
 
+    //Hook that is build in the file useForm that i need 3 variables
     const { form, formData, updateFormData } = useFormData(null);
 
+    // is the last part of the link i use before /pruebaBack/editar/${u._id} take the _id variable 
     const { _id } = useParams();
-    const { loading: queryLoading,
-        error: queryError,
-        data: queryData } = useQuery(GET_USUARIO, { variables: { _id } },);
 
+    //Query with the information that i will change for the _id user
+    const {
+        loading: queryLoading,
+        error: queryError,
+        data: queryData
+    } = useQuery(GET_USUARIO, { variables: { _id } },);
+
+    //function editarUsuario that use the mutation "EDITAR_USUARIO"
     const [editarUsuario,
         { data: mutationData,
             loading: MutationLoading,
             error: mutationError }] = useMutation(EDITAR_USUARIO)
 
-
-
+    // function that sumit the info into the variable editarUsuario
     const submitForm = (e) => {
         e.preventDefault();
         editarUsuario({
@@ -31,22 +37,22 @@ const EditarUsuario = () => {
         console.log("fin submit")
     };
 
+    //execute every time the variable mutationData change
     useEffect(() => {
         console.log("mutacion edicion ", mutationData)
     }, [mutationData])
 
+    //loading initial information in the queary
     if (queryLoading) return (<div>Cargando........</div>)
 
     return (
         <>
             <Link to={`/pruebaBack`}>
                 <i>Ir atras</i></Link>
-                
             <br />
             <hr />
 
             <div> Editando Usuario numero: {_id}</div>
-
             <br />
             <hr />
 
@@ -120,8 +126,8 @@ const EditarUsuario = () => {
                     </label>
                 </div>
 
-
                 <button>Editar</button>
+
             </form>
         </>
     )

@@ -2,8 +2,8 @@ import React from 'react'
 import "../../index.css";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import * as CgIcons from "react-icons/cg";
-import * as RiIcons from "react-icons/ri";
+// import * as CgIcons from "react-icons/cg";
+// import * as RiIcons from "react-icons/ri";
 
 function Avances() {
 
@@ -161,9 +161,9 @@ function Avances() {
                   font-medium
                 "
                                     >
-                                        <a href="#" class="inline-block"
+                                        <a href="/cosas" class="inline-block"
                                             ><AiIcons.AiOutlineSearch size={30} /></a>
-                                        <a href="#" class="inline-block"
+                                        <a href="/cosas2" class="inline-block"
                                             ><FaIcons.FaSave size={30} /></a>
                                     </td>
                                 </tr>
@@ -217,9 +217,9 @@ function Avances() {
                   font-medium
                 "
                                     >
-                                        <a href="#" class="inline-block"
+                                        <a href="/cosas3" class="inline-block"
                                             ><AiIcons.AiOutlineSearch size={30} /></a>
-                                        <a href="#" class="inline-block"
+                                        <a href="/cosas4" class="inline-block"
                                             ><FaIcons.FaSave size={30} /></a>
                                     </td>
                                 </tr>
