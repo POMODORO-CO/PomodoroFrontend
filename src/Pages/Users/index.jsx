@@ -7,21 +7,24 @@ import { Link } from 'react-router-dom';
 const IndexUsuarios = () => {
 
     //uso un hook 'useQuery(GET_USUARIOS)' donde 'GET_USUARIOS' es una funcion glp para devolver la info
-    const { data, error, loading } = useQuery(GET_USUARIOS)
+    const { 
+            data:queryData, 
+            error:queryError, 
+            loading:queryLoading } = useQuery(GET_USUARIOS)
 
 
     useEffect(() => {
-        console.log("datos del servidor: ", data);
-    }, [data]);
+        console.log("datos del servidor: ", queryData);
+    }, [queryData]);
 
     //encaso de que halla un error ejecute esto
     useEffect(()=>{
-        if (error){
+        if (queryError){
             <div> Error consultando Usuarios</div>
         }
-    },[error])
+    },[queryError])
 
-    if (loading) return <div>Cargando......</div>;
+    if (queryLoading) return <div>Cargando......</div>;
 
     return (
         <>
@@ -39,8 +42,8 @@ const IndexUsuarios = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {data &&
-                            data.Usuarios.map((u)=>{
+                        {queryData &&
+                            queryData.Usuarios.map((u)=>{
                                 return(
                                     <tr key={u._id}>
                                         <td>{u.nombre_usuario}</td>

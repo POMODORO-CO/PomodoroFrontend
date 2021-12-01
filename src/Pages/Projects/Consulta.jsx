@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import "../../index.css";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
+// import * as FaIcons from "react-icons/fa";
+// import * as AiIcons from "react-icons/ai";
 import { useQuery } from '@apollo/client';
 import { GET_PROYECTOS } from '../../graphql/users/queries';
 
