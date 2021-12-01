@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "../../index.css";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import * as CgIcons from "react-icons/cg";
-import * as RiIcons from "react-icons/ri";
+import { useQuery } from '@apollo/client';
+import { GET_PROYECTOS } from '../../graphql/users/queries';
 
 function Consulta() {
+
+    const { data, error, loading } = useQuery(GET_PROYECTOS)
+
 
     return (
         <>
@@ -112,6 +115,9 @@ function Consulta() {
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
+                                {data && data.Proyectos.map((u)=>{
+                                    return(
+
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
@@ -126,11 +132,11 @@ function Consulta() {
                     text-green-800
                   "
                                         >
-                                            001
+                                           {u._id}
                                         </span>
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap">
+                                    {/* <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="text-sm text-gray-900">Software engineer</div>
                                         <div class="text-sm text-gray-500">IT</div>
                                     </td>
@@ -227,8 +233,10 @@ function Consulta() {
                                         ><FaIcons.FaEdit size={25} /></a>
                                         <a href="#" class="inline-block"
                                         ><FaIcons.FaTrash size={25} /></a>
-                                    </td>
+                                    </td> */}
                                 </tr>
+                                    )
+                                })}
 
 
                             </tbody>
