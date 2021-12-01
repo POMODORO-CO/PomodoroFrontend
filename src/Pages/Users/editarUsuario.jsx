@@ -45,7 +45,11 @@ const EditarUsuario = () => {
             <br />
             <hr />
 
-            <div> Editando Usuario {_id}</div>
+            <div> Editando Usuario numero: {_id}</div>
+
+            <br />
+            <hr />
+
             <form onSubmit={submitForm}
                 onChange={updateFormData}
                 ref={form}>
