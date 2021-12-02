@@ -34,7 +34,7 @@ const Login = () => {
             <div class="w-full max-w-xs m-6">
                 <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     <div class="mb-4">
-                        <img class="w-20 h-20 rounded-full mx-auto m-5" src="https://images.pexels.com/photos/2589649/pexels-photo-2589649.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Profile image" />
+                        <img class="w-20 h-20 rounded-full mx-auto m-5" src="https://images.pexels.com/photos/2589649/pexels-photo-2589649.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Profile" />
                         <label class="block text-blue-900 text-sm font-bold py-1" for="username">
                             Correo electrónico
                         </label>
@@ -57,7 +57,7 @@ const Login = () => {
                         </label>
                     </div>
                     <div class="flex items-center justify-between my-3">
-                        <a class="inline-block align-baseline font-bold text-sm text-blue-900 hover:text-blue-800" href="#">
+                        <a class="inline-block align-baseline font-bold text-sm text-blue-900 hover:text-blue-800" href="/forgot">
                             Olvidó su contraseña?
                         </a>
                     </div>

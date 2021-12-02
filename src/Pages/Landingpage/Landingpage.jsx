@@ -3,9 +3,10 @@ import imagenes from '../../assets/img/imagenes';
 import { NavLink } from 'react-router-dom';
 import Login from '../Login/Login';
 
+
 function Landingpage() {
     return (
-        <body className='bg-gray-500 text-white'>
+        <div className='bg-gray-500 text-white'>
             <section className='container mx-auto px-6'>
                 <nav className='py-4 flex justify-between'>
                     <section className='flex flex-row justify-center'>
@@ -14,13 +15,21 @@ function Landingpage() {
                     </section>
                     <section className='flex flex-row justify-center space-x-8'>
                         <section className='flex flex-row justify-center my-auto space-x-4'>
-                            <a href='#' className='px-2 font-bold'>Servicios</a>
-                            <a href="#" className='px-2 font-bold'>Experiencias</a>
-                            <a href="#" className='px-2 font-bold'>Metodología</a>
-                            <a href="#" className='px-2 font-bold'>Herramientas</a>
+                            <a href="/Servicios" className='px-2 font-bold'>
+                                Servicios
+                            </a>
+                            <a href="/Experiencias" className='px-2 font-bold'>
+                                Experiencias
+                            </a>
+                            <a href="/Metodología" className='px-2 font-bold'>
+                                Metodología
+                            </a>
+                            <a href="/Herramientas" className='px-2 font-bold'>
+                                Herramientas
+                            </a>
                         </section>
                         <section className='flex flex-row justify-center items-center my-auto space-x-4'>
-                            <NavLink to='/Login' className='px-2 font-bold' >
+                            <NavLink to='/Login'> className='px-2 font-bold'>
                                 Login
                             </NavLink>
                             <section className='w-0.5 h-6 bg-yellow-400 opacity-50'></section>
@@ -48,11 +57,11 @@ function Landingpage() {
                             Un proyecto solo lo entiendes cuando entiendes su alcance
                         </p>
                         <section className='inline-flex items-center px-8 py-6'>
-                            <button class="py-2 px-6 text-blue-900 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block">Activa tu demo</button>
+                            <button className="py-2 px-6 text-blue-900 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block">Activa tu demo</button>
                         </section>
                     </section>
                     <section>
-                        <img src={imagenes.imag5} />
+                        <img src={imagenes.imag5} alt="lock"/>
                     </section>
                     <section className='flex flex-row justify-between'>
                         <section className='flex flex-row'>
@@ -65,7 +74,8 @@ function Landingpage() {
                     </section>
                 </section>
             </section>
-        </body>
+
+        </div>
     )
 }
 

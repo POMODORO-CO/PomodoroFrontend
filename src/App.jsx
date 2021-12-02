@@ -1,13 +1,16 @@
 import "./index.css";
-import Navbar from "./components/Navbar/Navbar";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client'
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 
 import MiPerfil from './Pages/Users/Miperfil/MiPerfil';
 import GestionUsuarios from './Pages/Users/GestionUsuarios/GestionUsuarios';
 import Proyecto from './Pages/Projects/Project';
+import Consulta from "./Pages/Projects/Consulta";
+import Inscripciones from "./Pages/Projects/Inscripciones";
 import Login from './Pages/Login/Login';
 import Registro from "./Pages/Login/Registro";
+import Avances from './Pages/Projects/Avances';
 import Home from "./Pages/Home/Home";
 import Landingpage from "./Pages/Landingpage/Landingpage";
 
@@ -30,12 +33,18 @@ function App() {
       <ApolloProvider client={client}>
         <Router>
           <Routes>
+
             <Route path="/" element={<Landingpage />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/MiPerfil" element={<MiPerfil />} />
             <Route path="/GestionUsuarios" element={<GestionUsuarios />} />
             <Route path="/Proyecto" element={<Proyecto />} />
             <Route path="/Registro" element={<Registro />} />
+            <Route path="/CerrarSesion" element={<Proyecto/>}/>
+            <Route path="/Proyecto/Consulta" element={<Consulta/>}/>
+            <Route path="/Proyecto/Inscripciones" element={<Inscripciones/>}/>
+            <Route path="/Proyecto/Avances" element={<Avances/>}/>
+
             <Route path="/Home" element={<Home />} />
 
             <Route path="/pruebaBack" element={<IndexUsuarios />} />
