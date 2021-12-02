@@ -9,7 +9,7 @@ export const Sidebar = [
 
     {
         title:'Inicio',
-        path:'/',
+        path:'/Proyecto',
         icon:<AiIcons.AiFillHome />,
         cName: 'nav-text'
     },

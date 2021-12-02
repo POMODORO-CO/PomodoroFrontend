@@ -3,7 +3,7 @@
     background-color:#003459;
     height: 70px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -32,8 +32,8 @@
 }
 
 .nav-text{
-    display: center;
-    justify-content: center;
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
     padding: 48px 0px 8px 15px;
     list-style: none;
@@ -65,7 +65,7 @@ navbar-toggle{
     width: 150px;
     height: 80px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     position: relative;
 }
