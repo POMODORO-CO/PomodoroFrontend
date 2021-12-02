@@ -9,6 +9,7 @@ import Proyecto from './Pages/Projects/Project';
 import Consulta from "./Pages/Projects/Consulta";
 import Inscripciones from "./Pages/Projects/Inscripciones";
 import Login from './Pages/Login/Login';
+import Registro from "./Pages/Login/Registro";
 import Avances from './Pages/Projects/Avances';
 import Home from "./Pages/Home/Home";
 import Landingpage from "./Pages/Landingpage/Landingpage";
@@ -37,7 +38,8 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/MiPerfil" element={<MiPerfil />} />
             <Route path="/GestionUsuarios" element={<GestionUsuarios />} />
-            <Route path="/Proyecto" element={<Proyecto/>}/>
+            <Route path="/Proyecto" element={<Proyecto />} />
+            <Route path="/Registro" element={<Registro />} />
             <Route path="/CerrarSesion" element={<Proyecto/>}/>
             <Route path="/Proyecto/Consulta" element={<Consulta/>}/>
             <Route path="/Proyecto/Inscripciones" element={<Inscripciones/>}/>
