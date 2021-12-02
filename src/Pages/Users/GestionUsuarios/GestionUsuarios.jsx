@@ -3,7 +3,7 @@ import React from 'react'
 function GestionUsuarios() {
     return (
         <div className='gestionusuarios'>
-            <h1>GESTION USUARIOS</h1>
+            <h1>GESTIÓN USUARIOS</h1>
         </div>
     )
 }

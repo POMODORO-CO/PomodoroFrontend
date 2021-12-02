@@ -1,0 +1,60 @@
+li a{
+    float: left;
+    font-size: 1.3rem;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #E71D36;
+}
+
+ul{
+    list-style-type: none;
+    border-radius: 5px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #011627;
+}
+
+.ulSearch{
+    margin-left: 4rem;
+    background-color: #F9F9FA;
+}
+
+.ulHome {
+    display: flex;
+    justify-content:space-evenly;
+
+}
+
+.ulMain{
+    float: left;
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+section nav {
+    margin-top: 1rem;
+}
+
+h1 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+    height: 10vh;
+}
+
+section {
+    position: relative;
+    background-color: white;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+}

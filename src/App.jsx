@@ -38,6 +38,7 @@ function App() {
             <Route path="/MiPerfil" element={<MiPerfil />} />
             <Route path="/GestionUsuarios" element={<GestionUsuarios />} />
             <Route path="/Proyecto" element={<Proyecto/>}/>
+            <Route path="/CerrarSesion" element={<Proyecto/>}/>
             <Route path="/Proyecto/Consulta" element={<Consulta/>}/>
             <Route path="/Proyecto/Inscripciones" element={<Inscripciones/>}/>
             <Route path="/Proyecto/Avances" element={<Avances/>}/>
