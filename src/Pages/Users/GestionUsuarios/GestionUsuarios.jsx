@@ -1,9 +1,13 @@
 import React from 'react'
+import SearchUser from './searchUser'
+import Navbar from '../../../components/Navbar/Navbar';
 
 function GestionUsuarios() {
     return (
-        <div className='gestionusuarios'>
-            <h1>GESTIÓN USUARIOS</h1>
+        <div>
+            <Navbar />
+            <SearchUser />
+            
         </div>
     )
 }
