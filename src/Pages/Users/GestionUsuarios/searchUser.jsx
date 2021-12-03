@@ -41,8 +41,8 @@ if (queryLoading) return <div>Cargando......</div>;
                     </thead>
                     <tbody>
                         {queryData &&
-                            queryData.Usuarios.map((u)=>{
-                                return(
+                            queryData.Usuarios.map((u) => {
+                                return (
                                     <tr key={u._id}>
                                         <td>{u.nombre_usuario}</td>
                                         <td>{u.apellido_usuario}</td>
@@ -59,7 +59,7 @@ if (queryLoading) return <div>Cargando......</div>;
                                         </td>
                                     </tr>
                                 )
-                            })}                       
+                            })}
                     </tbody>
                 </table>
             </div>
