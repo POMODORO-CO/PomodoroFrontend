@@ -15,11 +15,6 @@ import Home from "./Pages/Home/Home";
 import Landingpage from "./Pages/Landingpage/Landingpage";
 import EditDataUser from "./Pages/Users/GestionUsuarios/editDataUser";
 
-
-//pruebas del backend
-import IndexUsuarios from "./Pages/Users";
-import EditarUsuario from "./Pages/Users/editarUsuario";
-
 // const httpLink=createHttpLink({
 //   uri:'https://servidor-gql-pomodoro.herokuapp.com/graphql'
 // })
@@ -35,7 +30,6 @@ function App() {
       <ApolloProvider client={client}>
         <Router>
           <Routes>
-
             <Route path="/" element={<Landingpage />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/MiPerfil" element={<MiPerfil />} />
