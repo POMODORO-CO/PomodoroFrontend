@@ -29,7 +29,7 @@ function Landingpage() {
                             </a>
                         </section>
                         <section className='flex flex-row justify-center items-center my-auto space-x-4'>
-                            <NavLink to='/Login'> className='px-2 font-bold'>
+                            <NavLink to='/Login' className='px-2 font-bold'>
                                 Login
                             </NavLink>
                             <section className='w-0.5 h-6 bg-yellow-400 opacity-50'></section>
