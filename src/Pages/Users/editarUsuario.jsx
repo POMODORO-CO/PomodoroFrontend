@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useEffect }  from "react";
 import { useParams, Link } from "react-router-dom";
 
 import { useMutation, useQuery } from '@apollo/client';
 import { GET_USUARIO } from "../../graphql/users/queries";
 import useFormData from "./useForm";
 import { EDITAR_USUARIO } from "../../graphql/users/mutations";
-import { useEffect } from "react/cjs/react.development";
 
 const EditarUsuario = () => {
 
