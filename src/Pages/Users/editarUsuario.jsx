@@ -6,6 +6,7 @@ import { GET_USUARIO } from "../../graphql/users/queries";
 import useFormData from "./useForm";
 import { EDITAR_USUARIO } from "../../graphql/users/mutations";
 import { useEffect } from "react/cjs/react.development";
+import Navbar from '../../components/Navbar/Navbar'
 
 const EditarUsuario = () => {
 
@@ -46,7 +47,8 @@ const EditarUsuario = () => {
     if (queryLoading) return (<div>Cargando........</div>)
 
     return (
-        <>
+        <> 
+            <Navbar />
             <Link to={`/pruebaBack`}>
                 <i>Ir atras</i></Link>
             <br />

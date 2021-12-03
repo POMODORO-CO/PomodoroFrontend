@@ -19,9 +19,7 @@ function NavbarLandingPage() {
                             <a href="#" className='px-2 font-bold'>Herramientas</a>
                         </section>
                         <section className='flex flex-row justify-center items-center my-auto space-x-4'>
-                            <NavLink to='/Login' className='px-2 font-bold' >
-                                Login
-                            </NavLink>
+                            <NavLink to='/Login' className='px-2 font-bold'> Login </NavLink>
                             <section className='w-0.5 h-6 bg-yellow-400 opacity-50'></section>
                             <NavLink to='/Registro'>
                             <button class="py-2 px-6 text-blue-900 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block">Registro</button>
