@@ -6,7 +6,7 @@ function Home() {
     return (
         <div>
             <Navbar />
-            {/* <main>
+            <main>
       
               <div className='home'>
                 <h2>Bienvenido a Pomodoro</h2>
@@ -32,7 +32,7 @@ function Home() {
                       </nav>
                   </section>
 
-          </main> */}
+          </main>
         </div>
     )
 }
