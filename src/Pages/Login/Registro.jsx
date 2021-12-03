@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import imagenes from "../../assets/img/imagenes";
 import { NavLink } from 'react-router-dom';
+import NavbarLandingPage from '../../components/NavbarLandingPage/NavbarLandingPage';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from "react-router";
 
@@ -41,37 +42,9 @@ function Registro() {
 
   return (
     <div>
-        <section className='container mx-auto px-6'>
-          <nav className='py-4 flex justify-between'>
-            <section className='flex flex-row justify-center'>
-              <img src={imagenes.imag1} alt="Logo empresa" className='py-3 px-3 h-20 w-20' />
-              <h1 className='px-2 text-xl text-center my-auto uppercase font-bold'>Pomodoro</h1>
-            </section>
-            <section className='flex flex-row justify-center space-x-8'>
-              <section className='flex flex-row justify-center my-auto space-x-4'>
-                <a href='#' className='px-2 font-bold'>Servicios</a>
-                <a href="#" className='px-2 font-bold'>Experiencias</a>
-                <a href="#" className='px-2 font-bold'>Metodología</a>
-                <a href="#" className='px-2 font-bold'>Herramientas</a>
-              </section>
-              <section className='flex flex-row justify-center items-center my-auto space-x-4'>
-                <NavLink to='/Login' className='px-2 font-bold' >
-                  Login
-                </NavLink>
-                <section className='w-0.5 h-6 bg-yellow-400 opacity-50'></section>
-                <NavLink to='/Registro'>
-                  <button className="py-2 px-6 text-blue-900 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block">Registro</button>
-                </NavLink>
-              </section>
-            </section>
-          </nav>
-        </section>
+      <NavbarLandingPage />
       <section className='min-h-screen grid place-content-center bg-gray-500'>
-
-
-
         <form className="w-full max-w-lg " onSubmit={submitForm} onChange={updateFormData} ref={form}>
-
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
               <label className="text-white text-sm font-bold mb-2" htmlFor="grid-state">
@@ -94,9 +67,8 @@ function Registro() {
               <label className="text-white text-sm font-bold mb-2" htmlFor="grid-numero">
                 Numero 
               </label>
-              <input name='documentoUsuario' className="appearance-none block w-full bg-gray-200 text-gray-500 border border-red-500 rounded py-2 px-3 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-numero" type="text" placeholder="numero de documento" />
+              <input name='documentoUsuario' className="appearance-none block w-full bg-gray-200 text-gray-500 border border-red-500 rounded py-2 px-3 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-numero" type="number" placeholder="numero de documento" />
             </div>
-
           </div>
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">

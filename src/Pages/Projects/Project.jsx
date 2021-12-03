@@ -1,9 +1,13 @@
 import React from 'react'
+import Navbar from '../../components/Navbar/Navbar';
 
 function Project() {
     return (
-        <div className='proyecto'>
+        <div>
+            <Navbar />
+            <div className='proyecto'>
             <h1>PROYECTOS</h1>
+            </div>
         </div>
     )
 }
