@@ -47,90 +47,80 @@ function EditDataUser() {
 
     return (
         
-        <> 
+        <>
             <Navbar />
-            <Link to={`/GestionUsuarios`}>
-                <i>Ir atras</i></Link>
-            <br />
-            <hr />
-
-            <div> Editando Usuario numero: {_id}</div>
-            <br />
-            <hr />
-
-            <form onSubmit={submitForm}
-                onChange={updateFormData}
-                ref={form}>
-
-                <div>
-                    <label>nombre
-                        <input
-                            defaultValue={queryData.Usuario.nombre_usuario}
-                            type="text"
-                            name="nombreUsuario" />
-                    </label>
+            <div className='min-h-screen grid place-content-center bg-white'>
+                <div class="w-full max-w-xs m-6">
+                    <div className='bg-gray-200 inline-flex justify-center items-center rounded-full'>
+                        <div className='bg-white text-black font-bold px-2 rounded-full m-1'>
+                            Editando usuario número:
+                        </div>
+                    </div>
+                    <div className='text-black px-11 py-3 bg-yellow-400 rounded-full m-1 font-bold'> {_id} </div>
+                    <form onSubmit={submitForm}
+                        onChange={updateFormData}
+                        ref={form}>
+                        <div className='w-full md:w-1/2 px-3'>
+                            <label className="text-black text-sm font-bold mb-2"> Nombre  </label>
+                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                                    defaultValue={queryData.Usuario.nombre_usuario}
+                                    type="text"
+                                    name="nombreUsuario" />
+                        </div>
+                        <div>
+                            <label>Apellido
+                                <input
+                                    defaultValue={queryData.Usuario.apellido_usuario}
+                                    type="text"
+                                    name="apellidoUsuario" />
+                            </label>
+                        </div>
+                        <div>
+                            <label>documento
+                                <input
+                                    defaultValue={queryData.Usuario.documento_usuario}
+                                    type="text"
+                                    name="documentoUsuario" />
+                            </label>
+                        </div>
+                        <div>
+                            <label>Tipo Documento
+                                <input
+                                    defaultValue={queryData.Usuario.tipo_documento_usuario}
+                                    type="text"
+                                    name="tipoDocumentoUsuario" />
+                            </label>
+                        </div>
+                        <div>
+                            <label htmlFor='password_usuario'>Pass
+                                <input
+                                    defaultValue={queryData.Usuario.password_usuario}
+                                    type="password"
+                                    name="passwordUsuario" />
+                            </label>
+                        </div>
+                        <div>
+                            <label>Rol
+                                <input
+                                    defaultValue={queryData.Usuario.rol_usuario}
+                                    type="text"
+                                    name="rolUsuario" />
+                            </label>
+                        </div>
+                        <div>
+                            <label>correo
+                                <input
+                                    defaultValue={queryData.Usuario.email_usuario}
+                                    type="text"
+                                    name="emailUsuario" />
+                            </label>
+                        </div>
+                        <button>Editar</button>
+                        <Link to={`/GestionUsuarios`}>
+                            <i>Ir atras</i></Link>
+                    </form>
                 </div>
-
-                <div>
-                    <label>Apellido
-                        <input
-                            defaultValue={queryData.Usuario.apellido_usuario}
-                            type="text"
-                            name="apellidoUsuario" />
-                    </label>
-                </div>
-
-                <div>
-                    <label>documento
-                        <input
-                            defaultValue={queryData.Usuario.documento_usuario}
-                            type="text"
-                            name="documentoUsuario" />
-                    </label>
-                </div>
-
-
-                <div>
-                    <label>Tipo Documento
-                        <input
-                            defaultValue={queryData.Usuario.tipo_documento_usuario}
-                            type="text"
-                            name="tipoDocumentoUsuario" />
-                    </label>
-                </div>
-
-
-                <div>
-                    <label htmlFor='password_usuario'>Pass
-                        <input
-                            defaultValue={queryData.Usuario.password_usuario}
-                            type="password"
-                            name="passwordUsuario" />
-                    </label>
-                </div>
-
-
-                <div>
-                    <label>Rol
-                        <input
-                            defaultValue={queryData.Usuario.rol_usuario}
-                            type="text"
-                            name="rolUsuario" />
-                    </label>
-                </div>
-
-                <div>
-                    <label>correo
-                        <input
-                            defaultValue={queryData.Usuario.email_usuario}
-                            type="text"
-                            name="emailUsuario" />
-                    </label>
-                </div>
-
-                <button>Editar</button>
-
-            </form>
+            </div>
         </>
     )
 }
