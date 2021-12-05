@@ -4,6 +4,7 @@ import imagenes from '../../assets/img/imagenes';
 
 
 
+
 function Home() {
     return (
         <div>
