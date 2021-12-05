@@ -18,9 +18,9 @@ const Login = () => {
                         </label>
                         <input class="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="*******" />
                         <p class="text-yellow-400 text-xs italic p-1">Por favor ingrese su contraseña.</p>
-                        <button class="bg-blue-900 hover:bg-yellow-400 text-white font-bold w-full py-2 px-3 rounded focus:outline-none focus:shadow-outline" type="button">
+                        <button> <a href='./home' class="bg-blue-900 hover:bg-yellow-400 text-white font-bold w-full py-2 px-3 rounded focus:outline-none focus:shadow-outline" type="button">
                             Ingresar
-                        </button>
+                        </a></button>
                     </div>
                     <div>
                         <label class="inline-flex items-center">

@@ -24,20 +24,13 @@ function Project() {
                             Por favor, elige alguna de las siguientes opciones:
                         </p>
 
-                    <section className='flex flex-col pt-5 px-20 py-1'>
-                            <section className='flex flex-row justify-center my-auto space-x-10 inline-flex items-center px-8 py-6'>
-                                <button> <a href='/Proyecto/Consulta' className="py-2 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Consulta de Proyectos </a></button>
-                                <button> <a href="/Proyecto/Registroproyectos" className="py-2 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Registro de Proyectos</a></button>
-                                <button> <a href="/Proyecto/Inscripciones" className="py-2 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Inscribete a un Proyecto</a></button>
-                                <button> <a href="/Proyecto/Avances" className="py-2 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Registra un Avance de Proyecto</a></button>
-                            </section> 
-                    </section>
-                    </section>
-                </section>
-                <section className='flex flex-row justify-between bg-gray-500 text-white'>
-                    <section className='flex flex-row'>
-                        <section>
-
+                        <section className='flex flex-col pt-5 px-20 py-1'>
+                                <section className='flex flex-row justify-center my-auto space-x-10 inline-flex items-center px-8 py-6'>
+                                    <button> <a href='/Proyecto/Consulta' className="py-2 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Consulta de Proyectos </a></button>
+                                    <button> <a href="/Proyecto/Registroproyectos" className="py-2 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Registro de Proyectos</a></button>
+                                    <button> <a href="/Proyecto/Inscripciones" className="py-2 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Inscribete a un Proyecto</a></button>
+                                    <button> <a href="/Proyecto/Avances" className="py-2 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Registra un Avance de Proyecto</a></button>
+                                </section> 
                         </section>
                     </section>
                 </section>
