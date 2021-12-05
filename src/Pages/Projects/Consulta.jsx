@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import "../../index.css";
+import Navbar from '../../components/Navbar/Navbar'
 // import * as FaIcons from "react-icons/fa";
 // import * as AiIcons from "react-icons/ai";
 import { useQuery } from '@apollo/client';
@@ -12,7 +13,7 @@ function Consulta() {
 
     return (
         <>
-
+            <Navbar />
             <div class='consulta'>
                 <h1>CONSULTA DE PROYECTOS</h1>
             </div>

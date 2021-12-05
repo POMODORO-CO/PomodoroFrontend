@@ -20,7 +20,7 @@ export const Sidebar = [
         cName: 'nav-text'
     },
     {
-        title:'Gestioón de Usuarios',
+        title:'Gestión de Usuarios',
         path:'/gestionusuarios',
         icon:<FaIcons.FaUsersCog />,
         cName: 'nav-text'
@@ -35,7 +35,7 @@ export const Sidebar = [
     },
     {
         title:'Cerrar Sesión',
-        path:'/proyecto',
+        path:'/',
         icon:<VscIcons.VscCloseAll />,
         cName: 'nav-text'
     },

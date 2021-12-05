@@ -1,5 +1,6 @@
 import React from 'react'
 import "../../index.css";
+import Navbar from '../../components/Navbar/Navbar'
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 // import * as CgIcons from "react-icons/cg";
@@ -8,8 +9,9 @@ import * as AiIcons from "react-icons/ai";
 function Avances() {
 
     return (
+        
         <>
-
+            <Navbar />
             <div class='consulta'>
                 <h1>AVANCES</h1>
             </div>
