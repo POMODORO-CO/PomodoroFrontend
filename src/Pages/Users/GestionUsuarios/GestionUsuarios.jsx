@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../../../components/Navbar/Navbar';
 import * as FaIcons from "react-icons/fa";
 import imagenes from '../../../assets/img/imagenes';
-import IndexUsuarios from '..';
+import SearchUser from './searchUser';
 
 function GestionUsuarios() {
     return (
@@ -336,7 +336,7 @@ function GestionUsuarios() {
                     </div>
                 </div>
             </div>
-            <IndexUsuarios />
+            <SearchUser />
         </div>
     )
 }

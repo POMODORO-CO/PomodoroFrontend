@@ -16,8 +16,6 @@ import Landingpage from "./Pages/Landingpage/Landingpage";
 import Registroproyectos from "./Pages/Projects/Registroproyectos";
 
 //pruebas del backend
-import IndexUsuarios from "./Pages/Users";
-import EditarUsuario from "./Pages/Users/editarUsuario";
 import EditDataUser from "./Pages/Users/GestionUsuarios/editDataUser";
 
 // const httpLink=createHttpLink({
