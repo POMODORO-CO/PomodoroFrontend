@@ -13,6 +13,9 @@ import Registro from "./Pages/Login/Registro";
 import Avances from './Pages/Projects/Avances';
 import Home from "./Pages/Home/Home";
 import Landingpage from "./Pages/Landingpage/Landingpage";
+import Registroproyectos from "./Pages/Projects/Registroproyectos";
+
+//pruebas del backend
 import EditDataUser from "./Pages/Users/GestionUsuarios/editDataUser";
 
 // const httpLink=createHttpLink({
@@ -40,6 +43,7 @@ function App() {
             <Route path="/CerrarSesion" element={<Proyecto/>}/>
             <Route path="/Proyecto/Consulta" element={<Consulta/>}/>
             <Route path="/Proyecto/Inscripciones" element={<Inscripciones/>}/>
+            <Route path="/Proyecto/Registroproyectos" element={<Registroproyectos/>}/>
             <Route path="/Proyecto/Avances" element={<Avances/>}/>
             <Route path="/Home" element={<Home />} />
           </Routes>
