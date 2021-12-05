@@ -9,7 +9,7 @@ export const Sidebar = [
 
     {
         title:'Inicio',
-        path:'/Proyecto',
+        path:'/Home',
         icon:<AiIcons.AiFillHome />,
         cName: 'nav-text'
     },
@@ -20,7 +20,7 @@ export const Sidebar = [
         cName: 'nav-text'
     },
     {
-        title:'Gestion Usuario',
+        title:'Gestión de Usuarios',
         path:'/gestionusuarios',
         icon:<FaIcons.FaUsersCog />,
         cName: 'nav-text'
@@ -31,33 +31,11 @@ export const Sidebar = [
         icon:<RiIcons.RiDraftFill />,
         iconClosed: <RiIcons.RiArrowDownFill />,
         iconOpened: <RiIcons.RiArrowUpSFill />,
-        subNav: [
-            {
-                title:'Registro',
-                path:'/proyecto/registro',
-                cName: 'nav-text'
-            },
-            {
-                title:'Consulta',
-                path:'/proyecto/consulta',
-                cName: 'nav-text'
-            },
-            {
-                title:'Inscripciones',
-                path:'/proyecto/inscripciones',
-                cName: 'nav-text'
-            },
-            {
-                title:'Avances',
-                path:'/proyecto/avances',
-                cName: 'nav-text'
-            },
-        ],
         cName: 'nav-text'
     },
     {
         title:'Cerrar Sesión',
-        path:'/proyecto',
+        path:'/',
         icon:<VscIcons.VscCloseAll />,
         cName: 'nav-text'
     },

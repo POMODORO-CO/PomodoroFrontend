@@ -1,5 +1,6 @@
 import React from 'react'
 import "../../index.css";
+import Navbar from '../../components/Navbar/Navbar'
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as CgIcons from "react-icons/cg";
@@ -9,7 +10,7 @@ function Inscripciones() {
 
     return (
         <>
-
+            <Navbar />
             <div class='consulta'>
                 <h1>INSCRIPCIONES</h1>
             </div>
