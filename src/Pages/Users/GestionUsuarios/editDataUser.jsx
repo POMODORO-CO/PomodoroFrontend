@@ -50,7 +50,7 @@ function EditDataUser() {
         <>
             <Navbar />
             <div className='min-h-screen grid place-content-center bg-white'>
-                <div class="w-full max-w-xs m-6">
+                <div className="w-full max-w-xs m-6">
                     <div className='bg-gray-200 inline-flex justify-center items-center rounded-full'>
                         <div className='bg-white text-black font-bold px-2 rounded-full m-1'>
                             Editando usuario número:

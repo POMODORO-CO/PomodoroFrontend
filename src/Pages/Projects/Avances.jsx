@@ -12,7 +12,7 @@ function Avances() {
         
         <>
             <Navbar />
-            <div class='consulta'>
+            <div className='consulta'>
                 <h1>AVANCES</h1>
             </div>
             <div className="flex items-center flex-col text-middle">

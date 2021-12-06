@@ -25,4 +25,21 @@ mutation Registro(
     }
   }
 `;
-export {REGISTRO};
+
+const LOGIN =gql`
+mutation Login(
+  $emailUsuario: String!, 
+  $passwordUsuario: String!
+  ) {
+  login(
+    email_usuario: $emailUsuario, 
+    password_usuario: $passwordUsuario
+    ) {
+    token
+    error
+  }
+}
+`;
+export {
+  REGISTRO,
+  LOGIN};

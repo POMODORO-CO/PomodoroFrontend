@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
-import imagenes from "../../assets/img/imagenes";
-import { NavLink } from 'react-router-dom';
-import NavbarLandingPage from '../../components/NavbarLandingPage/NavbarLandingPage';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from "react-router";
 
-import useFormData from '../../components/UseForm/useForm.js'
+import NavbarLandingPage from '../../components/NavbarLandingPage/NavbarLandingPage';
+import useFormData from '../../components/UseForm/useForm.js';
 import { REGISTRO } from "../../graphql/Auth/mutationsAuth";
+import { useAuth } from "../../context/authContext";
 
 
 function Registro() {
 
+  const {setToken}=useAuth();
   const navigate= useNavigate();
 
   const {form, formData, updateFormData}=useFormData();
@@ -32,12 +32,12 @@ function Registro() {
     if(mutationData){
       console.log("mutation exist")
       if(mutationData.registro.token){
-        localStorage.setItem("token",mutationData.registro.token);
+        setToken(mutationData.registro.token);
         navigate('/Home');
       }
     };
     
-  },[mutationData])
+  },[mutationData,setToken,navigate])
 
 
   return (

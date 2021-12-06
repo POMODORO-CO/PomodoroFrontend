@@ -34,7 +34,7 @@ function Landingpage() {
                             </NavLink>
                             <section className='w-0.5 h-6 bg-yellow-400 opacity-50'></section>
                             <NavLink to='/Registro'>
-                            <button class="py-2 px-6 text-blue-900 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block">Registro</button>
+                            <button className="py-2 px-6 text-blue-900 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block">Registro</button>
                             </NavLink>
                         </section>
                     </section>
