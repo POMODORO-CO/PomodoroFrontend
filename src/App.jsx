@@ -2,8 +2,8 @@ import "./index.css";
 import React, { useState } from 'react'
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache} from '@apollo/client'
-import {setContext} from '@apollo/client/link/context'
+import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
+import { setContext } from '@apollo/client/link/context'
 
 import MiPerfil from './Pages/Users/Miperfil/MiPerfil';
 import GestionUsuarios from './Pages/Users/GestionUsuarios/GestionUsuarios';
@@ -24,24 +24,26 @@ import EditDataUser from "./Pages/Users/GestionUsuarios/editDataUser";
 import { AuthContext } from "./context/authContext";
 import { UserContext } from "./context/userContext";
 
-const httpLink=createHttpLink({
-  uri:'https://servidor-gql-pomodoro.herokuapp.com/graphql'
+const httpLink = createHttpLink({
+  uri: 'http://localhost:4000/graphql'
 })
 
-const authLink=setContext((_,{headers})=>{
-  const token =JSON.parse(localStorage.getItem('token'));
-  return{
-    headers:{
+const authLink = setContext((_, { headers }) => {
+
+  //encada request de graphql obtenemos el token y lo enviamos al back
+  const token = JSON.parse(localStorage.getItem('token'));
+  return {
+    headers: {
       ...headers,
-      authorization:token? `Bearer ${token}`:'',
-    }
+      authorization: token ? `Bearer ${token}` : '',
+    },
   };
 });
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: authLink.concat(httpLink)
-})
+},)
 
 function App() {
   const [userData, setUserData] = useState({});
@@ -51,12 +53,26 @@ function App() {
     setAuthToken(token)
     if (token) {
       localStorage.setItem('token', JSON.stringify(token));
+    } else {
+      localStorage.removeItem('token');
     }
   };
+
+  // useEffect(() => {
+  //   if (authToken) {
+  //     const decoded = jwt_decode(authToken);
+  //     setUserData({
+  //       _id: decoded._id,
+  //       email_usuario:decoded.email_usuario,
+  //       rol_usuario:decoded.rol_usuario,
+  //       estado_usuario:decoded.estado_usuario
+  //     });
+  //   }
+  // }, [authToken]);
   return (
     <>
       <ApolloProvider client={client}>
-        <AuthContext.Provider value={{authToken, setAuthToken, setToken }}>
+        <AuthContext.Provider value={{ authToken, setAuthToken, setToken }}>
           <UserContext.Provider value={{ userData, setUserData }}>
             <Router>
               <Routes>
@@ -67,7 +83,7 @@ function App() {
                   <Route path="/Registro" element={<Registro />} />
                 </Route>
 
-                <Route path="/private" element={<PrivateLayout/>}>
+                <Route path="/private" element={<PrivateLayout />}>
                   <Route path="MiPerfil" element={<MiPerfil />} />
                   <Route path="GestionUsuarios" element={<GestionUsuarios />} />
                   <Route path="GestionUsuarios/editar/:_id" element={<EditDataUser />} />

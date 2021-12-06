@@ -2,22 +2,25 @@ import { useMutation } from '@apollo/client';
 import { useEffect } from 'react';
 import { Outlet } from 'react-router';
 import { useAuth } from '../context/authContext';
-import {VALIDATE_TOKEN} from '../graphql/Auth/mutationsAuth.js'
+import {REFRESH_TOKEN} from '../graphql/Auth/mutationsAuth.js'
 
 
 const PrivateLayout = () => {
     
     const {authToken, setAuthToken, setToken}=useAuth();
 
-    const [validateToken, {
+    const [refreshToken, {
                 data:mutationData,
                 loading:mutationLoading,
                 error:mutationError
-                    }]=useMutation(VALIDATE_TOKEN);
+                    }]=useMutation(REFRESH_TOKEN);
 
     useEffect(()=>{
-        validateToken();
-    },[])
+        refreshToken();
+    },[refreshToken]);
+
+
+    
     return (
         <>
             <div>

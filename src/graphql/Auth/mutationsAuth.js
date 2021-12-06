@@ -27,7 +27,7 @@ mutation Registro(
 `;
 
 const LOGIN =gql`
-mutation Login(
+  mutation Login(
   $emailUsuario: String!, 
   $passwordUsuario: String!
   ) {
@@ -41,15 +41,15 @@ mutation Login(
 }
 `;
 
-const VALIDATE_TOKEN=gql`
-mutation ValidateToken {
-  validateToken {
-    error
+const REFRESH_TOKEN=gql`
+mutation RefreshToken {
+  refreshToken {
     token
+    error
   }
 }
 `;
 export {
   REGISTRO,
   LOGIN,
-  VALIDATE_TOKEN};
+  REFRESH_TOKEN};

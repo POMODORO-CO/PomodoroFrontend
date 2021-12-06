@@ -23,28 +23,32 @@ const Login = () => {
                                 }]=useMutation(LOGIN);
 
     const submitForm=(e)=>{
-        
         e.preventDefault();
         login({
-            variables:{...formData}
-        })
-        
+            variables:formData,
+        });
     };
 
     useEffect(()=>{
         if(mutationData){
-          console.log("mutation exist")
-          //TODO: tengo que cambiar el if para leer el token
-          if(mutationData.login.token.autenticado_usuario==="AUTENTICADO"){
+          if(mutationData.login.token){
             setToken(mutationData.login.token);
-            navigate('/Home');
-          }else{
-              console.log("NO autenticado")
+            navigate('/private/Home');
           }
         };
         
-      },[mutationData,setToken,navigate])
+      },[mutationData])
 
+
+    if(mutationLoading){return(<div>cargando Login...just wait </div>)}
+
+    if(mutationError){       
+        return(
+            <div>
+                error de la mutacion:
+            </div>
+        )
+    }
     return (
         <div>
             <NavbarLandingPage />
