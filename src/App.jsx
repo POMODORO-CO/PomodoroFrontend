@@ -2,7 +2,8 @@ import "./index.css";
 import React, { useState } from 'react'
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
+import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache} from '@apollo/client'
+import {setContext} from '@apollo/client/link/context'
 
 import MiPerfil from './Pages/Users/Miperfil/MiPerfil';
 import GestionUsuarios from './Pages/Users/GestionUsuarios/GestionUsuarios';
@@ -16,52 +17,70 @@ import Home from "./Pages/Home/Home";
 import Landingpage from "./Pages/Landingpage/Landingpage";
 import Registroproyectos from "./Pages/Projects/Registroproyectos";
 
-//pruebas del backend
+import AuthLayout from "./layouts/AuthLayout";
+import PrivateLayout from "./layouts/PrivateLayout";
+
 import EditDataUser from "./Pages/Users/GestionUsuarios/editDataUser";
 import { AuthContext } from "./context/authContext";
 import { UserContext } from "./context/userContext";
 
-// const httpLink=createHttpLink({
-//   uri:'https://servidor-gql-pomodoro.herokuapp.com/graphql'
-// })
+const httpLink=createHttpLink({
+  uri:'https://servidor-gql-pomodoro.herokuapp.com/graphql'
+})
+
+const authLink=setContext((_,{headers})=>{
+  const token =JSON.parse(localStorage.getItem('token'));
+  return{
+    headers:{
+      ...headers,
+      authorization:token? `Bearer ${token}`:'',
+    }
+  };
+});
 
 const client = new ApolloClient({
-  uri: 'https://servidor-gql-pomodoro.herokuapp.com/graphql',
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  link: authLink.concat(httpLink)
 })
 
 function App() {
-  const [userData, setUserData]=useState({});
-  const [authToken, setAuthToken]=useState('');
+  const [userData, setUserData] = useState({});
+  const [authToken, setAuthToken] = useState('');
 
-  const setToken=(token)=>{
+  const setToken = (token) => {
     setAuthToken(token)
-    if(token){
+    if (token) {
       localStorage.setItem('token', JSON.stringify(token));
     }
   };
   return (
     <>
       <ApolloProvider client={client}>
-        <AuthContext.Provider value={{setToken}}>
-          <UserContext.Provider value={{userData,setUserData}}>
-          <Router>
-            <Routes>
-              <Route path="/" element={<Landingpage />} />
-              <Route path="/Login" element={<Login />} />
-              <Route path="/MiPerfil" element={<MiPerfil />} />
-              <Route path="/GestionUsuarios" element={<GestionUsuarios />} />
-              <Route path="/GestionUsuarios/editar/:_id" element={<EditDataUser />} />
-              <Route path="/Registro" element={<Registro />} />
-              <Route path="/Proyecto" element={<Proyecto />} />
-              <Route path="/Proyecto/Consulta" element={<Consulta />} />
-              <Route path="/Proyecto/Inscripciones" element={<Inscripciones />} />
-              <Route path="/Proyecto/Registroproyectos" element={<Registroproyectos />} />
-              <Route path="/Proyecto/Avances" element={<Avances />} />
-              <Route path="/Home" element={<Home />} />
-              <Route path="/CerrarSesion" element={<Proyecto />} />
-            </Routes>
-          </Router>
+        <AuthContext.Provider value={{authToken, setAuthToken, setToken }}>
+          <UserContext.Provider value={{ userData, setUserData }}>
+            <Router>
+              <Routes>
+
+                <Route path="/" element={<AuthLayout />} >
+                  <Route path="" element={<Landingpage />} />
+                  <Route path="/Login" element={<Login />} />
+                  <Route path="/Registro" element={<Registro />} />
+                </Route>
+
+                <Route path="/private" element={<PrivateLayout/>}>
+                  <Route path="MiPerfil" element={<MiPerfil />} />
+                  <Route path="GestionUsuarios" element={<GestionUsuarios />} />
+                  <Route path="GestionUsuarios/editar/:_id" element={<EditDataUser />} />
+                  <Route path="Proyecto" element={<Proyecto />} />
+                  <Route path="Proyecto/Consulta" element={<Consulta />} />
+                  <Route path="Proyecto/Inscripciones" element={<Inscripciones />} />
+                  <Route path="Proyecto/Registroproyectos" element={<Registroproyectos />} />
+                  <Route path="Proyecto/Avances" element={<Avances />} />
+                  <Route path="Home" element={<Home />} />
+                  <Route path="CerrarSesion" element={<Proyecto />} />
+                </Route>
+              </Routes>
+            </Router>
           </UserContext.Provider>
         </AuthContext.Provider>
       </ApolloProvider>

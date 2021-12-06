@@ -116,7 +116,7 @@ function EditDataUser() {
                             </label>
                         </div>
                         <button>Editar</button>
-                        <Link to={`/GestionUsuarios`}>
+                        <Link to={`/private/GestionUsuarios`}>
                             <i>Ir atras</i></Link>
                     </form>
                 </div>
