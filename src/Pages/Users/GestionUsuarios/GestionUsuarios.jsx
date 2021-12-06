@@ -24,7 +24,7 @@ function GestionUsuarios() {
                     <div className="flex wrap items-center text-middle">
                         <h1 className="p-3">Ingrese la identificación</h1>
                         <div className=" bg-white rounded flex items-center w-full p-3 shadow-sm border border-gray-200">
-                            <button className="outline-none focus:outline-none"><svg className=" w-5 text-gray-600 h-5 cursor-pointer" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                            <button className="outline-none focus:outline-none"><svg className=" w-5 text-gray-600 h-5 cursor-pointer" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
                             <input type="search" name="" id="" placeholder="Buscar.." x-model="q" className="w-full pl-4 text-sm outline-none focus:outline-none bg-transparent" />
                         </div>
                     </div>
@@ -198,7 +198,7 @@ function GestionUsuarios() {
                                             <div className="flex items-center">
                                                 <div className="ml-4">
                                                     <select name="" id="" className="bg-white rounded flex items-center w-FULL p-3 shadow-sm border border-gray-200" placeholder="Estado de la inscripcion">
-                                                        <option value="Aceptada" selected>CC</option>
+                                                        <option value="Aceptada" defaultValue>CC</option>
                                                         <option value="Rechazada">CE</option>
                                                         <option value="Rechazada">TI</option>
                                                     </select>
@@ -215,7 +215,7 @@ function GestionUsuarios() {
                                             <div className="flex items-center">
                                                 <div className="ml-4">
                                                     <select name="" id="" className="bg-white rounded flex items-center w-FULL p-3 shadow-sm border border-gray-200" placeholder="Estado de la inscripcion">
-                                                        <option value="Aceptada" selected>Administrador</option>
+                                                        <option value="Aceptada" defaultValue>Administrador</option>
                                                         <option value="Rechazada">Líder</option>
                                                         <option value="Rechazada">Estudiante</option>
                                                     </select>
@@ -226,7 +226,7 @@ function GestionUsuarios() {
                                             <div className="flex items-center">
                                                 <div className="ml-4">
                                                     <select name="" id="" className="bg-white rounded flex items-center w-FULL p-3 shadow-sm border border-gray-200" placeholder="Estado de la inscripcion">
-                                                        <option value="Aceptada" selected>Activo</option>
+                                                        <option value="Aceptada" defaultValue>Activo</option>
                                                         <option value="Rechazada">Inactivo</option>
                                                     </select>
                                                 </div>
@@ -274,7 +274,7 @@ function GestionUsuarios() {
                                             <div className="flex items-center">
                                                 <div className="ml-4">
                                                     <select name="" id="" className="bg-white rounded flex items-center w-FULL p-3 shadow-sm border border-gray-200" placeholder="Estado de la inscripcion">
-                                                        <option value="Aceptada" selected>CC</option>
+                                                        <option value="Aceptada" defaultValue>CC</option>
                                                         <option value="Rechazada">CE</option>
                                                         <option value="Rechazada">TI</option>
                                                     </select>
@@ -291,7 +291,7 @@ function GestionUsuarios() {
                                             <div className="flex items-center">
                                                 <div className="ml-4">
                                                     <select name="" id="" className="bg-white rounded flex items-center w-FULL p-3 shadow-sm border border-gray-200" placeholder="Estado de la inscripcion">
-                                                        <option value="Aceptada" selected>Administrador</option>
+                                                        <option value="Aceptada" defaultValue>Administrador</option>
                                                         <option value="Rechazada">Líder</option>
                                                         <option value="Rechazada">Estudiante</option>
                                                     </select>
@@ -302,7 +302,7 @@ function GestionUsuarios() {
                                             <div className="flex items-center">
                                                 <div className="ml-4">
                                                     <select name="" id="" className="bg-white rounded flex items-center w-FULL p-3 shadow-sm border border-gray-200" placeholder="Estado de la inscripcion">
-                                                        <option value="Aceptada" selected>Activo</option>
+                                                        <option value="Aceptada" defaultValue>Activo</option>
                                                         <option value="Rechazada">Inactivo</option>
                                                     </select>
                                                 </div>

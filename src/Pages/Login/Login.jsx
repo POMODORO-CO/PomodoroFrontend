@@ -32,13 +32,14 @@ const Login = () => {
     };
 
     useEffect(()=>{
-        console.log("mutation is: ")
-        console.log(mutationData)
         if(mutationData){
           console.log("mutation exist")
-          if(mutationData.login.token){
+          //TODO: tengo que cambiar el if para leer el token
+          if(mutationData.login.token.autenticado_usuario==="AUTENTICADO"){
             setToken(mutationData.login.token);
             navigate('/Home');
+          }else{
+              console.log("NO autenticado")
           }
         };
         

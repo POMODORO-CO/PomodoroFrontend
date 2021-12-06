@@ -9,25 +9,25 @@ export const Sidebar = [
 
     {
         title:'Inicio',
-        path:'/Home',
+        path:'/private/Home',
         icon:<AiIcons.AiFillHome />,
         cName: 'nav-text'
     },
     {
         title:'Mi Perfil',
-        path:'/miperfil',
+        path:'/private/miperfil',
         icon:<CgIcons.CgProfile />,
         cName: 'nav-text'
     },
     {
         title:'Gestión de Usuarios',
-        path:'/gestionusuarios',
+        path:'/private/gestionusuarios',
         icon:<FaIcons.FaUsersCog />,
         cName: 'nav-text'
     },
     {
         title:'Proyectos',
-        path:'/proyecto',
+        path:'/private/proyecto',
         icon:<RiIcons.RiDraftFill />,
         iconClosed: <RiIcons.RiArrowDownFill />,
         iconOpened: <RiIcons.RiArrowUpSFill />,

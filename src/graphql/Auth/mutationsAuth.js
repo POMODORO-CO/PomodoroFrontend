@@ -40,6 +40,16 @@ mutation Login(
   }
 }
 `;
+
+const VALIDATE_TOKEN=gql`
+mutation ValidateToken {
+  validateToken {
+    error
+    token
+  }
+}
+`;
 export {
   REGISTRO,
-  LOGIN};
+  LOGIN,
+  VALIDATE_TOKEN};
