@@ -27,13 +27,11 @@ function Registro() {
   };
 
   useEffect(()=>{
-    console.log("mutation is: ")
-    console.log(mutationData)
+  
     if(mutationData){
-      console.log("mutation exist")
       if(mutationData.registro.token){
         setToken(mutationData.registro.token);
-        navigate('/Home');
+        navigate('/Login');
       }
     };
     

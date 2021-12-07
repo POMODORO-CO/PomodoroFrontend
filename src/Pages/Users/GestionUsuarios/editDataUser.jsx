@@ -33,7 +33,6 @@ function EditDataUser() {
           editarUsuario({
               variables: { _id, ...formData }
           })
-          console.log("fin submit")
       };
   
       //execute every time the variable mutationData change
