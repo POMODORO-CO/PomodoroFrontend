@@ -1,9 +1,10 @@
 import "./index.css";
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
+import jwt_decode from 'jwt-decode'
 
 import MiPerfil from './Pages/Users/Miperfil/MiPerfil';
 import GestionUsuarios from './Pages/Users/GestionUsuarios/GestionUsuarios';
@@ -58,17 +59,19 @@ function App() {
     }
   };
 
-  // useEffect(() => {
-  //   if (authToken) {
-  //     const decoded = jwt_decode(authToken);
-  //     setUserData({
-  //       _id: decoded._id,
-  //       email_usuario:decoded.email_usuario,
-  //       rol_usuario:decoded.rol_usuario,
-  //       estado_usuario:decoded.estado_usuario
-  //     });
-  //   }
-  // }, [authToken]);
+  useEffect(() => {
+    if (authToken) {
+      const decoded = jwt_decode(authToken);
+      setUserData({
+        _id: decoded._id,
+        email_usuario:decoded.email_usuario,
+        rol_usuario:decoded.rol_usuario,
+        estado_usuario:decoded.estado_usuario,
+        autenticado_usuario:decoded.autenticado_usuario
+      });
+    }
+  }, [authToken]);
+  
   return (
     <>
       <ApolloProvider client={client}>
