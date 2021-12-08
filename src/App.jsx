@@ -26,7 +26,7 @@ import { AuthContext } from "./context/authContext";
 import { UserContext } from "./context/userContext";
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql'
+  uri: 'https://servidor-gql-pomodoro.herokuapp.com/graphql'
 })
 
 const authLink = setContext((_, { headers }) => {
