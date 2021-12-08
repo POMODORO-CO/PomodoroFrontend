@@ -29,7 +29,7 @@ function SearchUser() {
         <>
             <div>
                 todos los usurios
-                <PrivateRoute rolelist={["ADMINISTRADOR","AUTENTICADO"]}>
+                <PrivateRoute rolelist={["ESTUDIANTE","ADMINISTRADOR", "ACTIVO", "AUTENTICADO"]}>
                     <table>
                         <thead>
                             <tr>
