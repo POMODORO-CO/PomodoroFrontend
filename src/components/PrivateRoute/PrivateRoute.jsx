@@ -4,7 +4,7 @@ import { useUser } from "../../context/userContext";
 const PrivateRoute=({rolelist,children})=>{
     const {userData} =useUser();
 
-    if (rolelist.includes(userData.rol_usuario , userData.autenticado_usuario, userData.estado_usuario)){
+    if (rolelist.includes(userData.rol_usuario)){
         return children;
     }
 
