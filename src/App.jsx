@@ -9,16 +9,16 @@ import jwt_decode from 'jwt-decode'
 import MiPerfil from './Pages/Users/Miperfil/MiPerfil';
 import GestionUsuarios from './Pages/Users/GestionUsuarios/GestionUsuarios';
 import Proyecto from './Pages/Projects/Project';
-import Consulta from "./Pages/Projects/Consulta";
-import Inscripciones from "./Pages/Projects/Inscripciones";
+import Consulta from "./Pages/Projects/ConsultasProyectos/Consulta";
+import Inscripciones from "./Pages/Projects/Inscripciones/Inscripciones";
 import Login from './Pages/Login/Login';
 import Registro from "./Pages/Login/Registro";
-import Avances from './Pages/Projects/Avances';
+import Avances from './Pages/Projects/Avances/Avances';
 import Home from "./Pages/Home/Home";
 import Landingpage from "./Pages/Landingpage/Landingpage";
 import AprobarRegistro from "./Pages/Projects/AprobarRegistro"
 import InfoProyecto from "./Pages/Projects/InfoProyecto";
-import Registroproyectos from "./Pages/Projects/Registroproyectos";
+import Registroproyectos from "./Pages/Projects/RegistroProyectos/Registroproyectos";
 
 import AuthLayout from "./layouts/AuthLayout";
 import PrivateLayout from "./layouts/PrivateLayout";

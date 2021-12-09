@@ -4,7 +4,8 @@ import { useMutation, useQuery } from '@apollo/client';
 import { GET_USUARIO } from "../../../graphql/users/queries.js";
 import useFormData from "../../../components/UseForm/useForm.js";
 import { EDITAR_USUARIO } from "../../../graphql/users/mutations.js";
-import Navbar from '../../../components/Navbar/Navbar'
+import Navbar from '../../../components/Navbar/Navbar';
+import { NavLink } from 'react-router-dom';
 
 function EditDataUser() {
 
@@ -66,55 +67,42 @@ function EditDataUser() {
                                     type="text"
                                     name="nombreUsuario" />
                         </div>
-                        <div>
-                            <label>Apellido
-                                <input
-                                    defaultValue={queryData.Usuario.apellido_usuario}
-                                    type="text"
-                                    name="apellidoUsuario" />
-                            </label>
-                        </div>
-                        <div>
-                            <label>documento
-                                <input
+                        <div className='w-full md:w-1/2 px-3'>
+                            <label className="text-black text-sm font-bold mb-2"> Documento </label>
+                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                     defaultValue={queryData.Usuario.documento_usuario}
                                     type="text"
                                     name="documentoUsuario" />
-                            </label>
                         </div>
-                        <div>
-                            <label>Tipo Documento
-                                <input
+                        <div className='w-full md:w-1/2 px-3'>
+                            <label className="text-black text-sm font-bold mb-2"> Tipo Documento </label>
+                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                     defaultValue={queryData.Usuario.tipo_documento_usuario}
                                     type="text"
                                     name="tipoDocumentoUsuario" />
-                            </label>
                         </div>
-                        <div>
-                            <label htmlFor='password_usuario'>Pass
-                                <input
+                        <div className='w-full md:w-1/2 px-3'>
+                            <label className="text-black text-sm font-bold mb-2"> Password </label>
+                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                     defaultValue={queryData.Usuario.password_usuario}
                                     type="password"
                                     name="passwordUsuario" />
-                            </label>
                         </div>
-                        <div>
-                            <label>Rol
-                                <input
+                        <div className='w-full md:w-1/2 px-3'>
+                            <label className="text-black text-sm font-bold mb-2"> Rol usuario </label>
+                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                     defaultValue={queryData.Usuario.rol_usuario}
                                     type="text"
                                     name="rolUsuario" />
-                            </label>
                         </div>
-                        <div>
-                            <label>correo
-                                <input
+                        <div className='w-full md:w-1/2 px-3'>
+                            <label className="text-black text-sm font-bold mb-2"> Email </label>
+                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                     defaultValue={queryData.Usuario.email_usuario}
                                     type="text"
                                     name="emailUsuario" />
-                            </label>
                         </div>
-                        <button>Editar</button>
+                            <button className="py-2 px-6 text-white font-bold rounded-full bg-blue-900 shadow-lg block md:inline-block">Editar</button>
                         <Link to={`/private/GestionUsuarios`}>
                             <i>Ir atras</i></Link>
                     </form>

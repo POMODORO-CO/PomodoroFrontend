@@ -32,17 +32,4 @@ const GET_USUARIO = gql `
     }
 `;
 
-const GET_PROYECTOS = gql `
-query getProyectos {
-    Proyectos {
-      _id
-      nombre_proyecto
-      lider_proyecto {
-        nombre_usuario
-        apellido_usuario
-      }
-    }
-  }
-`;
-
-export { GET_USUARIOS, GET_USUARIO, GET_PROYECTOS };
+export { GET_USUARIOS, GET_USUARIO};

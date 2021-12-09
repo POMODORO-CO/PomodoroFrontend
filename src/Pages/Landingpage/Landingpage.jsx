@@ -6,9 +6,9 @@ import Login from '../Login/Login';
 
 function Landingpage() {
     return (
-        <div className='bg-gray-500 text-white'>
-            <section className='container mx-auto px-6'>
-                <nav className='py-4 flex justify-between'>
+        <div className='bg-gray-500 text-white min-h-screen'>
+            <section className='container mx-auto px-10'>
+                <nav className='py-12 flex justify-between'>
                     <section className='flex flex-row justify-center'>
                         <img src={imagenes.imag1} alt="Logo empresa" className='py-3 px-3 h-20 w-20' />
                         <h1 className='px-2 text-xl text-center my-auto uppercase font-bold'>Pomodoro Projects</h1>
