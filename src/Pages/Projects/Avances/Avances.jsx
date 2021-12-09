@@ -1,8 +1,8 @@
 import React from 'react'
-import "../../index.css";
-import Navbar from '../../components/Navbar/Navbar'
+import "../../../index.css";
+import Navbar from '../../../components/Navbar/Navbar'
 import * as FaIcons from "react-icons/fa";
-import imagenes from '../../assets/img/imagenes';
+import imagenes from '../../../assets/img/imagenes';
 
 // import * as CgIcons from "react-icons/cg";
 // import * as RiIcons from "react-icons/ri";

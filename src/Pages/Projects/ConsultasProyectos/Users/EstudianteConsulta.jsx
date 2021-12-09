@@ -18,11 +18,11 @@ function EstudianteConsulta() {
                         <div className="box-wrapper">
 
                             <div className=" bg-white rounded flex items-center w-full p-3 shadow-sm border border-gray-200">
-                                <button className="outline-none focus:outline-none"><svg className=" w-5 text-gray-600 h-5 cursor-pointer" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                                <button className="outline-none focus:outline-none"><svg className=" w-5 text-gray-600 h-5 cursor-pointer" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
                                 <input type="search" name="" id="" placeholder="Buscar.." x-model="q" className="w-full pl-4 text-sm outline-none focus:outline-none bg-transparent" />
                                 <div className="select">
                                     <select name="" id="" x-model="image_type" className="text-sm outline-none focus:outline-none bg-transparent">
-                                        <option value="all" selected>Todo</option>
+                                        <option value="all" defaultValue>Todo</option>
                                         <option value="photo">ID</option>
                                         <option value="illustration">Nombre del proyecto</option>
                                         <option value="vector">Líder</option>
@@ -103,7 +103,7 @@ tracking-wider
                                     <tbody className="bg-white divide-y divide-gray-200">
                                         {dataProjects && dataProjects.Proyectos.map((u) => {
                                             return (
-                                                <tr>
+                                                <tr key={u._id}>
                                                     <td className="hidden">
                                                         <span
                                                             className="
