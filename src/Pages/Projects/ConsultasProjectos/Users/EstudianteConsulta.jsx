@@ -1,9 +1,9 @@
 import React from 'react'
-import "../../../index.css";
+import "../../../../index.css";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { useQuery } from '@apollo/client';
-import { GET_PROYECTOS } from '../../../graphql/projects/queriesProjects';
+import { GET_PROYECTOS } from '../../../../graphql/projects/queriesProjects';
 
 function EstudianteConsulta() {
 

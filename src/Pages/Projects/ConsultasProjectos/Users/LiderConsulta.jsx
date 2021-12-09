@@ -1,10 +1,10 @@
 import React from 'react'
-import "../../../index.css";
+import "../../../../index.css";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { useQuery } from '@apollo/client';
-import { GET_PROYECTOS_LIDER } from '../../../graphql/projects/queriesProjects';
-import { useUser } from '../../../context/userContext';
+import { GET_PROYECTOS_LIDER } from '../../../../graphql/projects/queriesProjects';
+import { useUser } from '../../../../context/userContext';
 
 function LiderConsulta() {
 
