@@ -102,10 +102,7 @@ function EditDataUser() {
                                     type="text"
                                     name="emailUsuario" />
                         </div>
-                        <NavLink to='/private/GestionUsuarios'>
-                            <button className="py-2 px-6 text-blue-900 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block">Editar</button>
-                        </NavLink>
-                        <button>Editar</button>
+                            <button className="py-2 px-6 text-white font-bold rounded-full bg-blue-900 shadow-lg block md:inline-block">Editar</button>
                         <Link to={`/private/GestionUsuarios`}>
                             <i>Ir atras</i></Link>
                     </form>
