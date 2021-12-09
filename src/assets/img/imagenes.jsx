@@ -6,6 +6,7 @@ import unlock from './unlock.svg';
 import equip from './Projectimg.png';
 import city from './city.png';
 import users1 from './users1.png';
+import test from './test.png';
 
 export default{
     'imag1':logopom,
@@ -16,6 +17,7 @@ export default{
     'imag6':equip,
     'imag7':city,
     'imag8':users1,
+    'imag9':test,
 }
 
 

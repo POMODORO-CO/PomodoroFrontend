@@ -3,8 +3,6 @@ import Navbar from '../../components/Navbar/Navbar'
 import imagenes from '../../assets/img/imagenes';
 
 
-
-
 function Home() {
     return (
         <div>
@@ -18,10 +16,10 @@ function Home() {
                     </section>
                     <section className='flex flex-row justify-center space-x-8'>
                         <section className='flex flex-row justify-center my-auto space-x-4'>
-                            <a href="/MiPerfil" className='px-2 font-bold'>
+                            <a href="/private/MiPerfil" className='px-2 font-bold'>
                                 Mi perfil
                             </a>
-                            <a href="/gestionusuarios" className='px-2 font-bold'>
+                            <a href="/private/gestionusuarios" className='px-2 font-bold'>
                                 Gestión de Usuarios
                             </a>
                         </section>
@@ -38,10 +36,10 @@ function Home() {
                                     </div>
                                     <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex="-1">
                                         <div className="py-1" role="none">
-                                            <a href="/Proyecto/Consulta" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">Consulta</a>
-                                            <a href="/Proyecto/Registroproyectos" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-1">Registro</a>
-                                            <a href="/Proyecto/Inscripciones" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-2">Inscripciones</a>
-                                            <a href="/Proyecto/Avances" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-2">Avances</a>
+                                            <a href="/private/Proyecto/Consulta" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">Consulta</a>
+                                            <a href="/private/Proyecto/Registroproyectos" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-1">Registro</a>
+                                            <a href="/private/Proyecto/Inscripciones" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-2">Inscripciones</a>
+                                            <a href="/private/Proyecto/Avances" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-2">Avances</a>
                                         </div>
                                     </div>
                                 </div>
