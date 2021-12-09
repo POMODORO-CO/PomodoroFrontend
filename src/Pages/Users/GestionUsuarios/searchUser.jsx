@@ -28,33 +28,36 @@ function SearchUser() {
     return (
         <>
             <div>
+                <div>
                 todos los usurios
+                </div>
                 <PrivateRoute rolelist={["ESTUDIANTE","ADMINISTRADOR"]}>
                     <table>
-                        <thead>
+                        <thead className="bg-gray-50">
                             <tr>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Correo</th>
-                                <th>documento</th>
-                                <th>Estado</th>
-                                <th>Rol</th>
+                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
+                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Apellido</th>
+                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Correo</th>
+                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">documento</th>
+                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
+                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Rol</th>
+                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Editar</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="bg-white divide-y divide-gray-200">
                             {queryData &&
                                 queryData.Usuarios.map((u) => {
                                     return (
                                         <tr key={u._id}>
-                                            <td>{u.nombre_usuario}</td>
-                                            <td>{u.apellido_usuario}</td>
-                                            <td>{u.documento_usuario}</td>
-                                            <td>{u.email_usuario}</td>
-                                            <td>{u.estado_usuario}</td>
-                                            <td>{u.rol_usuario}</td>
-                                            <td>
+                                            <td className="px-6 py-4 whitespace-nowrap">{u.nombre_usuario}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">{u.apellido_usuario}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">{u.documento_usuario}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">{u.email_usuario}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">{u.estado_usuario}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">{u.rol_usuario}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">
                                                 <Link to={`/private/GestionUsuarios/editar/${u._id}`}>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                                     </svg>
                                                 </Link>
