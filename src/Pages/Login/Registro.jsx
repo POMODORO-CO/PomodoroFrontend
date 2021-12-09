@@ -121,7 +121,7 @@ function Registro() {
               <input name='passwordUsuario' className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-2 px-3 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-passwor" type="password" placeholder="***********" />
             </div>
             <div className="w-full px-3 mb-6 md:mb-0">
-              <button className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline" type='submit'>
+              <button className="appearance-none block w-full bg-yellow-400 hover:bg-gray-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline" type='submit'>
                 Registrar usuario
               </button>
             </div>
