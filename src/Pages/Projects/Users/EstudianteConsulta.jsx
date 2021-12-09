@@ -1,19 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import "../../../index.css";
-import Navbar from '../../../components/Navbar/Navbar'
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { useQuery } from '@apollo/client';
-import { GET_PROYECTOS, GET_PROYECTOS_LIDER } from '../../../graphql/users/queries';
-import PrivateRoute from '../../../components/PrivateRoute/PrivateRoute';
-import { useUser } from '../../../context/userContext';
+import { GET_PROYECTOS } from '../../../graphql/projects/queriesProjects';
 
 function EstudianteConsulta() {
 
-    const { data, error, loading } = useQuery(GET_PROYECTOS);
-    const { userData } = useUser();
-    const rolUser = userData.rol_usuario;
-    const usuarioID = userData._id;
+    const { data:dataProjects, error:errorProjects, loading:loadingProjects } = useQuery(GET_PROYECTOS);
 
     return (
         <>
@@ -55,9 +49,7 @@ sm:rounded-lg
                                         <tr>
                                             <th
                                                 scope="col"
-                                                className="
-hidden
-"
+                                                className="hidden"
                                             >
                                                 ID
                                             </th>
@@ -109,7 +101,7 @@ tracking-wider
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
-                                        {data && data.Proyectos.map((u) => {
+                                        {dataProjects && dataProjects.Proyectos.map((u) => {
                                             return (
                                                 <tr>
                                                     <td className="hidden">
