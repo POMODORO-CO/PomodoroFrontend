@@ -16,6 +16,8 @@ import Registro from "./Pages/Login/Registro";
 import Avances from './Pages/Projects/Avances';
 import Home from "./Pages/Home/Home";
 import Landingpage from "./Pages/Landingpage/Landingpage";
+import AprobarRegistro from "./Pages/Projects/AprobarRegistro"
+import InfoProyecto from "./Pages/Projects/InfoProyecto";
 import Registroproyectos from "./Pages/Projects/Registroproyectos";
 
 import AuthLayout from "./layouts/AuthLayout";
@@ -71,7 +73,7 @@ function App() {
       });
     }
   }, [authToken]);
-  
+
   return (
     <>
       <ApolloProvider client={client}>
@@ -86,7 +88,7 @@ function App() {
                   <Route path="/Registro" element={<Registro />} />
                 </Route>
 
-                <Route path="/private" element={<PrivateLayout />}>
+                <Route path="/private" element={<PrivateLayout/>}>
                   <Route path="MiPerfil" element={<MiPerfil />} />
                   <Route path="GestionUsuarios" element={<GestionUsuarios />} />
                   <Route path="GestionUsuarios/editar/:_id" element={<EditDataUser />} />
@@ -94,10 +96,13 @@ function App() {
                   <Route path="Proyecto/Consulta" element={<Consulta />} />
                   <Route path="Proyecto/Inscripciones" element={<Inscripciones />} />
                   <Route path="Proyecto/Registroproyectos" element={<Registroproyectos />} />
+                  <Route path="Proyecto/AprobarRegistro" element={<AprobarRegistro/>}/>
+                  <Route path="Proyecto/infoproyecto" element={<InfoProyecto/>}/>
                   <Route path="Proyecto/Avances" element={<Avances />} />
                   <Route path="Home" element={<Home />} />
                   <Route path="CerrarSesion" element={<Proyecto />} />
                 </Route>
+
               </Routes>
             </Router>
           </UserContext.Provider>

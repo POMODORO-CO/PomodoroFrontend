@@ -50,7 +50,7 @@ function MiPerfil() {
                                             Rol
                                         </label>
                                         <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Administrador" disabled="disabled"/>
-                                        <button> <a href='/pruebaBack/editar/:_id' className="py-5 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Editar información </a></button>
+                                        <button> <a href='/GestionUsuarios/editar/:_id' className="py-5 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Editar información </a></button>
 
                                     </div>
                                 </form>
