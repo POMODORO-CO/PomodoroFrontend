@@ -73,7 +73,7 @@ function App() {
       });
     }
   }, [authToken]);
-  
+
   return (
     <>
       <ApolloProvider client={client}>
@@ -88,7 +88,7 @@ function App() {
                   <Route path="/Registro" element={<Registro />} />
                 </Route>
 
-                <Route path="/private" element={<PrivateLayout />}>
+                <Route path="/private" element={<PrivateLayout/>}>
                   <Route path="MiPerfil" element={<MiPerfil />} />
                   <Route path="GestionUsuarios" element={<GestionUsuarios />} />
                   <Route path="GestionUsuarios/editar/:_id" element={<EditDataUser />} />
@@ -102,6 +102,7 @@ function App() {
                   <Route path="Home" element={<Home />} />
                   <Route path="CerrarSesion" element={<Proyecto />} />
                 </Route>
+
               </Routes>
             </Router>
           </UserContext.Provider>
