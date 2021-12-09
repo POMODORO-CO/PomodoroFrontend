@@ -1,23 +1,17 @@
-import React, { useEffect } from 'react'
-import "../../../index.css";
-import Navbar from '../../../components/Navbar/Navbar'
+import React from 'react'
+import "../../../../index.css";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { useQuery } from '@apollo/client';
-import { GET_PROYECTOS_LIDER } from '../../../graphql/users/queries';
-import PrivateRoute from '../../../components/PrivateRoute/PrivateRoute';
-import { useUser } from '../../../context/userContext';
+import { GET_PROYECTOS } from '../../../../graphql/projects/queriesProjects';
 
-function LiderConsulta() {
+function EstudianteConsulta() {
 
-    const { userData } = useUser();
-    const rolUser = userData.rol_usuario;
-    const usuarioID = userData._id;
-    const { dataP_Lider, errorP_Lider, loadingP_Lider } = useQuery(GET_PROYECTOS_LIDER, {variables: {usuarioID}},);
+    const { data:dataProjects, error:errorProjects, loading:loadingProjects } = useQuery(GET_PROYECTOS);
 
     return (
         <>
-                <h1>{usuarioID}</h1>
+            
                 <div className="flex items-center flex-col text-middle">
 
                     <div className="box pt-6">
@@ -55,9 +49,7 @@ sm:rounded-lg
                                         <tr>
                                             <th
                                                 scope="col"
-                                                className="
-hidden
-"
+                                                className="hidden"
                                             >
                                                 ID
                                             </th>
@@ -73,7 +65,7 @@ uppercase
 tracking-wider
 "
                                             >
-                                                Nombre del proyecto
+                                                Nombre del proyectos
                                             </th>
                                             <th
                                                 scope="col"
@@ -103,10 +95,13 @@ tracking-wider
                                             >
                                                 Acciones
                                             </th>
+                                            {/* <th scope="col" className="relative px-6 py-3">
+<span className="sr-only">Edit</span>
+</th> */}
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
-                                        {dataP_Lider && dataP_Lider.ProyectosLider.map((u) => {
+                                        {dataProjects && dataProjects.Proyectos.map((u) => {
                                             return (
                                                 <tr>
                                                     <td className="hidden">
@@ -192,4 +187,4 @@ font-medium
     )
 }
 
-export default LiderConsulta;
+export default EstudianteConsulta;

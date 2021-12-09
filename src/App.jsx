@@ -9,7 +9,7 @@ import jwt_decode from 'jwt-decode'
 import MiPerfil from './Pages/Users/Miperfil/MiPerfil';
 import GestionUsuarios from './Pages/Users/GestionUsuarios/GestionUsuarios';
 import Proyecto from './Pages/Projects/Project';
-import Consulta from "./Pages/Projects/Consulta";
+import Consulta from "./Pages/Projects/ConsultasProjectos/Consulta";
 import Inscripciones from "./Pages/Projects/Inscripciones";
 import Login from './Pages/Login/Login';
 import Registro from "./Pages/Login/Registro";
