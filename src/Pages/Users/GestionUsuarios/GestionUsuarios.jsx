@@ -7,6 +7,7 @@ import SearchUser from './searchUser';
 function GestionUsuarios() {
     return (
 
+        
         <div>
             <Navbar />
                      <section className='flex flex-row justify-center'>
