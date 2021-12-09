@@ -2,7 +2,8 @@ import React from 'react'
 import "../../index.css";
 import Navbar from '../../components/Navbar/Navbar'
 import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
+import imagenes from '../../assets/img/imagenes';
+
 // import * as CgIcons from "react-icons/cg";
 // import * as RiIcons from "react-icons/ri";
 
@@ -10,11 +11,17 @@ function Avances() {
 
     return (
         
-        <>
+        <div>
             <Navbar />
-            <div className='consulta'>
-                <h1>AVANCES</h1>
-            </div>
+            <section className='flex flex-row justify-center'>
+                        <img src={imagenes.imag1} alt="Logo empresa" className='py-3 px-3 h-20 w-20' />
+                        <h1 className='px-2 text-xl text-center my-auto uppercase font-bold'>Pomodoro Projects</h1>
+                    </section>
+                    <section className='text-center '>
+                            <h1 className='text-3xl font-bold pt-1'>
+                                MODULO DE REGISTRO DE AVANCES
+                            </h1>
+                    </section>
             <div className="flex items-center flex-col text-middle">
 
                 <div className="box pt-6">
@@ -93,6 +100,62 @@ function Avances() {
                                             Líder
                                         </th>
                                         <th
+                                                scope="col"
+                                                className="
+                                        px-6
+                                        py-3
+                                        text-left text-xs
+                                        font-medium
+                                        text-gray-500
+                                        uppercase
+                                        tracking-wider
+                                        "
+                                        >
+                                            Usuario 
+                                        </th>
+                                        <th
+                                                scope="col"
+                                                className="
+                                        px-6
+                                        py-3
+                                        text-left text-xs
+                                        font-medium
+                                        text-gray-500
+                                        uppercase
+                                        tracking-wider
+                                        "
+                                        >
+                                            Descripción 
+                                        </th>
+                                        <th
+                                                scope="col"
+                                                className="
+                  px-6
+                  py-3
+                  text-left text-xs
+                  font-medium
+                  text-gray-500
+                  uppercase
+                  tracking-wider
+                "
+                                        >
+                                            Observaciones 
+                                        </th>
+                                        <th
+                                                scope="col"
+                                                className="
+                  px-6
+                  py-3
+                  text-left text-xs
+                  font-medium
+                  text-gray-500
+                  uppercase
+                  tracking-wider
+                "
+                                        >
+                                            Fecha Avance 
+                                        </th>
+                                        <th
                                             scope="col"
                                             className="
                                                         px-6
@@ -131,26 +194,31 @@ function Avances() {
                                         </td>
 
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-gray-900">Software engineer</div>
+                                            <div className="text-sm text-gray-900">PomodoroAPP</div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <div className="flex items-center">
-                                                <div className="flex-shrink-0 h-10 w-10">
-                                                    <img
-                                                        className="h-10 w-10 rounded-full"
-                                                        src="https://images.unsplash.com/photo-1619914775389-748e5e136c26?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=100&ixid=MnwxfDB8MXxyYW5kb218fHx8fHx8fHwxNjIwMTk4MjAw&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=100"
-                                                        alt=""
-                                                    />
-                                                </div>
                                                 <div className="ml-4">
-                                                    <div className="text-right text-sm font-medium text-gray-900">
-                                                        Flora Wu
+                                                    <div className="text-center text-sm font-medium text-gray-900">
+                                                        Florinda Mesa
                                                     </div>
                                                     <div className="text-sm text-gray-500">
-                                                        flora.wu@example.com
+                                                        flora.mesa@pomodoro.com
                                                     </div>
                                                 </div>
                                             </div>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            <div className="text-sm text-center text-gray-900">UsuarioActual</div>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            <input type='text' className="text-sm text-gray-900" placeholder='Indique descripción'/>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            <input type='text' className="text-sm text-gray-900" placeholder='Indique observación'/>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            <input type='date' className="text-sm text-gray-900" placeholder='Indique descripción'/>
                                         </td>
                                         <td
                                             className="
@@ -161,75 +229,18 @@ function Avances() {
                                                         font-medium
                                                         "
                                         >
-                                            <a href="/cosas" className="inline-block"
-                                            ><AiIcons.AiOutlineSearch size={30} /></a>
                                             <a href="/cosas2" className="inline-block"
                                             ><FaIcons.FaSave size={30} /></a>
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <span
-                                                className="
-                                                            px-2
-                                                            inline-flex
-                                                            text-xs
-                                                            leading-5
-                                                            font-semibold
-                                                            rounded-full
-                                                            bg-green-100
-                                                            text-green-800
-                                                        "
-                                            >
-                                                002
-                                            </span>
-                                        </td>
-
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-gray-900">Software engineer</div>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="flex items-center">
-                                                <div className="flex-shrink-0 h-10 w-10">
-                                                    <img
-                                                        className="h-10 w-10 rounded-full"
-                                                        src="https://images.unsplash.com/photo-1619914775389-748e5e136c26?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=100&ixid=MnwxfDB8MXxyYW5kb218fHx8fHx8fHwxNjIwMTk4MjAw&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=100"
-                                                        alt=""
-                                                    />
-                                                </div>
-                                                <div className="ml-4">
-                                                    <div className="text-right text-sm font-medium text-gray-900">
-                                                        Flora Wu REPETIDA
-                                                    </div>
-                                                    <div className="text-sm text-gray-500">
-                                                        flora.wu@example.com repetido
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            className="
-                                                        px-6
-                                                        py-4
-                                                        whitespace-nowrap
-                                                        text-center text-sm
-                                                        font-medium
-                                                        "
-                                        >
-                                            <a href="/cosas3" className="inline-block"
-                                            ><AiIcons.AiOutlineSearch size={30} /></a>
-                                            <a href="/cosas4" className="inline-block"
-                                            ><FaIcons.FaSave size={30} /></a>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
 
 
     )
