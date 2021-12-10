@@ -14,7 +14,7 @@ function LiderConsulta() {
     
     return (
         <>
-            <h1>{liderProyecto}</h1>
+            
             <div className="flex items-center flex-col text-middle">
 
                 <div className="box pt-6">
