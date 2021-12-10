@@ -29,7 +29,7 @@ function GestionUsuarios() {
                     </div>
                 </div>
 
-                <div className="-my-1 overflow-x-auto sm:-mx-6 lg:-mx-2 py-4">
+                {/* <div className="-my-1 overflow-x-auto sm:-mx-6 lg:-mx-2 py-4">
                     <div className="py-2 align-middle inline-block min-w-auto sm:px-6 lg:px-12">
                         <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                             <table className="min-w-auto divide-y divide-gray-200">
@@ -187,7 +187,7 @@ function GestionUsuarios() {
                             </table>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
             <SearchUser />
         </div>
