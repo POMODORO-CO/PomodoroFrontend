@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import jwt_decode from 'jwt-decode'
+import { ToastContainer } from "react-toastr";
+
 
 import MiPerfil from './Pages/Users/Miperfil/MiPerfil';
 import GestionUsuarios from './Pages/Users/GestionUsuarios/GestionUsuarios';
@@ -97,7 +99,7 @@ function App() {
                   <Route path="Proyecto/Inscripciones" element={<Inscripciones />} />
                   <Route path="Proyecto/Registroproyectos" element={<Registroproyectos />} />
                   <Route path="Proyecto/AprobarRegistro" element={<AprobarRegistro/>}/>
-                  <Route path="Proyecto/infoproyecto" element={<InfoProyecto/>}/>
+                  <Route path="Proyecto/infoproyecto/:_id" element={<InfoProyecto/>}/>
                   <Route path="Proyecto/Avances" element={<Avances />} />
                   <Route path="Home" element={<Home />} />
                   <Route path="CerrarSesion" element={<Proyecto />} />
