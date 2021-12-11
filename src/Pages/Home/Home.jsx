@@ -57,8 +57,8 @@ function Home() {
                     </section>
                     <section className='w-2 h-25 bg-yellow-400 opacity-50'></section>
                     <section className='flex flex-col px-20 py-10'>
-                        <h1 className='text-5xl font-bold pt-5'>
-                            Aquí encontraras todo lo que necesitas. 
+                        <h1 className='text-3xl font-bold pt-5'>
+                            Aquí encontrarás todo lo que necesitas. 
                             ¿Está todo listo?
                         </h1>
                         <p className='text-2xl pt-8  opacity-100'>
