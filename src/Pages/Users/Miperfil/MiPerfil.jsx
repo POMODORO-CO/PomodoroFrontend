@@ -55,29 +55,29 @@ function MiPerfil() {
                                                                 <label className="block text-blue-900 text-sm font-bold py-1" htmlFor="username">
                                                                     Nombre
                                                                 </label>
-                                                                <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder={queryData.Usuario.nombre_usuario} disabled="disabled" />
+                                                                <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" defaultValue={queryData.Usuario.nombre_usuario} disabled="disabled" />
 
                                                                 <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="Apellido">
                                                                     Apellido
                                                                 </label>
-                                                                <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder={queryData.Usuario.apellido_usuario} disabled="disabled"/>
+                                                                <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="Apellido" type="text" defaultValue={queryData.Usuario.apellido_usuario} disabled="disabled"/>
                                                                 <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="Documento">
                                                                     Documento
                                                                 </label>
-                                                                <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder={queryData.Usuario.documento_usuario} disabled="disabled"/>
+                                                                <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="Documento" type="number" defaultValue={queryData.Usuario.documento_usuario} disabled="disabled"/>
                                                                 <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="Correo">
                                                                     Correo electrónico
                                                                 </label>
-                                                                <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder={queryData.Usuario.email_usuario} disabled="disabled"/>
+                                                                <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="correo" type="text" defaultValue={queryData.Usuario.email_usuario} disabled="disabled"/>
                                                                 <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="Estado">
                                                                     Estado
                                                                 </label>
-                                                                <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder={queryData.Usuario.estado_usuario} disabled="disabled"/>
+                                                                <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="Estado" type="text" defaultValue={queryData.Usuario.estado_usuario} disabled="disabled"/>
                                                                 <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="Rol">
                                                                     Rol
                                                                 </label>
-                                                                <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder={queryData.Usuario.rol_usuario} disabled="disabled"/>
-                                                                <button> <a href='/GestionUsuarios/editar/:_id' className="py-5 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Editar información </a></button>
+                                                                <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="rol" type="text" defaultValue={queryData.Usuario.rol_usuario} disabled="disabled"/>
+                                                                <button> <a href='/private/EditPerfil' className="py-5 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Editar información </a></button>
 
                                                             </div>
 
