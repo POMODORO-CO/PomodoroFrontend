@@ -58,4 +58,24 @@ query Proyecto($_id: String!) {
   }
 }
 `;
-export { GET_PROYECTOS_LIDER, GET_PROYECTOS, GET_PROYECTO };
+
+const CREAR_PROYECTO = gql`
+  mutation CrearProyecto(
+    $nombreProyecto: String!, 
+    $liderProyecto: String!, 
+    $objetivosProyecto: [crearObjetivo]!, 
+    $presupuestoProyecto: Float!, 
+    $fechaInicioProyecto: Date!, 
+    $fechaFinProyecto: Date
+    ) {
+    crearProyecto(
+      nombre_proyecto: $nombreProyecto, 
+      lider_proyecto: $liderProyecto, 
+      objetivos_proyecto: $objetivosProyecto, 
+      presupuesto_proyecto: $presupuestoProyecto, 
+      fecha_inicio_proyecto: $fechaInicioProyecto, 
+      fecha_fin_proyecto: $fechaFinProyecto) 
+  }
+`;
+
+export { GET_PROYECTOS_LIDER, GET_PROYECTOS, GET_PROYECTO, CREAR_PROYECTO };
