@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../../components/Navbar/Navbar'
 import imagenes from '../../assets/img/imagenes';
-
+import Logout from '../../components/Logout/Logout'
 
 function Home() {
     return (
@@ -44,8 +44,8 @@ function Home() {
                                     </div>
                                 </div>
                             </section>
-                            <a href="/" className='px-2 font-bold'>
-                                Cerrar Sesión
+                            <a className='px-2 font-bold'>
+                                <Logout/>
                             </a>
                         </section>
                     </section>

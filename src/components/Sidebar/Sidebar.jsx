@@ -4,6 +4,7 @@ import * as AiIcons from "react-icons/ai";
 import * as CgIcons from "react-icons/cg";
 import * as RiIcons from "react-icons/ri";
 import * as VscIcons from "react-icons/vsc";
+import Logout from '../../components/Logout/Logout'
 
 export const Sidebar = [
 
@@ -33,10 +34,11 @@ export const Sidebar = [
         iconOpened: <RiIcons.RiArrowUpSFill />,
         cName: 'nav-text'
     },
-    {
+    {   
         title:'Cerrar Sesión',
         path:'/',
+        onclick: <Logout/>,
         icon:<VscIcons.VscCloseAll />,
         cName: 'nav-text'
-    },
+    }
 ];
