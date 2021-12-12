@@ -3,7 +3,6 @@ import Navbar from '../../components/Navbar/Navbar'
 import imagenes from '../../assets/img/imagenes';
 import Logout from '../../components/Logout/Logout'
 
-
 function Home() {
     return (
         <div>

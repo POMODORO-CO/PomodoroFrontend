@@ -34,11 +34,11 @@ export const Sidebar = [
         iconOpened: <RiIcons.RiArrowUpSFill />,
         cName: 'nav-text'
     },
-    {
+    {   
         title:'Cerrar Sesión',
         path:'/',
         onclick: <Logout/>,
         icon:<VscIcons.VscCloseAll />,
         cName: 'nav-text'
-    },
+    }
 ];
