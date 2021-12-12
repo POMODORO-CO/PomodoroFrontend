@@ -8,7 +8,7 @@ import PrivateRoute from '../../../components/PrivateRoute/PrivateRoute';
 import { useUser } from '../../../context/userContext';
 import LiderConsulta from './Users/LiderConsulta';
 import EstudianteConsulta from './Users/EstudianteConsulta';
-import { ToastContainer } from "react-toastr";
+//import { ToastContainer } from "react-toastr";
 import AdministradorConsulta from './Users/AdministradorConsulta';
 
 function Consulta() {

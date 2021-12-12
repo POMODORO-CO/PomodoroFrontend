@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import jwt_decode from 'jwt-decode'
-import { ToastContainer } from "react-toastr";
+//import { ToastContainer } from "react-toastr";
 
 
 import MiPerfil from './Pages/Users/Miperfil/MiPerfil';
