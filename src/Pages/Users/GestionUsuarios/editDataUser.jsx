@@ -43,7 +43,7 @@ function EditDataUser() {
   
       //loading initial information in the queary
       if (queryLoading) return (<div>Cargando........</div>)
-
+      
 
     return (
         
