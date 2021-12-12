@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import jwt_decode from 'jwt-decode'
-import { ToastContainer } from "react-toastr";
+//import { ToastContainer } from "react-toastr";
 
 
 import MiPerfil from './Pages/Users/Miperfil/MiPerfil';
@@ -28,6 +28,7 @@ import PrivateLayout from "./layouts/PrivateLayout";
 import EditDataUser from "./Pages/Users/GestionUsuarios/editDataUser";
 import { AuthContext } from "./context/authContext";
 import { UserContext } from "./context/userContext";
+import Logout from "./components/Logout/Logout";
 
 const httpLink = createHttpLink({
   uri: 'https://servidor-gql-pomodoro.herokuapp.com/graphql'
@@ -102,7 +103,7 @@ function App() {
                   <Route path="Proyecto/infoproyecto/:_id" element={<InfoProyecto/>}/>
                   <Route path="Proyecto/Avances" element={<Avances />} />
                   <Route path="Home" element={<Home />} />
-                  <Route path="CerrarSesion" element={<Proyecto />} />
+                  <Route path="CerrarSesion" element={<Logout />} />
                 </Route>
 
               </Routes>

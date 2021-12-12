@@ -1,8 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../../../components/Navbar/Navbar'
 import imagenes from '../../../assets/img/imagenes';
+import { useQuery } from '@apollo/client';
+import { GET_USUARIO } from '../../../graphql/users/queries.js';
+import { useUser } from '../../../context/userContext';
 
 function MiPerfil() {
+    const { userData } = useUser();
+    const _id = userData._id;
+    const {
+        data: queryData,
+        error: queryError,
+        loading: queryLoading } = useQuery(GET_USUARIO, { variables: { _id } },)
+        
+        console.log(queryData)
+    useEffect(() => {
+        console.log("datos del servidor: ", queryData);
+    }, [queryData]);
+
+    //encaso de que halla un error ejecute esto
+    useEffect(() => {
+        if (queryError) {
+            <div> Error consultando Usuario</div>
+        }
+    }, [queryError])
+
+    if (queryLoading) return <div>Cargando......</div>;
+    
     return (
         <div>
         <Navbar />
@@ -17,46 +41,52 @@ function MiPerfil() {
                 
                 <section className='flex flex-row justify-between '>
                     <section className='flex flex-col px-20 py-1'>
-                        <h1 className='text-5xl font-bold pt-1'>
-                            TU PERFIL 
-                        </h1>
-                        <div className=' grid place-content-center bg-gray-100'>
-                            <div className="w-full max-w-2xl m-6">
-                                <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                                    <div className="mb-4">
-                                        <label className="block text-blue-900 text-sm font-bold py-1" htmlFor="username">
-                                            Nombre
-                                        </label>
-                                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Juan Sebastian" disabled="disabled" />
-                                    </div>
-                                    <div className="mb-6">
-                                        <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="password">
-                                            Apellido
-                                        </label>
-                                        <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Gaviria Medina" disabled="disabled"/>
-                                        <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="password">
-                                            Documento
-                                        </label>
-                                        <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="123456789" disabled="disabled"/>
-                                        <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="password">
-                                            Correo electrónico
-                                        </label>
-                                        <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="juan.gaviria@pomodoro.com" disabled="disabled"/>
-                                        <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="password">
-                                            Estado
-                                        </label>
-                                        <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Activo" disabled="disabled"/>
-                                        <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="password">
-                                            Rol
-                                        </label>
-                                        <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Administrador" disabled="disabled"/>
-                                        <button> <a href='/GestionUsuarios/editar/:_id' className="py-5 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Editar información </a></button>
 
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                                        <h1 className='text-5xl font-bold pt-1'>
+                                            TU PERFIL 
+                                        </h1>
+
+                                                <div className=' grid place-content-center bg-gray-100'>
+                                                    <div className="w-full max-w-2xl m-6">
+                                                        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                                                            
+
+                                                            <div className="mb-4">
+                                                                <label className="block text-blue-900 text-sm font-bold py-1" htmlFor="username">
+                                                                    Nombre
+                                                                </label>
+                                                                <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder={queryData.Usuario.nombre_usuario} disabled="disabled" />
+
+                                                                <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="Apellido">
+                                                                    Apellido
+                                                                </label>
+                                                                <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder={queryData.Usuario.apellido_usuario} disabled="disabled"/>
+                                                                <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="Documento">
+                                                                    Documento
+                                                                </label>
+                                                                <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder={queryData.Usuario.documento_usuario} disabled="disabled"/>
+                                                                <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="Correo">
+                                                                    Correo electrónico
+                                                                </label>
+                                                                <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder={queryData.Usuario.email_usuario} disabled="disabled"/>
+                                                                <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="Estado">
+                                                                    Estado
+                                                                </label>
+                                                                <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder={queryData.Usuario.estado_usuario} disabled="disabled"/>
+                                                                <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="Rol">
+                                                                    Rol
+                                                                </label>
+                                                                <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder={queryData.Usuario.rol_usuario} disabled="disabled"/>
+                                                                <button> <a href='/GestionUsuarios/editar/:_id' className="py-5 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Editar información </a></button>
+
+                                                            </div>
+
+                                                        </form>
+                                                    </div>
+                                                </div>
+
                     </section>
+
                     <section className=' item-row'>
                         <img src={imagenes.imag8} alt="lock"/>
                     </section>

@@ -7,13 +7,13 @@ const Logout=()=>{
         setToken(null);
     };
     return(
-        <li>
+        <div>
             <NavLink to='/'>
                 <div onClick={()=>deleteToken()}>
-                    <span> cerrar sesión</span>
+                    <a> Cerrar sesión</a>
                 </div>
             </NavLink>
-        </li>
+        </div>
     )
 };
 export default Logout;
