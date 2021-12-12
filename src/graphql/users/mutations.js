@@ -34,5 +34,4 @@ mutation EditarUsuario(
   }
 `;
 
-export { EDITAR_USUARIO,
-         };
+export { EDITAR_USUARIO };

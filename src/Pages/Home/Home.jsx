@@ -44,7 +44,9 @@ function Home() {
                                     </div>
                                 </div>
                             </section>
-                            <Logout/>
+                            <a className='px-2 font-bold'>
+                                <Logout/>
+                            </a>
                         </section>
                     </section>
                 </nav>
