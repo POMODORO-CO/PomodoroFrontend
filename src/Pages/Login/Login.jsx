@@ -65,18 +65,18 @@ const Login = () => {
                     <form onChange={updateFormData} onSubmit={submitForm} ref={form} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                         <div className="mb-4">
                             <img className="w-20 h-20 rounded-full mx-auto m-5" src="https://images.pexels.com/photos/2589649/pexels-photo-2589649.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Profile" />
-                            <label className="block text-blue-900 text-sm font-bold py-1" htmlFor="username">
+                            <label className="block text-gray-500 text-sm font-bold py-1" htmlFor="username">
                                 Correo electrónico
                             </label>
                             <input name='emailUsuario' className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Correo electrónico" />
                         </div>
                         <div className="mb-6">
-                            <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="password">
+                            <label className="block text-gray-500 text-sm font-bold mb-2" htmlFor="password">
                                 Contraseña
                             </label>
                             <input name='passwordUsuario' className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="*******" />
                             <p className="text-yellow-400 text-xs italic p-1">Por favor ingrese su contraseña.</p>
-                            <button className="bg-blue-900 hover:bg-yellow-400 text-white font-bold w-full py-2 px-3 rounded focus:outline-none focus:shadow-outline" type='submit'>
+                            <button className="bg-gray-500 hover:bg-yellow-400 text-white font-bold w-full py-2 px-3 rounded focus:outline-none focus:shadow-outline" type='submit'>
                                 Ingresar
                             </button>
                         </div>
@@ -87,7 +87,7 @@ const Login = () => {
                             </label>
                         </div>
                         <div className="flex items-center justify-between my-3">
-                            <a className="inline-block align-baseline font-bold text-sm text-blue-900 hover:text-blue-800" href="/Registro">
+                            <a className="inline-block align-baseline font-bold text-sm text-gray-500 hover:text-blue-800" href="/Registro">
                                 Registrarse
                             </a>
                         </div>
