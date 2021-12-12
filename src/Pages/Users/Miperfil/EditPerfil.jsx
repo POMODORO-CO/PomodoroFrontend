@@ -129,7 +129,7 @@ function EditPerfil() {
                                                     </div>
                                                 </div>
                                     </section>
-                    <section className=' item-row'>
+                            <section className=' item-row'>
                         <img src={imagenes.imag8} alt="lock"/>
                     </section>
                 </section>
