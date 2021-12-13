@@ -10,6 +10,7 @@ query ProyectosLider($liderProyecto: String!) {
       apellido_usuario
     }
     estado_proyecto
+    fase_proyecto
   }
 }
 `;
@@ -23,6 +24,7 @@ query getProyectos {
         apellido_usuario
       }
       estado_proyecto
+      fase_proyecto
     }
   }
 `;
@@ -59,7 +61,7 @@ query Proyecto($_id: String!) {
 }
 `;
 
-const CREAR_PROYECTO = gql`
+const CREAR_PROYECTO = gql `
   mutation CrearProyecto(
     $nombreProyecto: String!, 
     $liderProyecto: String!, 
