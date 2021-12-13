@@ -17,9 +17,10 @@ import Login from './Pages/Login/Login';
 import Registro from "./Pages/Login/Registro";
 import Avances from './Pages/Projects/Avances/Avances';
 import Home from "./Pages/Home/Home";
-import Landingpage from "./Pages/Landingpage/Landingpage";
+import Landingpage from "./Pages/Landingpage/Landingpage";  
 import AprobarRegistro from "./Pages/Projects/AprobarRegistro"
-import InfoProyecto from "./Pages/Projects/InfoProyecto";
+import InfoProyectoAdmin from "./Pages/Projects/InfoProyectoAdmin";
+import InfoProyectoLider from "./Pages/Projects/InfoProyectoLider";
 import Registroproyectos from "./Pages/Projects/RegistroProyectos/Registroproyectos";
 
 import AuthLayout from "./layouts/AuthLayout";
@@ -100,7 +101,8 @@ function App() {
                   <Route path="Proyecto/Inscripciones" element={<Inscripciones />} />
                   <Route path="Proyecto/Registroproyectos" element={<Registroproyectos />} />
                   <Route path="Proyecto/AprobarRegistro" element={<AprobarRegistro/>}/>
-                  <Route path="Proyecto/infoproyecto/:_id" element={<InfoProyecto/>}/>
+                  <Route path="Proyecto/InformacionAdmin/:_id" element={<InfoProyectoAdmin/>}/>
+                  <Route path="Proyecto/InformacionLider/:_id" element={<InfoProyectoLider/>}/>
                   <Route path="Proyecto/Avances" element={<Avances />} />
                   <Route path="Home" element={<Home />} />
                   <Route path="CerrarSesion" element={<Logout />} />
