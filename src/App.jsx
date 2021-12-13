@@ -22,6 +22,7 @@ import AprobarRegistro from "./Pages/Projects/AprobarRegistro"
 import InfoProyectoAdmin from "./Pages/Projects/InfoProyectoAdmin";
 import InfoProyectoLider from "./Pages/Projects/InfoProyectoLider";
 import Registroproyectos from "./Pages/Projects/RegistroProyectos/Registroproyectos";
+import EditPerfil from './Pages/Users/Miperfil/EditPerfil'
 
 import AuthLayout from "./layouts/AuthLayout";
 import PrivateLayout from "./layouts/PrivateLayout";
@@ -94,6 +95,7 @@ function App() {
 
                 <Route path="/private" element={<PrivateLayout/>}>
                   <Route path="MiPerfil" element={<MiPerfil />} />
+                  <Route path="EditPerfil" element={<EditPerfil />} />
                   <Route path="GestionUsuarios" element={<GestionUsuarios />} />
                   <Route path="GestionUsuarios/editar/:_id" element={<EditDataUser />} />
                   <Route path="Proyecto" element={<Proyecto />} />

@@ -23,6 +23,7 @@ mutation CrearProyecto(
 }
 `;
 
+<<<<<<< HEAD
 const EDITAR_ESTADO_PROYECTO = gql `
 mutation EditarEstadoProyecto($_id: String!, $estadoProyecto: String!) {
   editarEstadoProyecto(_id: $_id, estado_proyecto: $estadoProyecto) {
@@ -55,3 +56,19 @@ mutation EditarProyecto($_id: String!, $nombreProyecto: String, $objetivosProyec
 `;
 
 export { CREAR_PROYECTO, EDITAR_ESTADO_PROYECTO, EDITAR_FASE_PROYECTO, EDITAR_PROYECTO_LIDER };
+=======
+const CREAR_AVANCE = gql`
+mutation CrearAvance(
+  $proyecto: String!,
+  $usuarioAvance: String!, 
+  $fechaAvance: Date!, 
+  $descripcionAvance: String!) {
+    crearAvance(
+      proyecto: $proyecto, 
+      usuario_avance: $usuarioAvance, 
+      fecha_avance: $fechaAvance, 
+      descripcion_avance: $descripcionAvance)
+}`;
+
+export { CREAR_PROYECTO, CREAR_AVANCE };
+>>>>>>> main
