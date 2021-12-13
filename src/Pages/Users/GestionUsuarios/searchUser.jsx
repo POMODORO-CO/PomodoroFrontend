@@ -32,16 +32,18 @@ function SearchUser() {
                 todos los usurios
                 </div>
                 <PrivateRoute rolelist={["ESTUDIANTE","ADMINISTRADOR"]}>
-                    <table>
-                        <thead className="bg-gray-50">
+                    <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
+                    <div className='inline-block min-w-full shadow rounded-lg overflow-hidden'>
+                    <table className='min-w-full leading-normal'>
+                        <thead className="bg-gray-500">
                             <tr>
-                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
-                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Apellido</th>
-                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Correo</th>
-                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">documento</th>
-                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
-                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Rol</th>
-                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Editar</th>
+                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-white uppercase tracking-wider">Nombre</th>
+                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-white uppercase tracking-wider">Apellido</th>
+                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-white uppercase tracking-wider">Correo</th>
+                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-white uppercase tracking-wider">documento</th>
+                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-white uppercase tracking-wider">Estado</th>
+                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-white uppercase tracking-wider">Rol</th>
+                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-white uppercase tracking-wider">Editar</th>
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
@@ -67,6 +69,8 @@ function SearchUser() {
                                 })}
                         </tbody>
                     </table>
+                    </div>
+                    </div>
                 </PrivateRoute>
             </div>
         </>
