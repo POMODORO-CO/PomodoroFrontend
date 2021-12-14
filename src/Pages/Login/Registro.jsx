@@ -42,7 +42,7 @@ function Registro() {
     <div>
       <NavbarLandingPage />
       <section className='min-h-screen grid place-content-center bg-gray-500'>
-        <form className="w-full max-w-lg" onSubmit={submitForm} onChange={updateFormData} ref={form}>
+        <form className="w-full max-w-lg " onSubmit={submitForm} onChange={updateFormData} ref={form}>
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
               <label className="text-white text-sm font-bold mb-2" htmlFor="grid-state">
