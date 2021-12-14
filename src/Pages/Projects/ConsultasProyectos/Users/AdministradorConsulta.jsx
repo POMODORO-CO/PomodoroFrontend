@@ -9,6 +9,7 @@ import { GET_PROYECTOS } from '../../../../graphql/projects/queriesProjects';
 function AdministradorConsulta() {
 
     const { data: dataProjects, error: errorProjects, loading: loadingProjects } = useQuery(GET_PROYECTOS);
+    console.log('la data de los proyectos', dataProjects);
 
     return (
         <>
@@ -101,6 +102,20 @@ tracking-wider
                                             className="
 px-6
 py-3
+text-left text-xs
+font-medium
+text-gray-500
+uppercase
+tracking-wider
+"
+                                        >
+                                            Fase
+                                        </th>
+                                        <th
+                                            scope="col"
+                                            className="
+px-6
+py-3
 text-center text-xs
 font-medium
 text-gray-500
@@ -180,6 +195,22 @@ text-green-800
                                                         {u.estado_proyecto}
                                                     </span>
                                                 </td>
+                                                <td className="px-6 py-4 whitespace-nowrap">
+                                                    <span
+                                                        className="
+px-2
+inline-flex
+text-xs
+leading-5
+font-semibold
+rounded-full
+bg-green-50
+text-green-800
+"
+                                                    >
+                                                        {u.fase_proyecto}
+                                                    </span>
+                                                </td>
                                                 <td
                                                     className="
 px-6
@@ -189,7 +220,8 @@ text-center text-sm
 font-medium
 "
                                                 >
-                                                    <Link to={`/private/Proyecto/infoproyecto/${u._id}`}>
+                                                    
+                                                    <Link to={`/private/Proyecto/InformacionAdmin/${u._id}`}>
                                                         <FaIcons.FaEdit size={25} />
                                                     </Link>
 

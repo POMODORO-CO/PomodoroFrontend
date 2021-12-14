@@ -1,13 +1,75 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "../../../index.css";
 import Navbar from '../../../components/Navbar/Navbar'
 import * as FaIcons from "react-icons/fa";
 import imagenes from '../../../assets/img/imagenes';
+import { useMutation } from '@apollo/client';
+import { useNavigate } from "react-router";
+import useFormData from '../../../components/UseForm/useForm.js';
+import { CREAR_AVANCE } from "../../../graphql/projects/mutationsprojects";
+import { useAuth } from "../../../context/authContext";
+import { GET_USUARIO } from '../../../graphql/users/queries.js';
+import { useQuery } from '@apollo/client';
+import { useUser } from '../../../context/userContext';
+import { GET_PROYECTOS } from '../../../graphql/projects/queriesProjects.js';
 
 // import * as CgIcons from "react-icons/cg";
 // import * as RiIcons from "react-icons/ri";
 
 function Avances() {
+
+        const { userData } = useUser();
+        const _id = userData._id;
+        const {
+            data: queryData,
+            error: queryError,
+            loading: queryLoading } = useQuery( GET_USUARIO, { variables: { _id }})
+            console.log(queryData)
+        const { data: dataProjects, error: errorProjects, loading: loadingProjects } = useQuery(GET_PROYECTOS);
+
+        const [crearAvance,
+            { data: mutationData,
+                loading: MutationLoading,
+                error: mutationError }] = useMutation(CREAR_AVANCE);
+    
+        const {setToken}=useAuth();
+        const navigate= useNavigate();
+        const {form, formData, updateFormData}=useFormData();
+    
+    //
+    
+        const submitForm=(e)=>{
+            e.preventDefault();
+            console.log(formData) 
+            formData.usuarioAvance = userData._id;
+            formData.fechaAvance = dataProjects.fechaAvance;
+            formData.proyecto = dataProjects.nombre_proyecto;
+            formData.descripcionAvance = dataProjects.descripcionAvance;
+            crearAvance({variables:{...formData}
+            })
+            };
+    
+        useEffect(()=>{
+            if(mutationData){
+            if(mutationData.crearAvance.token){
+                setToken(mutationData.crearAvance.token);
+                navigate('./private/MiPerfil');
+            }
+            };
+        },[mutationData,setToken,navigate])
+    
+        useEffect(() => {
+            console.log("datos del servidor: ", queryData);
+        }, [queryData]);
+    
+        //encaso de que halla un error ejecute esto
+        useEffect(() => {
+            if (queryError) {
+                <div> Error consultando Usuario</div>
+            }
+        }, [queryError])
+    
+        if (queryLoading) return <div>Cargando......</div>;
 
     return (
         
@@ -54,23 +116,12 @@ function Avances() {
                             sm:rounded-lg
                             "
                         >
+                    <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={submitForm} onChange={updateFormData} ref={form}>
+
                             <table className="min-w-auto divide-y divide-gray-200">
                                 <thead className="bg-gray-50">
                                     <tr>
-                                        <th
-                                            scope="col"
-                                            className="
-                                                        px-6
-                                                        py-3
-                                                        text-center text-xs
-                                                        font-medium
-                                                        text-gray-500
-                                                        uppercase
-                                                        tracking-wider
-                                                        "
-                                        >
-                                            ID
-                                        </th>
+
                                         <th
                                             scope="col"
                                             className="
@@ -85,34 +136,8 @@ function Avances() {
                                         >
                                             Nombre del proyecto
                                         </th>
-                                        <th
-                                            scope="col"
-                                            className="
-                                                        px-6
-                                                        py-3
-                                                        text-center text-xs
-                                                        font-medium
-                                                        text-gray-500
-                                                        uppercase
-                                                        tracking-wider
-                                                        "
-                                        >
-                                            Líder
-                                        </th>
-                                        <th
-                                                scope="col"
-                                                className="
-                                        px-6
-                                        py-3
-                                        text-left text-xs
-                                        font-medium
-                                        text-gray-500
-                                        uppercase
-                                        tracking-wider
-                                        "
-                                        >
-                                            Usuario 
-                                        </th>
+
+
                                         <th
                                                 scope="col"
                                                 className="
@@ -126,20 +151,6 @@ function Avances() {
                                         "
                                         >
                                             Descripción 
-                                        </th>
-                                        <th
-                                                scope="col"
-                                                className="
-                  px-6
-                  py-3
-                  text-left text-xs
-                  font-medium
-                  text-gray-500
-                  uppercase
-                  tracking-wider
-                "
-                                        >
-                                            Observaciones 
                                         </th>
                                         <th
                                                 scope="col"
@@ -175,50 +186,20 @@ function Avances() {
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
-                                    <tr>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <span
-                                                className="
-                                                            px-2
-                                                            inline-flex
-                                                            text-xs
-                                                            leading-5
-                                                            font-semibold
-                                                            rounded-full
-                                                            bg-green-100
-                                                            text-green-800
-                                                        "
-                                            >
-                                                001
-                                            </span>
-                                        </td>
+                                    
+                                        {dataProjects && dataProjects.Proyectos.map((u) => {
+                                        return (
+                                        <tr key={u._id}>
+
 
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-gray-900">PomodoroAPP</div>
+                                            <div name="proyecto" className="text-sm text-gray-900">{u.nombre_proyecto}</div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="flex items-center">
-                                                <div className="ml-4">
-                                                    <div className="text-center text-sm font-medium text-gray-900">
-                                                        Florinda Mesa
-                                                    </div>
-                                                    <div className="text-sm text-gray-500">
-                                                        flora.mesa@pomodoro.com
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <input name='descripcionAvance' type='text' className="text-sm text-gray-900" placeholder='Indique descripción'/>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-center text-gray-900">UsuarioActual</div>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <input type='text' className="text-sm text-gray-900" placeholder='Indique descripción'/>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <input type='text' className="text-sm text-gray-900" placeholder='Indique observación'/>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <input type='date' className="text-sm text-gray-900" placeholder='Indique descripción'/>
+                                            <input name="fechaAvance" type='date' className="text-sm text-gray-900" />
                                         </td>
                                         <td
                                             className="
@@ -229,13 +210,15 @@ function Avances() {
                                                         font-medium
                                                         "
                                         >
-                                            <a href="/cosas2" className="inline-block"
-                                            ><FaIcons.FaSave size={30} /></a>
+                                            <a><button className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline" type='submit'>
+                                                    Guardar Avance
+                                            </button></a>
                                         </td>
                                     </tr>
-
+                                    )})}
                                 </tbody>
                             </table>
+                            </form>
                         </div>
                     </div>
                 </div>

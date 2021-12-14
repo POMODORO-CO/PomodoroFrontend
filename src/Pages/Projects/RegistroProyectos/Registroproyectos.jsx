@@ -31,7 +31,7 @@ function Registroproyectos() {
     e.preventDefault();
     console.log(formData)
         console.log(formData.objetivosProyecto)
-  let objetivosGen = [{
+        let objetivosGen = [{
         tipo: "GENERAL",
         descripcion: formData.objetivosPrim
       },{
@@ -40,7 +40,6 @@ function Registroproyectos() {
       }
     ]
     formData.objetivosProyecto = objetivosGen;
-
     formData.liderProyecto = userData._id;
     formData.presupuestoProyecto = parseFloat(formData.presupuestoProyecto);
     crearProyecto({variables:{...formData}
