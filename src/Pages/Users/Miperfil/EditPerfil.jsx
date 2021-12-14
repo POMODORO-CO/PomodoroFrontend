@@ -117,10 +117,10 @@ function EditPerfil() {
                                                                     Correo electrónico
                                                                 </label>
                                                                 <input name='emailUsuario' className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="correo" type="text"   defaultValue={queryData.Usuario.email_usuario}/>
-                                                                <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="Estado">
+                                                                {/* <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="Estado">
                                                                     Contraseña
                                                                 </label>
-                                                                <input name='passwordUsuario' className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password"  defaultValue={queryData.Usuario.password_usuario} />
+                                                                <input name='passwordUsuario' className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password"  defaultValue={queryData.Usuario.password_usuario} /> */}
                                                                 <button type='submit'>  <a className="py-5 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Editar información </a></button>
 
                                                             </div>
