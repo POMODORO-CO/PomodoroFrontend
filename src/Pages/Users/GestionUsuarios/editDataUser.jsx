@@ -6,6 +6,7 @@ import useFormData from "../../../components/UseForm/useForm.js";
 import { EDITAR_USUARIO } from "../../../graphql/users/mutations.js";
 import Navbar from '../../../components/Navbar/Navbar';
 import { NavLink } from 'react-router-dom';
+import imagenes from '../../../assets/img/imagenes';
 
 function EditDataUser() {
 
@@ -42,7 +43,12 @@ function EditDataUser() {
       }, [mutationData])
   
       //loading initial information in the queary
-      if (queryLoading) return (<div>Cargando........</div>)
+      if (queryLoading) return (<div className='min-h-screen flex justify-center items-center bg-gray-500'>
+      <div className='bg-yellow-400 rounded-full flex min-w-max p-2'> 
+          <img src={imagenes.imag1} alt="Logo empresa" className='md:p-1 h-20 w-20 animate-pulse'/>
+          <p className='md:p-7 animate-pulse text-2xl font-bold'>Cargando Login...just wait</p>
+      </div>
+      </div>)
       
 
     return (
@@ -57,12 +63,12 @@ function EditDataUser() {
                         </div>
                     </div>
                     <div className='text-black px-11 py-3 bg-yellow-400 rounded-full m-1 font-bold'> {_id} </div>
-                    <form onSubmit={submitForm}
+                    <form className="w-full max-w-lg" onSubmit={submitForm}
                         onChange={updateFormData}
                         ref={form}>
-                        <div className='w-full md:w-1/2 px-3'>
-                            <label className="text-black text-sm font-bold mb-2"> Nombre  </label>
-                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                        <div className='w-full md:w-1/2 px-3 mb-6 md:mb-0'>
+                            <label className="text-gray text-sm font-bold mb-2"> Nombre  </label>
+                                <input className='shadow appearance-none border rounded w-full py-2 p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                     defaultValue={queryData.Usuario.nombre_usuario}
                                     type="text"
                                     name="nombreUsuario" />
@@ -92,6 +98,13 @@ function EditDataUser() {
                             <label className="text-black text-sm font-bold mb-2"> Rol usuario </label>
                                 <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                     defaultValue={queryData.Usuario.rol_usuario}
+                                    type="text"
+                                    name="rolUsuario" />
+                        </div>
+                        <div className='w-full md:w-1/2 px-3'>
+                            <label className="text-black text-sm font-bold mb-2"> Estado usuario </label>
+                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                                    defaultValue={queryData.Usuario.estado_usuario}
                                     type="text"
                                     name="rolUsuario" />
                         </div>
