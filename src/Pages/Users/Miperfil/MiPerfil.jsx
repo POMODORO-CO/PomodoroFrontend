@@ -8,12 +8,13 @@ import { useUser } from '../../../context/userContext';
 function MiPerfil() {
     const { userData } = useUser();
     const _id = userData._id;
+    
     const {
         data: queryData,
         error: queryError,
         loading: queryLoading } = useQuery(GET_USUARIO, { variables: { _id } },)
         
-        console.log(queryData)
+        console.log("query",queryData)
     useEffect(() => {
         console.log("datos del servidor: ", queryData);
     }, [queryData]);
