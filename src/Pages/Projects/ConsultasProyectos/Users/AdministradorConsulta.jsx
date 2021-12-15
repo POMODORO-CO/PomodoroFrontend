@@ -225,12 +225,6 @@ font-medium
                                                         <FaIcons.FaEdit size={25} />
                                                     </Link>
 
-                                                    {/*  <a href="" className="inline-block"
-                                                    ><AiIcons.AiFillPlusCircle size={25} /></a>
-                                                    <a href="/private/Proyecto/infoproyecto" className="inline-block" value={u._id}
-                                                    ><FaIcons.FaEdit size={25} /></a>
-                                                    <a href="#" className="inline-block"
-                                                    ><FaIcons.FaTrash size={25} /></a> */}
                                                 </td>
                                             </tr>
                                         )

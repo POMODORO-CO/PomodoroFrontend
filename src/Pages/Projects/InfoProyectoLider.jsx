@@ -36,6 +36,15 @@ function InfoProyectoLider() {
 
     const submitForm = (e) => {
         e.preventDefault();
+        let objetivosGen = [{
+            tipo: "GENERAL",
+            descripcion: formData.objetivosPrim
+          },{
+            tipo: "ESPECIFICO",
+            descripcion: formData.objetivosSec
+          }
+        ]
+        formData.objetivosProyecto = objetivosGen;
         formData.presupuestoProyecto = parseFloat(formData.presupuestoProyecto);
         editarProyectoLider({
 

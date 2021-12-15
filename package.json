@@ -11,6 +11,7 @@
         "graphql": "^16.0.1",
         "jwt-decode": "^3.1.2",
         "react": "^17.0.2",
+        "react-confirm-alert": "^2.7.0",
         "react-dom": "^17.0.2",
         "react-icons": "^4.3.1",
         "react-router-dom": "^6.0.2",
