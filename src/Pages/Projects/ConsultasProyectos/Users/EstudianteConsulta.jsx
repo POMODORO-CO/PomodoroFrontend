@@ -7,27 +7,43 @@ import { GET_PROYECTOS } from '../../../../graphql/projects/queriesProjects';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { INCRIPCION_ESTUDIANTE } from '../../../../graphql/projects/mutationsprojects';
+import {useUser} from '../../../../context/userContext'
 
 function EstudianteConsulta() {
 
+    const { userData } = useUser();
+    const estudiante = userData._id;
+    
     const { data: dataProjects, error: errorProjects, loading: loadingProjects } = useQuery(GET_PROYECTOS);
-    const { data: dataInscripcion, error: errorInscripcion, loading: loadingInscripcion} = useMutation(INCRIPCION_ESTUDIANTE);
+    const [inscribirEstudiante,
+    { data: dataInscripcion, error: errorInscripcion, loading: loadingInscripcion}] = useMutation(INCRIPCION_ESTUDIANTE);
 
-    const submit = () => {
-        confirmAlert({
-          title: 'Inscripcion a proyecto',
-          message: '¿Confirmas tu inscripción a este proyecto?',
-          buttons: [
-            {
-              label: 'Sí',
-              onClick: () => alert('Inscripción exitosa')
-            },
-            {
-              label: 'No',
-              onClick: () => alert('No se realizó la inscripción')
-            }
-          ]
-        });
+    const submit = (inscripcionProyecto) => {
+        if (inscripcionProyecto != null){
+            confirmAlert({
+              title: 'Inscripcion a proyecto',
+              message: '¿Confirmas tu inscripción a este proyecto?',
+              buttons: [
+                {
+                  label: 'Sí',
+                  onClick: () => {
+                    {console.log('entro al alert y el id del proyecto es:' , inscripcionProyecto);
+                    console.log('y el del estudiantes es: ', estudiante);}  
+                    inscribirEstudiante(
+                        {
+                            variables:{inscripcionProyecto,estudiante}
+                        }
+                    )
+                    alert('Inscripción exitosa')
+                }
+                },
+                {
+                  label: 'No',
+                  onClick: () => alert('No se realizó la inscripción')
+                }
+              ]
+            });
+        }
       };
 
     return (
@@ -244,8 +260,8 @@ font-medium
                                                 >
                                                     {u.estado_proyecto == "ACTIVO" ?
                                                         <>
-                                                            <a href="#" className="inline-block"
-                                                            ><AiIcons.AiFillPlusCircle size={25} onClick={submit}  /></a>
+                                                            <button href="#" className="inline-block" onClick={()=> submit(u._id)}>
+                                                                <AiIcons.AiFillPlusCircle size={25}  /></button>
                                                             <a href="#" className="inline-block"
                                                             ><FaIcons.FaEdit size={25} /></a>
                                                             <a href="#" className="inline-block"

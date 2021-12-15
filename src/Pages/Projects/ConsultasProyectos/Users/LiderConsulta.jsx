@@ -224,13 +224,19 @@ font-medium
 "
                                                 >
 
-                                                    <a href="#" className="inline-block"
-                                                    ><AiIcons.AiFillPlusCircle size={25} /></a>
-                                                    {u.estado_proyecto=="ACTIVO" ? <Link to={`/private/Proyecto/InformacionLider/${u._id}`}>
-                                                        <FaIcons.FaEdit size={25} />
-                                                    </Link> : null }
-                                                    <a href="#" className="inline-block"
-                                                    ><FaIcons.FaTrash size={25} /></a>
+                                                    {u.estado_proyecto == "ACTIVO" ?
+                                                        <>
+                                                            
+                                                                <a href="#" className="inline-block"
+                                                                ><AiIcons.AiFillPlusCircle size={25} /></a>
+                                                                {u.estado_proyecto == "ACTIVO" ? <Link to={`/private/Proyecto/InformacionLider/${u._id}`}>
+                                                                    <FaIcons.FaEdit size={25} />
+                                                                </Link> : null}
+                                                                <a href="#" className="inline-block"
+                                                                ><FaIcons.FaTrash size={25} /></a>
+                                                        </>
+                                                        : null}
+
                                                 </td>
                                             </tr>
                                         )
