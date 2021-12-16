@@ -67,4 +67,12 @@ mutation CrearAvance(
       descripcion_avance: $descripcionAvance)
 }`;
 
-export { CREAR_PROYECTO, EDITAR_ESTADO_PROYECTO, EDITAR_FASE_PROYECTO, EDITAR_PROYECTO_LIDER, CREAR_AVANCE };
+const INCRIPCION_ESTUDIANTE = gql `
+mutation CrearInscripcion($inscripcionProyecto: String!, $estudiante: String!) {
+  crearInscripcion(inscripcion_proyecto: $inscripcionProyecto, estudiante: $estudiante) {
+    estado_inscripcion
+  }
+}
+`;
+
+export { CREAR_PROYECTO, EDITAR_ESTADO_PROYECTO, EDITAR_FASE_PROYECTO, EDITAR_PROYECTO_LIDER, CREAR_AVANCE, INCRIPCION_ESTUDIANTE };
