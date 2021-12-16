@@ -23,7 +23,7 @@ function InfoProyectoLider() {
     const [editarProyectoLider,
         { data: mutationData,
             loading: MutationLoading,
-            error: mutationError }] = useMutation(EDITAR_PROYECTO_LIDER, { variables: { _id } },);
+            error: mutationError }] = useMutation(EDITAR_PROYECTO_LIDER);
 
 
     //Hook that is build in the file useForm that i need 3 variables
@@ -37,13 +37,16 @@ function InfoProyectoLider() {
     const submitForm = (e) => {
         e.preventDefault();
         let objetivosGen = [{
+            _id: formData.idObjetivosPrim,
             tipo: "GENERAL",
             descripcion: formData.objetivosPrim
           },{
+            _id: formData.idObjetivosSec,
             tipo: "ESPECIFICO",
             descripcion: formData.objetivosSec
           }
         ]
+        formData._id=_id;
         formData.objetivosProyecto = objetivosGen;
         formData.presupuestoProyecto = parseFloat(formData.presupuestoProyecto);
         editarProyectoLider({
@@ -102,11 +105,23 @@ function InfoProyectoLider() {
                                                     </label>
                                                     <input name='objetivosPrim' className="appearance-none block w-full bg-gray-50 text-gray-500 border border-blue-500 rounded py-2 px-3 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-objetivos" type="text" placeholder={dataP[u].objetivos_proyecto[0].descripcion} defaultValue={dataP[u].objetivos_proyecto[0].descripcion} />
                                                 </div>
+                                                <div className="hidden ">
+                                                    <label className="text-black text-sm font-bold mb-2" htmlFor="Objetivos del Proyecto">
+                                                        ID Objetivo General
+                                                    </label>
+                                                    <input name='idObjetivosPrim' className="appearance-none block w-full bg-gray-50 text-gray-500 border border-blue-500 rounded py-2 px-3 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-objetivos" type="text" placeholder={dataP[u].objetivos_proyecto[0]._id} defaultValue={dataP[u].objetivos_proyecto[0]._id} />
+                                                </div>
                                                 <div className="w-full px-3 py-3 ">
                                                     <label className="text-black text-sm font-bold mb-2" htmlFor="Objetivos del Proyecto">
                                                         Objetivo Especifico del Proyecto
                                                     </label>
                                                     <input name='objetivosSec' className="appearance-none block w-full bg-gray-50 text-gray-500 border border-blue-500 rounded py-2 px-3 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-objetivos" type="text" placeholder={dataP[u].objetivos_proyecto[1].descripcion} defaultValue={dataP[u].objetivos_proyecto[1].descripcion} />
+                                                </div>
+                                                <div className="hidden ">
+                                                    <label className="text-black text-sm font-bold mb-2" htmlFor="Objetivos del Proyecto">
+                                                        ID Objetivo Especifico
+                                                    </label>
+                                                    <input name='idObjetivosSec' className="appearance-none block w-full bg-gray-50 text-gray-500 border border-blue-500 rounded py-2 px-3 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-objetivos" type="text" placeholder={dataP[u].objetivos_proyecto[1]._id} defaultValue={dataP[u].objetivos_proyecto[1]._id} />
                                                 </div>
                                             </div>
                                             <div className="flex flex-wrap -mx-3 mb-6">
