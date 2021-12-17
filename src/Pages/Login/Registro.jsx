@@ -49,13 +49,11 @@ function Registro() {
     toast.info('Cargando datos de usuario', {
       toastId: 'loading',
   });
-    console.log("carga")
   }
   if (mutationError) {
     toast.error('Error de carga de usuario verifi que el correo y documento no este en otra cuenta', {
       toastId: 'error',
   });
-
   }
 
   return (

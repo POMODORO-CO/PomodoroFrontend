@@ -1,14 +1,18 @@
 import React, { useEffect } from 'react'
-import Navbar from '../../../components/Navbar/Navbar'
-import imagenes from '../../../assets/img/imagenes';
 import { useQuery } from '@apollo/client';
-import { GET_USUARIO } from '../../../graphql/users/queries.js';
-import { useUser } from '../../../context/userContext';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from "react-router";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import Navbar from '../../../components/Navbar/Navbar'
+import imagenes from '../../../assets/img/imagenes';
+import { GET_USUARIO } from '../../../graphql/users/queries.js';
+import { useUser } from '../../../context/userContext';
 import useFormData from '../../../components/UseForm/useForm.js';
 import { EDITAR_USUARIO } from "../../../graphql/users/mutations";
 import { useAuth } from "../../../context/authContext";
+import { NavLink } from 'react-router-dom';
 
 function EditPerfil() {
     const { userData } = useUser();
@@ -32,8 +36,7 @@ function EditPerfil() {
 //
 
     const submitForm=(e)=>{
-        e.preventDefault();
-        console.log(formData) 
+        e.preventDefault(); 
         formData._id = userData._id;
         formData.rolUsuario = userData.rol_usuario;
         editarUsuario({variables:{...formData}
@@ -42,10 +45,11 @@ function EditPerfil() {
 
     useEffect(()=>{
         if(mutationData){
-        if(mutationData.editarUsuario.token){
-            setToken(mutationData.editarUsuario.token);
-            navigate('./private/MiPerfil');
-        }
+
+            navigate('/private/MiPerfil');
+            toast.info('Edicion completada', {
+                toastId: 'mutation',
+            });
         };
     },[mutationData,setToken,navigate])
 
@@ -62,8 +66,25 @@ function EditPerfil() {
 
     if (queryLoading) return <div>Cargando......</div>;
     
+    if (MutationLoading) {
+        toast.info('Editando datos de usuario', {
+          toastId: 'loading',
+      });
+      }
+      if (mutationError) {
+        toast.error('Error en edicion de datos', {
+          toastId: 'error',
+      });
+      }
+
     return (
         <div>
+            <ToastContainer 
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        
+      />
         <Navbar />
         <div className='bg-gray-100 text-black'>
                     <section className='container mx-auto px-6'>
@@ -117,11 +138,8 @@ function EditPerfil() {
                                                                     Correo electrónico
                                                                 </label>
                                                                 <input name='emailUsuario' className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="correo" type="text"   defaultValue={queryData.Usuario.email_usuario}/>
-                                                                {/* <label className="block text-blue-900 text-sm font-bold mb-2" htmlFor="Estado">
-                                                                    Contraseña
-                                                                </label>
-                                                                <input name='passwordUsuario' className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password"  defaultValue={queryData.Usuario.password_usuario} /> */}
-                                                                <button type='submit'>  <a className="py-5 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Editar información </a></button>
+                                                            
+                                                                <button type='submit' className="py-5 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Confirmar información</button>
 
                                                             </div>
 
