@@ -23,7 +23,7 @@ function SearchUser() {
         }
     }, [queryError])
 
-    if (queryLoading) return <div>Cargando......</div>;
+    if (queryLoading) return (<div>Cargando......</div>);
 
     return (
         <>
