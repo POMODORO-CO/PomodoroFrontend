@@ -12,7 +12,7 @@ import { useUser } from '../../../context/userContext';
 import useFormData from '../../../components/UseForm/useForm.js';
 import { EDITAR_USUARIO } from "../../../graphql/users/mutations";
 import { useAuth } from "../../../context/authContext";
-import { NavLink } from 'react-router-dom';
+import PrivateRoute from '../../../components/PrivateRoute/PrivateRoute';
 
 function EditPerfil() {
     const { userData } = useUser();
@@ -78,13 +78,13 @@ function EditPerfil() {
       }
 
     return (
+        <PrivateRoute rolelist={["ESTUDIANTE", "ADMINISTRADOR", "LIDER"]}>
         <div>
-            <ToastContainer 
-        position="bottom-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        
-      />
+            <ToastContainer
+                position="bottom-right"
+                autoClose={2000}
+                hideProgressBar={false}
+            />
         <Navbar />
         <div className='bg-gray-100 text-black'>
                     <section className='container mx-auto px-6'>
@@ -154,6 +154,7 @@ function EditPerfil() {
             </section>
         </div>
         </div>
+        </PrivateRoute>
     )
 }
 export default EditPerfil;
