@@ -46,65 +46,62 @@ function EditDataUser() {
       
 
     return (
-        
         <>
             <Navbar />
-            <div className='min-h-screen grid place-content-center bg-white'>
-                <div className="w-full max-w-xs m-6">
-                    <div className='bg-gray-200 inline-flex justify-center items-center rounded-full'>
-                        <div className='bg-white text-black font-bold px-2 rounded-full m-1'>
+            <div className='min-h-screen grid place-content-center bg-gray-500 px-7 py-1'>
+                <div>
+                    <div className='text-white inline-flex justify-center items-center rounded-full mb-1'>
                             Editando usuario número:
-                        </div>
                     </div>
-                    <div className='text-black px-11 py-3 bg-yellow-400 rounded-full m-1 font-bold'> {_id} </div>
-                    <form onSubmit={submitForm}
-                        onChange={updateFormData}
-                        ref={form}>
-                        <div className='w-full md:w-1/2 px-3'>
-                            <label className="text-black text-sm font-bold mb-2"> Nombre  </label>
+                    <div className='text-black px-11 py-3 bg-yellow-400 rounded-lg m-1 font-bold'> {_id} </div>
+                    <form className="w-full max-w-lg" onSubmit={submitForm} onChange={updateFormData} ref={form}>
+                        <div className="flex flex-wrap -mx-3 mb-3">
+                            <label className="text-white text-sm font-bold mb-1">Nombre</label>
                                 <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-                                    defaultValue={queryData.Usuario.nombre_usuario}
-                                    type="text"
-                                    name="nombreUsuario" />
+                                    defaultValue={queryData.Usuario.nombre_usuario} type="text" name="nombreUsuario"/>
                         </div>
-                        <div className='w-full md:w-1/2 px-3'>
-                            <label className="text-black text-sm font-bold mb-2"> Documento </label>
+                        <div className="flex flex-wrap -mx-3 mb-3">
+                            <label className="text-white text-sm font-bold mb-1"> Documento </label>
                                 <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-                                    defaultValue={queryData.Usuario.documento_usuario}
-                                    type="text"
-                                    name="documentoUsuario" />
+                                    defaultValue={queryData.Usuario.documento_usuario} type="text" name="documentoUsuario"/>
                         </div>
-                        <div className='w-full md:w-1/2 px-3'>
-                            <label className="text-black text-sm font-bold mb-2"> Tipo Documento </label>
+                        <div className="flex flex-wrap -mx-3 mb-3">
+                            <label className="text-white text-sm font-bold mb-1"> Tipo Documento </label>
                                 <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                     defaultValue={queryData.Usuario.tipo_documento_usuario}
                                     type="text"
                                     name="tipoDocumentoUsuario" />
                         </div>
-                        <div className='w-full md:w-1/2 px-3'>
-                            <label className="text-black text-sm font-bold mb-2"> Password </label>
+                        <div className="flex flex-wrap -mx-3 mb-3">
+                            <label className="text-white text-sm font-bold mb-1"> Password </label>
                                 <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                     defaultValue={queryData.Usuario.password_usuario}
                                     type="password"
                                     name="passwordUsuario" />
                         </div>
-                        <div className='w-full md:w-1/2 px-3'>
-                            <label className="text-black text-sm font-bold mb-2"> Rol usuario </label>
+                        <div className="flex flex-wrap -mx-3 mb-3">
+                            <label className="text-white text-sm font-bold mb-1"> Rol usuario </label>
                                 <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                     defaultValue={queryData.Usuario.rol_usuario}
                                     type="text"
                                     name="rolUsuario" />
                         </div>
-                        <div className='w-full md:w-1/2 px-3'>
-                            <label className="text-black text-sm font-bold mb-2"> Email </label>
+                        <div className="flex flex-wrap -mx-3 mb-3">
+                            <label className="text-white text-sm font-bold mb-1"> Email </label>
                                 <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                     defaultValue={queryData.Usuario.email_usuario}
                                     type="text"
                                     name="emailUsuario" />
                         </div>
+                        <div className="flex flex-wrap -mx-3 mb-16 place-content-center">
+                            <div className="py-2 px-6">
                             <button className="py-2 px-6 text-white font-bold rounded-full bg-blue-900 shadow-lg block md:inline-block">Editar</button>
-                        <Link to={`/private/GestionUsuarios`}>
-                            <i>Ir atras</i></Link>
+                            </div>
+                            <div className="py-2 px-6">
+                            <Link to={`/private/GestionUsuarios`}>
+                            <button className="py-2 px-6 text-white font-bold rounded-full bg-blue-900 shadow-lg block md:inline-block">Ir atrás</button></Link>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
