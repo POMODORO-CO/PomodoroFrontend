@@ -3,7 +3,7 @@ import Navbar from '../../components/Navbar/Navbar'
 import imagenes from '../../assets/img/imagenes';
 import Logout from '../../components/Logout/Logout'
 import PrivateRoute from '../../components/PrivateRoute/PrivateRoute'
-
+import { NavLink } from 'react-router-dom';
 function Home() {
     return (
 
@@ -19,30 +19,30 @@ function Home() {
                             </section>
                             <section className='flex flex-row justify-center space-x-8'>
                                 <section className='flex flex-row justify-center my-auto space-x-4'>
-                                    <a href="/private/MiPerfil" className='px-2 font-bold'>
+                                    <NavLink to="/private/MiPerfil" className='px-2 font-bold'>
                                         Mi perfil
-                                    </a>
-                                    <a href="/private/gestionusuarios" className='px-2 font-bold'>
+                                    </NavLink>
+                                    <NavLink to="/private/gestionusuarios" className='px-2 font-bold'>
                                         Gestión de Usuarios
-                                    </a>
+                                    </NavLink>
                                 </section>
                                 <section className='flex flex-row justify-center items-center my-auto space-x-4'>
                                     <section>
                                         <div className="relative inline-block text-left">
                                             <div>
-                                                <button> <a href='./proyecto' className="inline-flex justify-center w-full rounded-md py-2 px-8 text-blue-900 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                                                <button> <NavLink to='./proyecto' className="inline-flex justify-center w-full rounded-md py-2 px-8 text-blue-900 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
                                                     Proyectos
                                                     <svg className="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                         <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                                                    </svg></a>
+                                                    </svg></NavLink>
                                                 </button>
                                             </div>
                                             <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex="-1">
                                                 <div className="py-1" role="none">
-                                                    <a href="/private/Proyecto/Consulta" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">Consulta</a>
-                                                    <a href="/private/Proyecto/Registroproyectos" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-1">Registro</a>
-                                                    <a href="/private/Proyecto/Inscripciones" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-2">Inscripciones</a>
-                                                    <a href="/private/Proyecto/Avances" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-2">Avances</a>
+                                                    <NavLink to="/private/Proyecto/Consulta" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-0">Consulta</NavLink>
+                                                    <NavLink to="/private/Proyecto/Registroproyectos" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-1">Registro</NavLink>
+                                                    <NavLink to="/private/Proyecto/Inscripciones" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-2">Inscripciones</NavLink>
+                                                    <NavLink to="/private/Proyecto/Avances" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-2">Avances</NavLink>
                                                 </div>
                                             </div>
                                         </div>
