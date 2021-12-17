@@ -10,7 +10,7 @@ const PrivateRoute=({rolelist,children})=>{
 
     return (
         <>
-        <div>
+        <div data-testid="not-authorized">
             no esta autorizado
         </div>
         </>

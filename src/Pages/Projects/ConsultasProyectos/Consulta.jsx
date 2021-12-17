@@ -14,6 +14,7 @@ import AdministradorConsulta from './Users/AdministradorConsulta';
 function Consulta() {
 
     const { userData } = useUser();
+    
     const estado = false;
     if (userData.rol_usuario === "LIDER" && userData.estado_usuario === "AUTORIZADO") {
         return (

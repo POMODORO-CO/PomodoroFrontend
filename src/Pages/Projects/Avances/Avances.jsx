@@ -19,6 +19,7 @@ import { GET_PROYECTOS } from '../../../graphql/projects/queriesProjects.js';
 function Avances() {
 
         const { userData } = useUser();
+        
         const _id = userData._id;
         const {
             data: queryData,
