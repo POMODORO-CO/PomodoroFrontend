@@ -9,7 +9,9 @@ import { REFRESH_TOKEN } from '../graphql/Auth/mutationsAuth.js'
 const PrivateLayout = () => {
 
     const navigate = useNavigate();
+
     const { authToken, setToken} = useAuth();
+
     const [loadingAuth,setLoadingAuth]=useState(true);
 
     //refresca el token cada ves que se use un private layout
@@ -17,8 +19,7 @@ const PrivateLayout = () => {
         data: mutationData,
         loading: mutationLoading,
         error: mutationError
-    }] = useMutation(REFRESH_TOKEN);
-
+                             }] = useMutation(REFRESH_TOKEN);
 
     useEffect(() => {
         refreshToken();
