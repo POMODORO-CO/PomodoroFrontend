@@ -1,7 +1,6 @@
 import React from 'react';
 import imagenes from '../../assets/img/imagenes';
 import { NavLink } from 'react-router-dom';
-import Login from '../Login/Login';
 
 
 function Landingpage() {

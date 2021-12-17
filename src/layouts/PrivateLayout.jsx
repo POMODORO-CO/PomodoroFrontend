@@ -53,6 +53,7 @@ const PrivateLayout = () => {
     return (
         <>
             <div>
+                
                 <Outlet />
             </div>
         </>
