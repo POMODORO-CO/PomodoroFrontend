@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useMutation } from '@apollo/client';
 import { useNavigate } from "react-router";
+import { ToastContainer, toast } from 'react-toastify';
 
 import NavbarLandingPage from '../../components/NavbarLandingPage/NavbarLandingPage';
 import useFormData from '../../components/UseForm/useForm.js';
@@ -36,7 +37,29 @@ function Registro() {
     };
     
   },[mutationData,setToken,navigate])
-
+  
+  if(MutationLoading){
+    toast.info('Cargando datos de usuario', {
+      position: "bottom-left",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      })
+  }
+  if(mutationError){
+    toast.error('Error de carga de usuario verique correo y documento no este en otra cuenta', {
+      position: "bottom-left",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      })
+  }
 
   return (
     <div>
@@ -130,6 +153,7 @@ function Registro() {
         </form>
 
       </section>
+      <ToastContainer/>
     </div>
   )
 }
