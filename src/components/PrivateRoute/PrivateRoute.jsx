@@ -3,10 +3,10 @@ import { useUser } from "../../context/userContext";
 import { Link } from "react-router-dom";
 const PrivateRoute = ({ rolelist, children }) => {
     const { userData } = useUser();
-
+    console.log(userData.rol_usuario)
     if (rolelist.includes(userData.rol_usuario)) {
-        if (userData.estado_usuario !== "PENDIENTE") {
-            return children;
+        if (userData.estado_usuario === "ACTIVO") {
+                return children;
         } else {
             return (
                 <div>

@@ -38,7 +38,7 @@ const Login = () => {
           }
         };
         
-      },[mutationData])
+      },[mutationData, navigate, setToken])
 
 
     if(mutationLoading){return(<div className='min-h-screen flex justify-center items-center bg-gray-500'>

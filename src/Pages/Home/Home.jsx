@@ -8,7 +8,7 @@ function Home() {
     return (
 
         <div >
-            <PrivateRoute rolelist={["ESTUDIANTE","ADMINISTRADOR", "LIDER"]}>
+            <PrivateRoute rolelist={["ESTUDIANTE", "ADMINISTRADOR", "LIDER"]}>
                 <Navbar />
                 <div className='bg-gray-100 text-black'>
                     <section className='container mx-auto px-6'>
@@ -47,9 +47,9 @@ function Home() {
                                             </div>
                                         </div>
                                     </section>
-                                    <a className='px-2 font-bold'>
+                                    <div className='px-2 font-bold'>
                                         <Logout />
-                                    </a>
+                                    </div>
                                 </section>
                             </section>
                         </nav>
