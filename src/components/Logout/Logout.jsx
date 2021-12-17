@@ -10,7 +10,7 @@ const Logout=()=>{
         <div>
             <NavLink to='/'>
                 <div onClick={()=>deleteToken()}>
-                    <a> Cerrar sesión</a>
+                     Cerrar sesión
                 </div>
             </NavLink>
         </div>
