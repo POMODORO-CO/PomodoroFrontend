@@ -4,10 +4,12 @@ import { Outlet } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
 import { REFRESH_TOKEN } from '../graphql/Auth/mutationsAuth.js'
-
+import {useUser} from '../context/userContext.js'
 
 const PrivateLayout = () => {
 
+    const {userData}=useUser();
+    
     const navigate = useNavigate();
 
     const { authToken, setToken} = useAuth();
