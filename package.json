@@ -31,7 +31,7 @@
         "npm": "8.x"
     },
     "scripts": {
-        "start": "craco start",
+        "start": "craco --max_old_space_size=6144 start",
         "test": "craco test",
         "build": "craco build",
         "eject": "react-scripts eject"
