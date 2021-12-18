@@ -28,7 +28,7 @@ function SearchUser() {
     return (
         <>
             <div>
-                <PrivateRoute rolelist={["ESTUDIANTE","ADMINISTRADOR"]}>
+                <PrivateRoute rolelist={["ADMINISTRADOR"]}>
                     <table>
                         <thead className="bg-gray-50">
                             <tr>

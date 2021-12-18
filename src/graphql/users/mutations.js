@@ -27,5 +27,21 @@ mutation EditarUsuario(
     }
   }
 `;
+const EDITAR_ESTADO_USUARIO=gql`
+mutation EditarEstadoUsuario(
+  $_id: String!, 
+  $estadoUsuario: Enum_estado_usuario!
+  ) {
+  editarEstadoUsuario(
+    _id: $_id, 
+    estado_usuario: $estadoUsuario
+    ) {
+    _id
+    nombre_usuario
+    apellido_usuario
+    estado_usuario
+  }
+}
+`;
 
-export { EDITAR_USUARIO };
+export { EDITAR_USUARIO, EDITAR_ESTADO_USUARIO };
