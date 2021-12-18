@@ -4,9 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
-import jwt_decode from 'jwt-decode'
-//import { ToastContainer } from "react-toastr";
 
+import jwt_decode from 'jwt-decode'
 
 import MiPerfil from './Pages/Users/Miperfil/MiPerfil';
 import GestionUsuarios from './Pages/Users/GestionUsuarios/GestionUsuarios';
@@ -54,6 +53,7 @@ const client = new ApolloClient({
 },)
 
 function App() {
+
   const [userData, setUserData] = useState({});
   const [authToken, setAuthToken] = useState('');
 

@@ -5,7 +5,7 @@ import { GET_USUARIO } from "../../../graphql/users/queries.js";
 import useFormData from "../../../components/UseForm/useForm.js";
 import { EDITAR_USUARIO } from "../../../graphql/users/mutations.js";
 import Navbar from '../../../components/Navbar/Navbar';
-import { NavLink } from 'react-router-dom';
+import PrivateRoute from '../../../components/PrivateRoute/PrivateRoute.jsx';
 
 function EditDataUser() {
 
@@ -47,7 +47,7 @@ function EditDataUser() {
 
     return (
         <>
-            <PrivateRoute rolelist={["ESTUDIANTE", "ADMINISTRADOR"]}>
+            <PrivateRoute rolelist={["ADMINISTRADOR"]}>
                 <Navbar />
                 <div className='min-h-screen grid place-content-center bg-gray-500 px-7 py-1'>
                     <div>
@@ -59,40 +59,45 @@ function EditDataUser() {
                             <div className="flex flex-wrap -mx-3 mb-3">
                                 <label className="text-white text-sm font-bold mb-1">Nombre</label>
                                 <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-                                    defaultValue={queryData.Usuario.nombre_usuario} type="text" name="nombreUsuario" />
+                                    defaultValue={queryData.Usuario.nombre_usuario} type="text" name="nombreUsuario" readOnly/>
+                            </div>
+                            <div className="flex flex-wrap -mx-3 mb-3">
+                                <label className="text-white text-sm font-bold mb-1">Apellido</label>
+                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                                    defaultValue={queryData.Usuario.apellido_usuario} type="text" name="apellidoUsuario" readOnly/>
                             </div>
                             <div className="flex flex-wrap -mx-3 mb-3">
                                 <label className="text-white text-sm font-bold mb-1"> Documento </label>
                                 <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-                                    defaultValue={queryData.Usuario.documento_usuario} type="text" name="documentoUsuario" />
+                                    defaultValue={queryData.Usuario.documento_usuario} type="text" name="documentoUsuario" readOnly/>
                             </div>
                             <div className="flex flex-wrap -mx-3 mb-3">
                                 <label className="text-white text-sm font-bold mb-1"> Tipo Documento </label>
                                 <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                     defaultValue={queryData.Usuario.tipo_documento_usuario}
                                     type="text"
-                                    name="tipoDocumentoUsuario" />
+                                    name="tipoDocumentoUsuario" readOnly/>
                             </div>
-                            <div className="flex flex-wrap -mx-3 mb-3">
+                            {/* <div className="flex flex-wrap -mx-3 mb-3">
                                 <label className="text-white text-sm font-bold mb-1"> Password </label>
                                 <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                     defaultValue={queryData.Usuario.password_usuario}
                                     type="password"
                                     name="passwordUsuario" />
-                            </div>
+                            </div> */}
                             <div className="flex flex-wrap -mx-3 mb-3">
                                 <label className="text-white text-sm font-bold mb-1"> Rol usuario </label>
                                 <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                     defaultValue={queryData.Usuario.rol_usuario}
                                     type="text"
-                                    name="rolUsuario" />
+                                    name="rolUsuario" readOnly/>
                             </div>
                             <div className="flex flex-wrap -mx-3 mb-3">
                                 <label className="text-white text-sm font-bold mb-1"> Email </label>
                                 <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                     defaultValue={queryData.Usuario.email_usuario}
                                     type="text"
-                                    name="emailUsuario" />
+                                    name="emailUsuario" readOnly/>
                             </div>
                             <div className="flex flex-wrap -mx-3 mb-16 place-content-center">
                                 <div className="py-2 px-6">
