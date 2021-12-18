@@ -31,9 +31,9 @@
         "npm": "8.x"
     },
     "scripts": {
-        "start": "craco --max_old_space_size=2048 start",
+        "start": "craco --max_old_space_size=256 start",
         "test": "craco test",
-        "build": "craco --max_old_space_size=2048 build",
+        "build": "craco --max_old_space_size=256 build",
         "eject": "react-scripts eject"
     },
     "browserslist": {
