@@ -21,6 +21,10 @@
         "styled-components": "^5.3.3",
         "web-vitals": "^1.0.1"
     },
+    "engines": {
+        "node": "0.16.13",
+        "npm": "8.1.4"
+      },
     "scripts": {
         "start": "craco start",
         "build": "webpack",
