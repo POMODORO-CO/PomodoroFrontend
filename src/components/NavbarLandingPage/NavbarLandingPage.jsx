@@ -13,10 +13,10 @@ function NavbarLandingPage() {
                     </section>
                     <section className='flex flex-row justify-center space-x-8'>
                         <section className='flex flex-row justify-center my-auto space-x-4'>
-                            <a href='#' className='px-2 font-bold'>Servicios</a>
-                            <a href="#" className='px-2 font-bold'>Experiencias</a>
-                            <a href="#" className='px-2 font-bold'>Metodología</a>
-                            <a href="#" className='px-2 font-bold'>Herramientas</a>
+                            <a href='/' className='px-2 font-bold'>Servicios</a>
+                            <a href="/" className='px-2 font-bold'>Experiencias</a>
+                            <a href="/" className='px-2 font-bold'>Metodología</a>
+                            <a href="/" className='px-2 font-bold'>Herramientas</a>
                         </section>
                         <section className='flex flex-row justify-center items-center my-auto space-x-4'>
                             <NavLink to='/Login' className='px-2 font-bold'> Login </NavLink>

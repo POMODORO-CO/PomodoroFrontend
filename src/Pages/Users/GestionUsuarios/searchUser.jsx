@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_USUARIOS } from '../../../graphql/users/queries.js';
 import PrivateRoute from '../../../components/PrivateRoute/PrivateRoute.jsx';
+import PrivateComponent from '../../../components/PrivateComponent/PrivateComponent.jsx';
 
 
 function SearchUser() {
@@ -28,10 +29,7 @@ function SearchUser() {
     return (
         <>
             <div>
-                <div>
-                todos los usurios
-                </div>
-                <PrivateRoute rolelist={["ESTUDIANTE","ADMINISTRADOR"]}>
+                <PrivateRoute rolelist={["ADMINISTRADOR","LIDER"]}>
                     <table>
                         <thead className="bg-gray-50">
                             <tr>
@@ -51,16 +49,18 @@ function SearchUser() {
                                         <tr key={u._id}>
                                             <td className="px-6 py-4 whitespace-nowrap">{u.nombre_usuario}</td>
                                             <td className="px-6 py-4 whitespace-nowrap">{u.apellido_usuario}</td>
-                                            <td className="px-6 py-4 whitespace-nowrap">{u.documento_usuario}</td>
                                             <td className="px-6 py-4 whitespace-nowrap">{u.email_usuario}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">{u.documento_usuario}</td>
                                             <td className="px-6 py-4 whitespace-nowrap">{u.estado_usuario}</td>
                                             <td className="px-6 py-4 whitespace-nowrap">{u.rol_usuario}</td>
                                             <td className="px-6 py-4 whitespace-nowrap">
+                                                <PrivateComponent rolelist={["ADMINISTRADOR","LIDER"]}>
                                                 <Link to={`/private/GestionUsuarios/editar/${u._id}`}>
                                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                                     </svg>
                                                 </Link>
+                                                </PrivateComponent>
                                             </td>
                                         </tr>
                                     )

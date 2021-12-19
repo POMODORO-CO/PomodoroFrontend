@@ -1,14 +1,17 @@
 import React, { useEffect } from "react";
+import { useMutation } from '@apollo/client';
+import { useNavigate } from "react-router";
+import { useQuery } from '@apollo/client';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Navbar from '../../../components/Navbar/Navbar';
 import imagenes from '../../../assets/img/imagenes';
 import PrivateRoute from '../../../components/PrivateRoute/PrivateRoute';
-import { useMutation } from '@apollo/client';
-import { useNavigate } from "react-router";
 import useFormData from '../../../components/UseForm/useForm.js';
 import { CREAR_PROYECTO } from "../../../graphql/projects/mutationsprojects";
 import { useAuth } from "../../../context/authContext";
 import { GET_USUARIOS } from '../../../graphql/users/queries.js';
-import { useQuery } from '@apollo/client';
 import { useUser } from '../../../context/userContext';
 
 function Registroproyectos() {
@@ -24,7 +27,7 @@ function Registroproyectos() {
 
   const [crearProyecto,
     { data: mutationData,
-        loading: MutationLoading,
+        loading: mutationLoading,
         error: mutationError }] = useMutation(CREAR_PROYECTO);
 
   const submitForm=(e)=>{
@@ -48,16 +51,31 @@ function Registroproyectos() {
 
   useEffect(()=>{
       if(mutationData){
-      if(mutationData.crearProyecto.token){
-        setToken(mutationData.crearProyecto.token);
-        navigate('./Pages/Projects/ConsultasProyectos/Consulta');
-      }
+            
+      toast.success('Proyecto creado Proyecto', {
+        toastId: 'creacion-proyecto',});
+        navigate('/private/Proyecto/');
+
     };
   },[mutationData,setToken,navigate])
 
+  if(mutationLoading){
+    toast.info('Creando Proyecto', {
+      toastId: 'creacion-proyecto',});
+  }
+  if(mutationError){
+    toast.error('Error no se creo el proyecto', {
+      toastId: 'error-proyecto',});
+  }
+
   return (
     <div>
-      <PrivateRoute rolelist={["LIDER", "AMINISTRADOR"]}>
+      <PrivateRoute rolelist={["LIDER", "ADMINISTRADOR"]}>
+      <ToastContainer
+                position="bottom-right"
+                autoClose={2000}
+                hideProgressBar={false}
+            />
         <Navbar />
         <section className='flex flex-row justify-center'>
           <img src={imagenes.imag1} alt="Logo empresa" className='py-3 px-3 h-20 w-20' />
@@ -65,7 +83,7 @@ function Registroproyectos() {
         </section>
         <section className='text-center '>
           <h1 className='text-3xl font-bold pt-1'>
-            REGISTRO DE PROYECTOS
+            REGISTRAR DE PROYECTO
           </h1>
         </section>
         <section className='min-h-screen grid place-content-left bg-white px-10 justify-center'>

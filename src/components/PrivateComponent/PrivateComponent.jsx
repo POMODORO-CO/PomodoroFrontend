@@ -2,9 +2,9 @@ import { useUser } from "../../context/userContext";
 import React from "react";
 
 const PrivateComponent=({rolelist,children})=>{
-    const {useData}=useUser();
+    const {userData}=useUser();
 
-    if(rolelist.includes(useData.rol_usuario)){
+    if(rolelist.includes(userData.rol_usuario)){
         return children;
     }
     return (

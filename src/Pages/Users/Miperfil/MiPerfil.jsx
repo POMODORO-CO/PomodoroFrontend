@@ -10,13 +10,12 @@ function MiPerfil() {
     const { userData } = useUser();
     const _id = String(userData._id);
 
-    console.log(_id)
     const {
         data: queryData,
         error: queryError,
         loading: queryLoading } = useQuery(GET_USUARIO, { variables: { _id } },)
 
-    console.log("query", queryData)
+    
     useEffect(() => {
         console.log("datos del servidor: ", queryData);
     }, [queryData]);
