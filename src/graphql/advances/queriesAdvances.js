@@ -18,5 +18,26 @@ query AvancesOneProject(
     }
   }
 `;
-
-export {AVANCES_PROJECTO};
+const AVANCE=gql`
+query Avance(
+  $_id: String!
+  ) {
+  Avance(
+    _id: $_id
+    ) {
+    _id
+    observaciones_avance
+    descripcion_avance
+    fecha_avance
+    usuario_avance {
+      nombre_usuario
+      apellido_usuario
+    }
+    proyecto {
+      _id
+      nombre_proyecto
+    }
+  }
+}
+`;
+export {AVANCES_PROJECTO,AVANCE};

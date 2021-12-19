@@ -30,7 +30,7 @@ function Consulta() {
             <>
                 <Navbar />
                 <div className='consulta'>
-                    <h1>CONSULTA DE INSCRITOS</h1>
+                    <h1>CONSULTA PROYECTOS INSCRITOS</h1>
                 </div>
                 <PrivateRoute rolelist={["ESTUDIANTE"]}>
                     <EstudianteConsulta />
