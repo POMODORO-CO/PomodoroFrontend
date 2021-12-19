@@ -34,9 +34,9 @@ function Home() {
                                 <section className='flex flex-row justify-center items-center my-auto space-x-4'>
                                     <section>
                                         <div className="relative inline-block text-left">
-                                            <div className="inline-flex justify-center w-full rounded-md py-2 px-8 text-blue-900 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                                            <div className="justify-center w-full rounded-full py-2 px-6 text-blue-900 font-bold bg-yellow-400 shadow-lg block md:inline-block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
                                                 <div>
-                                                <NavLink to="/private/proyecto" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex="-1" id="menu-item-1">Proyectos</NavLink>
+                                                <NavLink to="/private/proyecto" className="text-gray-700 block px-4 py-2 text-base" role="menuitem" tabIndex="-1" id="menu-item-1">Proyectos</NavLink>
                                                 </div>
                                             </div>
                                         </div>
