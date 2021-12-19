@@ -21,9 +21,9 @@ const AvanceLider = () => {
             toastId: 'error',
         });
     }
-    useEffect(() => {
-        console.log("Datos avances", dataAvances)
-    }, [dataAvances])
+    // useEffect(() => {
+    //     console.log("Datos avances", dataAvances)
+    // }, [dataAvances])
 
     return (
         <>
@@ -85,7 +85,7 @@ const AvanceLider = () => {
                                         {dataAvances && dataAvances.AvancesOneProject.map((u) => {
                                             return (
                                                 <>
-                                                {/* <tr key={u._id}>
+                                                <tr key={u._id}>
 
 
                                                     <td className="px-6 py-4 whitespace-nowrap">
@@ -104,14 +104,14 @@ const AvanceLider = () => {
                                                         </span>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                                                    <input name='descripcionAvance' type='text' className="text-sm text-gray-900" defaultValue={u.observaciones_avance} />
+                                                    <input type='text' className="text-sm text-gray-900" defaultValue={u.observaciones_avance} />
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                                         <a><button className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline" type='submit'>
                                                             Guardar Observaciones
                                                         </button></a>
                                                     </td>
-                                                </tr> */}
+                                                </tr>
                                                 </>
                                             )
                                         })}
