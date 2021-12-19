@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 import { GET_USUARIOS } from '../../../graphql/users/queries.js';
 import PrivateRoute from '../../../components/PrivateRoute/PrivateRoute.jsx';
 import PrivateComponent from '../../../components/PrivateComponent/PrivateComponent.jsx';
-
+import imagenes from '../../../assets/img/imagenes';
 
 function SearchUser() {
     const {

@@ -10,7 +10,7 @@ import useFormData from "../../../components/UseForm/useForm.js";
 import { EDITAR_ESTADO_USUARIO } from "../../../graphql/users/mutations.js";
 import Navbar from '../../../components/Navbar/Navbar';
 import PrivateRoute from '../../../components/PrivateRoute/PrivateRoute.jsx';
-
+import imagenes from "../../../assets/img/imagenes.jsx";
 
 function EditDataUser() {
     const navigate= useNavigate();
@@ -107,7 +107,7 @@ function EditDataUser() {
                             <label className="text-white text-sm font-bold mb-1"> Documento </label>
                             <input className='shadow appearance-none border rounded w-full py-2 px-3 bg-gray-300 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                 defaultValue={queryData.Usuario.documento_usuario} type="text" name="documentoUsuario" />
-
+                            
                             <label className="text-white text-sm font-bold mb-1"> Tipo Documento </label>
                             <input className='shadow appearance-none border rounded w-full py-2 px-3 bg-gray-300 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                                 defaultValue={queryData.Usuario.tipo_documento_usuario}

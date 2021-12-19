@@ -356,10 +356,12 @@ function InfoProyectoLider() {
                                                                                             <td className="px-6 py-4 whitespace-nowrap">
                                                                                                 <div className="text-sm text-center text-gray-900">
                                                                                                     <button onClick={() => submit1(u._id)}>
+                                                                                                        rechazar
                                                                                                         <FaIcons.FaRegThumbsDown size={25} />
                                                                                                         
                                                                                                     </button>
                                                                                                     <button onClick={() => submit2(u._id)}>
+                                                                                                        aceptar
                                                                                                         <FaIcons.FaRegThumbsUp size={25} />
                                                                                                         
                                                                                                     </button>
@@ -396,7 +398,7 @@ function InfoProyectoLider() {
                                                                                                         <FaIcons.FaRegThumbsUp size={25} />
                                                                                                         
                                                                                                     </button> */}
-                                                                                                    <NavLink to={`/private/GestionUsuarios/editar/${u.estudiante._id}`} className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline">ver avances</NavLink>
+                                                                                                    {/* <NavLink to={`/private/GestionUsuarios/editar/${u.estudiante._id}`} className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline">ver avances</NavLink> */}
                                                                                                 </div>
                                                                                             </td>
                                                                                         </tr>

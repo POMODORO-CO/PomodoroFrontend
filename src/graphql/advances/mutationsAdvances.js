@@ -3,15 +3,16 @@ import { gql } from '@apollo/client'
 
 const ACTUALIZAR_OBSERVACIONES=gql`
 mutation EditarAvanceObservaciones(
-    $id: ID!, 
-    $observacionesAvance: String!
+  $_id: String!, 
+  $observacionesAvance: String!
+  ) {
+  editarAvanceObservaciones(
+    _id: $_id, 
+    observaciones_avance: $observacionesAvance
     ) {
-    editarAvanceObservaciones(
-      _id: $id, 
-      observaciones_avance: $observacionesAvance
-      ) {
-      _id
-    }
+    _id
+    observaciones_avance
   }
+}
 `;
 export {ACTUALIZAR_OBSERVACIONES};
