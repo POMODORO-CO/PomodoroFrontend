@@ -1,35 +1,93 @@
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import React, { useEffect } from "react"
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 import PrivateRoute from '../../../../components/PrivateRoute/PrivateRoute';
 import { AVANCES_PROJECTO } from '../../../../graphql/advances/queriesAdvances'
+import { ACTUALIZAR_OBSERVACIONES } from '../../../../graphql/advances/mutationsAdvances'
+import useFormData from "../../../../components/UseForm/useForm";
+
 const AvanceLider = () => {
     const { _id } = useParams();
     const proyecto = _id;
-    console.log(_id)
+
+    const { form, formData, updateFormData } = useFormData();
+
     const {
         data: dataAvances,
         loading: loadingAvances,
         error: errorAvances } = useQuery(AVANCES_PROJECTO, { variables: { proyecto } })
 
+
+    
+
+    const [subirObservaciones, {
+        data: dataObservacion,
+        loading: loadingObservacion,
+        error: errorObservacion }] = useMutation(ACTUALIZAR_OBSERVACIONES)
+
+
+
+
+    // useEffect(() => {
+    //     console.log("Datos avances", dataAvances)
+    // }, [dataAvances])
+    if (errorObservacion) {
+        toast.error('No se pudieron extraer los avances del proyecto', { toastId: 'error-obser', });
+    }
+    if (loadingObservacion) {
+        toast.info('Subiendo observaciones', { toastId: 'loading-obser', });
+    }
     if (loadingAvances) return (<div className='min-h-screen flex justify-center items-center bg-gray-500'>
         <div className='bg-yellow-400 rounded-full flex min-w-max p-2'>
             <img src={imagenes.imag1} alt="Logo empresa" className='md:p-1 h-20 w-20 animate-pulse' />
             <p className='md:p-7 animate-pulse text-2xl font-bold'>Cargando Login...just wait</p>
         </div>
     </div>)
+
     if (errorAvances) {
         toast.error('No se pudieron extraer los avances del proyecto', {
             toastId: 'error',
         });
     }
-    // useEffect(() => {
-    //     console.log("Datos avances", dataAvances)
-    // }, [dataAvances])
-
+    const submitForm = () => {
+        e.preventDefault();
+        console.log("datos observaciones", formData)
+    };
+    // const submitForm=(_id)=>{
+    //     if (_id != null) {
+    //         confirmAlert({
+    //             title: 'Negar la Inscripción',
+    //             message: '¿Confirmas borrar la inscripción del usuario al proyecto?',
+    //             buttons: [
+    //                 {
+    //                     label: 'Sí',
+    //                     onClick: () => {
+    //                         {
+    //                             console.log('ent');
+    //                             console.log('as');
+    //                         }
+    //                         negarInscripcion(
+    //                             {
+    //                                 variables: { _id }
+    //                             }
+    //                         )
+    //                         alert('Inscripción negada')
+    //                         window.location.reload();
+    //                     }
+    //                 },
+    //                 {
+    //                     label: 'No',
+    //                     onClick: () => alert('No se nego la inscripción')
+    //                 }
+    //             ]
+    //         });
+    //     }
+    // };
     return (
         <>
             <PrivateRoute rolelist={["LIDER"]}>
@@ -62,6 +120,7 @@ const AvanceLider = () => {
                     <div className="-my-1 overflow-x-auto sm:-mx-6 lg:-mx-2 py-4">
                         <div className="py-2 align-middle inline-block min-w-auto sm:px-6 lg:px-12">
                             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+
                                 <table className="min-w-auto divide-y divide-gray-200">
                                     <thead className="bg-gray-50">
                                         <tr>
@@ -122,6 +181,76 @@ const AvanceLider = () => {
                                         })}
                                     </tbody>
                                 </table>
+
+                                <form id="cosas" onSubmit={submitForm} onChange={updateFormData} ref={form}>
+                                    <table className="min-w-auto divide-y divide-gray-200">
+                                        <thead className="bg-gray-50">
+                                            <tr>
+
+                                                <th scope="col" className="px-15 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ">
+                                                    Nombre Estudiante
+                                                </th>
+
+
+                                                <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ">
+                                                    Descripción Avance
+                                                </th>
+                                                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Fecha Avance
+                                                </th>
+                                                <th scope="col" className="px-10 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Observaciones
+                                                </th>
+                                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                    Acciones
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="bg-white divide-y divide-gray-200">
+
+                                            {dataAvances && dataAvances.AvancesOneProject.map((u) => {
+                                                return (
+                                                    <>
+                                                        <tr key={u._id}>
+
+
+
+                                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                                    {u.usuario_avance.nombre_usuario + " " + u.usuario_avance.apellido_usuario}
+                                                                </span>
+                                                            </td>
+                                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                                    {u.descripcion_avance}
+                                                                </span>
+                                                            </td>
+                                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                                    {u.fecha_avance.split("T")[0]}
+                                                                </span>
+                                                            </td>
+                                                            <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+
+                                                                <input name="observacionesAvance" form="cosas" type='text' className="text-sm text-gray-900" defaultValue={u.observaciones_avance} />
+
+                                                            </td>
+                                                            <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                                                <a><button type='submit' form="cosas" className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline">
+                                                                    Guardar Observaciones
+                                                                </button></a>
+                                                            </td>
+
+
+                                                        </tr>
+
+                                                    </>
+                                                )
+                                            })}
+                                        </tbody>
+                                    </table>
+                                </form>
+
 
                             </div>
                         </div>
