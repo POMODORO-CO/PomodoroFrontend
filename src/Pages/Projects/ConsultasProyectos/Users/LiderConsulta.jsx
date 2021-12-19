@@ -131,7 +131,7 @@ function LiderConsulta() {
                                                             </>
                                                             : null} */}
                                                         <Link to={`/private/Proyecto/InformacionLider/${u._id}`}>
-                                                            <FaIcons.FaEdit size={25} />
+                                                            <FaIcons.FaSearch size={25} />
                                                         </Link>
 
                                                     </td>

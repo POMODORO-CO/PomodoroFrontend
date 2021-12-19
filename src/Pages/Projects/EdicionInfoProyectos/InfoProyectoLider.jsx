@@ -293,6 +293,8 @@ function InfoProyectoLider() {
 
                                                 <div className="flex items-center flex-col text-middle">
                                                     <div>
+                                                        <NavLink to={`/private/Proyecto/Avances/${dataP.Proyecto._id}`} className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline">Avances Proyecto</NavLink>
+                                                        <br />
                                                         {tooglePendientes == true ?
                                                             <>
                                                                 <button onClick={() => cambioToogle()} className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"> click ver Aceptados</button>
@@ -394,6 +396,7 @@ function InfoProyectoLider() {
                                                                                                         <FaIcons.FaRegThumbsUp size={25} />
                                                                                                         
                                                                                                     </button> */}
+                                                                                                    <NavLink to={`/private/GestionUsuarios/editar/${u.estudiante._id}`} className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline">ver avances</NavLink>
                                                                                                 </div>
                                                                                             </td>
                                                                                         </tr>
