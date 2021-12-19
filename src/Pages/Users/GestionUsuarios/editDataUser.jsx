@@ -10,7 +10,7 @@ import useFormData from "../../../components/UseForm/useForm.js";
 import { EDITAR_ESTADO_USUARIO } from "../../../graphql/users/mutations.js";
 import Navbar from '../../../components/Navbar/Navbar';
 import PrivateRoute from '../../../components/PrivateRoute/PrivateRoute.jsx';
-
+import imagenes from "../../../assets/img/imagenes.jsx";
 
 function EditDataUser() {
     const navigate= useNavigate();

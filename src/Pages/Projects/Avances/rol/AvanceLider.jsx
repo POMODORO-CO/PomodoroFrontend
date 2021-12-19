@@ -8,57 +8,48 @@ import Navbar from "../../../../components/Navbar/Navbar";
 
 import PrivateRoute from '../../../../components/PrivateRoute/PrivateRoute';
 import { AVANCES_PROJECTO } from '../../../../graphql/advances/queriesAdvances'
-
+import imagenes from "../../../../assets/img/imagenes";
 
 const AvanceLider = () => {
     const { _id } = useParams();
     const proyecto = _id;
 
-    
+
 
     const {
         data: dataAvances,
         loading: loadingAvances,
         error: errorAvances } = useQuery(AVANCES_PROJECTO, { variables: { proyecto } })
 
-
-    
-
-    
-
-
-
-
     useEffect(() => {
         console.log("Datos avances", dataAvances)
     }, [dataAvances])
 
-    if (errorObservacion) {
-        toast.error('No se pudieron extraer los avances del proyecto', { toastId: 'error-obser', });
-    }
-    if (loadingObservacion) {
-        toast.info('Subiendo observaciones', { toastId: 'loading-obser', });
-    }
-    if (loadingAvances) return (<div className='min-h-screen flex justify-center items-center bg-gray-500'>
-        <div className='bg-yellow-400 rounded-full flex min-w-max p-2'>
-            <img src={imagenes.imag1} alt="Logo empresa" className='md:p-1 h-20 w-20 animate-pulse' />
-            <p className='md:p-7 animate-pulse text-2xl font-bold'>Cargando Login...just wait</p>
-        </div>
-    </div>)
+
+    if (loadingAvances) {
+        return (
+            <div className='min-h-screen flex justify-center items-center bg-gray-500'>
+                <div className='bg-yellow-400 rounded-full flex min-w-max p-2'>
+                    <img src={imagenes.imag1} alt="Logo empresa" className='md:p-1 h-20 w-20 animate-pulse' />
+                    <p className='md:p-7 animate-pulse text-2xl font-bold'>Cargando Login...just wait</p>
+                </div>
+            </div>
+        )
+    };
 
     if (errorAvances) {
         toast.error('No se pudieron extraer los avances del proyecto', {
             toastId: 'error',
         });
     }
-    
+
     return (
         <>
-        
+
             <PrivateRoute rolelist={["LIDER"]}>
-            <Navbar />
+                <Navbar />
                 <ToastContainer position="bottom-right" autoClose={2000} hideProgressBar={false} />
-                
+
                 <div className="flex items-center flex-col text-middle">
 
                     <h1>{`Avances proyecto ${_id}`}</h1>
