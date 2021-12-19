@@ -15,7 +15,12 @@ const AvanceLider = () => {
         loading: loadingAvances,
         error: errorAvances } = useQuery(AVANCES_PROJECTO, { variables: { proyecto } })
 
-    if (loadingAvances) return (<div>Cargando........</div>)
+    if (loadingAvances) return (<div className='min-h-screen flex justify-center items-center bg-gray-500'>
+        <div className='bg-yellow-400 rounded-full flex min-w-max p-2'>
+            <img src={imagenes.imag1} alt="Logo empresa" className='md:p-1 h-20 w-20 animate-pulse' />
+            <p className='md:p-7 animate-pulse text-2xl font-bold'>Cargando Login...just wait</p>
+        </div>
+    </div>)
     if (errorAvances) {
         toast.error('No se pudieron extraer los avances del proyecto', {
             toastId: 'error',
@@ -85,33 +90,33 @@ const AvanceLider = () => {
                                         {dataAvances && dataAvances.AvancesOneProject.map((u) => {
                                             return (
                                                 <>
-                                                <tr key={u._id}>
+                                                    <tr key={u._id}>
 
 
-                                                    <td className="px-6 py-4 whitespace-nowrap">
-                                                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                            {u.usuario_avance.nombre_usuario + " " + u.usuario_avance.apellido_usuario}
-                                                        </span>
-                                                    </td>
-                                                    <td className="px-6 py-4 whitespace-nowrap">
-                                                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                            {u.descripcion_avance}
-                                                        </span>
-                                                    </td>
-                                                    <td className="px-6 py-4 whitespace-nowrap">
-                                                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                            {u.fecha_avance.split("T")[0]}
-                                                        </span>
-                                                    </td>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                                                    <input type='text' className="text-sm text-gray-900" defaultValue={u.observaciones_avance} />
-                                                    </td>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                                                        <a><button className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline" type='submit'>
-                                                            Guardar Observaciones
-                                                        </button></a>
-                                                    </td>
-                                                </tr>
+                                                        <td className="px-6 py-4 whitespace-nowrap">
+                                                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                                {u.usuario_avance.nombre_usuario + " " + u.usuario_avance.apellido_usuario}
+                                                            </span>
+                                                        </td>
+                                                        <td className="px-6 py-4 whitespace-nowrap">
+                                                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                                {u.descripcion_avance}
+                                                            </span>
+                                                        </td>
+                                                        <td className="px-6 py-4 whitespace-nowrap">
+                                                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                                {u.fecha_avance.split("T")[0]}
+                                                            </span>
+                                                        </td>
+                                                        <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                                            <input type='text' className="text-sm text-gray-900" defaultValue={u.observaciones_avance} />
+                                                        </td>
+                                                        <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                                            <a><button className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline" type='submit'>
+                                                                Guardar Observaciones
+                                                            </button></a>
+                                                        </td>
+                                                    </tr>
                                                 </>
                                             )
                                         })}

@@ -44,7 +44,12 @@ const PrivateLayout = () => {
         console.log("token actual", authToken)
     }, [authToken]);
 
-    if (mutationLoading || loadingAuth) return <div>Cargando...</div>
+    if (mutationLoading || loadingAuth) return <div className='min-h-screen flex justify-center items-center bg-gray-500'>
+        <div className='bg-yellow-400 rounded-full flex min-w-max p-2'>
+            <img src={imagenes.imag1} alt="Logo empresa" className='md:p-1 h-20 w-20 animate-pulse' />
+            <p className='md:p-7 animate-pulse text-2xl font-bold'>Cargando Login...just wait</p>
+        </div>
+    </div>
 
     // if (!authToken) {
     //     navigate('/Login')
@@ -53,7 +58,6 @@ const PrivateLayout = () => {
     return (
         <>
             <div>
-                
                 <Outlet />
             </div>
         </>
