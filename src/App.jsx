@@ -22,6 +22,7 @@ import InfoProyectoAdmin from "./Pages/Projects/EdicionInfoProyectos/InfoProyect
 import InfoProyectoLider from "./Pages/Projects/EdicionInfoProyectos/InfoProyectoLider";
 import Registroproyectos from "./Pages/Projects/RegistroProyectos/Registroproyectos";
 import EditPerfil from './Pages/Users/Miperfil/EditPerfil'
+import AvanceLider from "./Pages/Projects/Avances/rol/AvanceLider";
 
 import AuthLayout from "./layouts/AuthLayout";
 import PrivateLayout from "./layouts/PrivateLayout";
@@ -107,6 +108,9 @@ function App() {
                   <Route path="Proyecto/InformacionAdmin/:_id" element={<InfoProyectoAdmin/>}/>
                   <Route path="Proyecto/InformacionLider/:_id" element={<InfoProyectoLider/>}/>
                   <Route path="Proyecto/Avances" element={<Avances />} />
+                  
+                  <Route path="Proyecto/Avances/:_id" element={<AvanceLider />} />
+
                   <Route path="Home" element={<Home />} />
                   <Route path="CerrarSesion" element={<Logout />} />
                 </Route>

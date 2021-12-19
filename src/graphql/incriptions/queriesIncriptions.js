@@ -53,6 +53,7 @@ query InscripcionesOneProject(
       nombre_proyecto
     }
     estudiante {
+      _id
       nombre_usuario
       apellido_usuario
       email_usuario
