@@ -18,7 +18,6 @@ function GestionUsuarios() {
                 </h1>
             </section>
             <div className="flex items-center flex-col text-middle">
-
                 <div className="box pt-8 items-center">
                     <div className="flex wrap items-center text-middle">
                         <h1 className="p-3">Ingrese la identificación</h1>
