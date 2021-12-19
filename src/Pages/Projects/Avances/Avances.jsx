@@ -193,8 +193,7 @@ function Avances() {
                                             {dataProjects && dataProjects.Proyectos.map((u) => {
                                                 return (
                                                     <tr key={u._id}>
-
-
+                                                        
                                                         <td className="px-6 py-4 whitespace-nowrap">
                                                             <div name="proyecto" className="text-sm text-gray-900">{u.nombre_proyecto}</div>
                                                         </td>
