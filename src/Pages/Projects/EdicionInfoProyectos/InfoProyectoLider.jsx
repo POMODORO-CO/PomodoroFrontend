@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import * as FaIcons from "react-icons/fa";
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 import Navbar from '../../../components/Navbar/Navbar'
 import imagenes from '../../../assets/img/imagenes';
@@ -10,33 +13,55 @@ import { GET_PROYECTO } from '../../../graphql/projects/queriesProjects';
 import useFormData from '../../../components/UseForm/useForm';
 import { EDITAR_PROYECTO_LIDER } from '../../../graphql/projects/mutationsprojects';
 import PrivateRoute from '../../../components/PrivateRoute/PrivateRoute';
+import { INSCRIPCIONES_PENDIENTES, INSCRIPCIONES_ACEPTADAS } from '../../../graphql/incriptions/queriesIncriptions'
+import {APROBAR_INSCRIPCION, NEGAR_INSCRIPCION} from '../../../graphql/incriptions/mutationInscription'
 
 
 function InfoProyectoLider() {
 
-    // function handleInputChange(e) {
-    //     this.setState({
-    //         [e.target.name]: e.target.value
-    //     });
-    // }
-
     // is the last part of the link i use before /pruebaBack/editar/${u._id} take the _id variable 
     const { _id } = useParams();
+    const inscripcionProyecto = _id;
+    const [tooglePendientes, setTooglePendientes] = useState(true);
 
-    const { data: dataP, error: errorP, loading: loadingP } = useQuery(GET_PROYECTO, { variables: { _id } },);
+    const {
+        data: dataP,
+        error: errorP,
+        loading: loadingP } = useQuery(GET_PROYECTO, { variables: { _id } },);
+    const {
+        data: dataPendientes,
+        error: errorPendientes,
+        loading: loadingPendientes } = useQuery(INSCRIPCIONES_PENDIENTES, {
+            variables: { inscripcionProyecto }
+        });
+    const {
+        data: dataAceptadas,
+        error: errorAceptadas,
+        loading: loadingAceptadas } = useQuery(INSCRIPCIONES_ACEPTADAS, {
+            variables: { inscripcionProyecto }
+        })
 
     const [editarProyectoLider,
         { data: mutationData,
             loading: MutationLoading,
             error: mutationError }] = useMutation(EDITAR_PROYECTO_LIDER);
 
-
+    const [aprobarInscripcion,{
+                data:dataAprobar,
+                error:errorAprobar,
+                loading:loadingAprobar }]=useMutation(APROBAR_INSCRIPCION)
+    
+    const [negarInscripcion,{
+        data:dataNegar,
+        error:errorNegar,
+        loading:loadingNegar }]=useMutation(NEGAR_INSCRIPCION)
+    
     //Hook that is build in the file useForm that i need 3 variables
     const { form, formData, updateFormData } = useFormData(null);
 
     useEffect(() => {
-        if(mutationData){
-            toast.success('Datos actualizados', {toastId: 'error',});
+        if (mutationData) {
+            toast.success('Datos actualizados', { toastId: 'error', });
         }
     }, [mutationData])
 
@@ -62,17 +87,95 @@ function InfoProyectoLider() {
         })
         alert("Cambios guardados con éxito")
     };
- 
+    const cambioToogle = () => {
+        setTooglePendientes(!tooglePendientes);
+        console.log(tooglePendientes)//falso son aceptados
+    };
+
     if (errorP) {
-        toast.error('Error en edicion de datos', {
-          toastId: 'error',
-      });
+        toast.error('Error en edicion de datos', { toastId: 'error-adasda', });
     }
     if (loadingP) {
-        toast.info('Cargando Datos', {
-          toastId: 'error',
-      });
+        toast.info('Cargando Datos', { toastId: 'cargandosad', });
     }
+    if (MutationLoading) {
+        toast.info('Editando', { toastId: 'cargando', });
+    }
+    if (mutationError) {
+        toast.error('Error cambiando proyecto', { toastId: 'errorEdicion', });
+    }
+    if (errorAceptadas) {
+        toast.error('Error inscripciones', { toastId: 'error-con-inscripciones', });
+    }
+    if (loadingAceptadas) {
+        toast.info('Cargando inscripciones', { toastId: 'carga-con-inscripciones', });
+    }
+    if (errorPendientes) {
+        toast.error('Error inscripciones', { toastId: 'error-conPen-inscripciones', });
+    }
+    if (loadingPendientes) {
+        toast.info('Cargando inscripciones', { toastId: 'carga-conPen-inscripciones', });
+    }
+    const submit1=(_id)=>{
+        if (_id != null) {
+            confirmAlert({
+                title: 'Negar la Inscripción',
+                message: '¿Confirmas borrar la inscripción del usuario al proyecto?',
+                buttons: [
+                    {
+                        label: 'Sí',
+                        onClick: () => {
+                            {
+                                console.log('ent');
+                                console.log('as');
+                            }
+                            negarInscripcion(
+                                {
+                                    variables: { _id }
+                                }
+                            )
+                            alert('Inscripción negada')
+                            window.location.reload();
+                        }
+                    },
+                    {
+                        label: 'No',
+                        onClick: () => alert('No se nego la inscripción')
+                    }
+                ]
+            });
+        }
+    };
+    const submit2=(_id)=>{
+        if (_id != null) {
+            confirmAlert({
+                title: 'Aprobar Inscripción',
+                message: '¿Confirma aceptar la inscripción a este proyecto?',
+                buttons: [
+                    {
+                        label: 'Sí',
+                        onClick: () => {
+                            {
+                                console.log('ent');
+                                console.log('as');
+                            }
+                            aprobarInscripcion(
+                                {
+                                    variables: { _id }
+                                }
+                            )
+                            alert('Inscripción aprobada')
+                            window.location.reload();
+                        }
+                    },
+                    {
+                        label: 'No',
+                        onClick: () => alert('No se realizó la aprobación inscripción')
+                    }
+                ]
+            });
+        }
+    };
     return (
         <PrivateRoute rolelist={["LIDER"]}>
             <ToastContainer
@@ -180,55 +283,146 @@ function InfoProyectoLider() {
                                         <NavLink to="/private/Proyecto/Consulta" className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline">Atras</NavLink>
                                     </div>
                                 </section>
+
                             }
-                            <section className=' item-row'>
-                                <div className="flex items-center flex-col text-middle">
-                                    <label className="text-2xl block text-blue-900 text-sm font-bold py-7" htmlFor="username">
-                                        Listado de Avances del Proyecto
-                                    </label>
-                                    <div className="-my-1 overflow-x-auto sm:-mx-6 lg:-mx-2 py-4">
-                                        <div className="py-2 align-middle inline-block min-w-auto sm:px-6 lg:px-12">
-                                            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                                <table className="min-w-auto divide-y divide-gray-200">
-                                                    <thead className="bg-gray-50">
-                                                        <tr>
-                                                            <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">                                                                Usuario Avance
-                                                            </th>
-                                                            <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">                                                                Descripción
-                                                            </th>
-                                                            <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" >
-                                                                Observaciones
-                                                            </th>
-                                                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                Fecha Avance
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody className="bg-white divide-y divide-gray-200">
-                                                        <tr>
+                            {dataP &&
+                                <>
+                                    {dataP.Proyecto.estado_proyecto == "ACTIVO" &&
+                                        <>
+                                            <section className=' item-row'>
 
-                                                            <td className="px-6 py-4 whitespace-nowrap">
-                                                                <div className="text-sm text-center text-gray-900">Usuario</div>
-                                                            </td>
-                                                            <td className="px-6 py-4 whitespace-nowrap">
-                                                                <div className="text-sm text-center text-gray-900">Actualización presupuesto</div>
-                                                            </td>
-                                                            <td className="px-6 py-4 whitespace-nowrap">
-                                                                <div className="text-sm text-center text-gray-900">Cambio por nueva línea</div>
-                                                            </td>
-                                                            <td className="px-6 py-4 whitespace-nowrap">
-                                                                <div className="text-sm text-center text-gray-900">10/10/2022</div>
-                                                            </td>
-                                                        </tr>
+                                                <div className="flex items-center flex-col text-middle">
+                                                    <div>
+                                                        {tooglePendientes == true ?
+                                                            <>
+                                                                <button onClick={() => cambioToogle()} className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"> click ver Aceptados</button>
+                                                                <label className="text-2xl block text-blue-900 text-sm font-bold py-7" htmlFor="username">
+                                                                    Listado de Inscritos Pendientes al Proyecto
+                                                                </label>
 
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
+                                                            </>
+                                                            : <>
+                                                                <button onClick={() => cambioToogle()} className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline">click ver Pendientes</button>
+                                                                <label className="text-2xl block text-blue-900 text-sm font-bold py-7" htmlFor="username">
+                                                                    Listado de Inscritos Aceptados al Proyecto
+                                                                </label>
+                                                            </>
+                                                        }
+                                                    </div>
+                                                    <div className="-my-1 overflow-x-auto sm:-mx-6 lg:-mx-2 py-4">
+                                                        <div className="py-2 align-middle inline-block min-w-auto sm:px-6 lg:px-12">
+                                                            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                                                <table className="min-w-auto divide-y divide-gray-200">
+                                                                    <thead className="bg-gray-50">
+                                                                        <tr>
+                                                                            <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                                Nombre
+                                                                            </th>
+                                                                            <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                                Apellido
+                                                                            </th>
+                                                                            <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" >
+                                                                                Correo
+                                                                            </th>
+                                                                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                                Solicitud
+                                                                            </th>
+                                                                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                                Acción
+                                                                            </th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody className="bg-white divide-y divide-gray-200">
+                                                                        {tooglePendientes === true ?
+                                                                            <>
+                                                                                {dataPendientes && dataPendientes.InscripcionesOneProjectPendientes.map((u) => {
+                                                                                    return (
+                                                                                        <tr key={u._id}>
+
+                                                                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                                                                <div className="text-sm text-center text-gray-900">{u.estudiante.nombre_usuario}</div>
+                                                                                            </td>
+                                                                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                                                                <div className="text-sm text-center text-gray-900">{u.estudiante.apellido_usuario}</div>
+                                                                                            </td>
+                                                                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                                                                <div className="text-sm text-center text-gray-900">{u.estudiante.email_usuario}</div>
+                                                                                            </td>
+                                                                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                                                                <div className="text-sm text-center text-gray-900">{u.estado_inscripcion}</div>
+                                                                                            </td>
+                                                                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                                                                <div className="text-sm text-center text-gray-900">
+                                                                                                    <button onClick={() => submit1(u._id)}>
+                                                                                                        <FaIcons.FaRegThumbsDown size={25} />
+                                                                                                        
+                                                                                                    </button>
+                                                                                                    <button onClick={() => submit2(u._id)}>
+                                                                                                        <FaIcons.FaRegThumbsUp size={25} />
+                                                                                                        
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    )
+                                                                                })}
+                                                                            </>
+                                                                            : <>
+                                                                                {dataAceptadas && dataAceptadas.InscripcionesOneProject.map((u) => {
+                                                                                    return (
+                                                                                        <tr key={u._id}>
+
+                                                                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                                                                <div className="text-sm text-center text-gray-900">{u.estudiante.nombre_usuario}</div>
+                                                                                            </td>
+                                                                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                                                                <div className="text-sm text-center text-gray-900">{u.estudiante.apellido_usuario}</div>
+                                                                                            </td>
+                                                                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                                                                <div className="text-sm text-center text-gray-900">{u.estudiante.email_usuario}</div>
+                                                                                            </td>
+                                                                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                                                                <div className="text-sm text-center text-gray-900">{u.estado_inscripcion}</div>
+                                                                                            </td>
+                                                                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                                                                <div className="text-sm text-center text-gray-900">
+                                                                                                    {/* <button onClick={() => submit1(u._id)}>
+                                                                                                        <FaIcons.FaRegThumbsDown size={25} />
+                                                                                                        
+                                                                                                    </button>
+                                                                                                    <button onClick={() => submit2(u._id)}>
+                                                                                                        <FaIcons.FaRegThumbsUp size={25} />
+                                                                                                        
+                                                                                                    </button> */}
+                                                                                                </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    )
+                                                                                })}
+                                                                            </>
+
+                                                                        }
+
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </section>
+                                        </>
+                                    }
+                                </>
+                            }
+
+
+
                         </section>
+
+
+
+
                     </section>
                 </div>
             </div>

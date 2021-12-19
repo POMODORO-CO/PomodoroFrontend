@@ -1,43 +1,51 @@
 import React from 'react'
-import "../../../../index.css";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
 import { useQuery, useMutation } from '@apollo/client';
-import { GET_PROYECTOS } from '../../../../graphql/projects/queriesProjects';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import * as FaIcons from "react-icons/fa";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
-import { INCRIPCION_ESTUDIANTE } from '../../../../graphql/projects/mutationsprojects';
+
+import "../../../../index.css";
+import { INCRIPCIONES_USUARIO } from '../../../../graphql/incriptions/queriesIncriptions';
 import { useUser } from '../../../../context/userContext'
 import PrivateRoute from '../../../../components/PrivateRoute/PrivateRoute';
+import {ELIMINAR_INSCRIPCION} from '../../../../graphql/incriptions/mutationInscription'
 
 function EstudianteConsulta() {
 
     const { userData } = useUser();
     const estudiante = userData._id;
 
-    const { data: dataProjects, error: errorProjects, loading: loadingProjects } = useQuery(GET_PROYECTOS);
-    const [inscribirEstudiante,
-        { data: dataInscripcion, error: errorInscripcion, loading: loadingInscripcion }] = useMutation(INCRIPCION_ESTUDIANTE);
-
-    const submit = (inscripcionProyecto) => {
-        if (inscripcionProyecto != null) {
+    const { 
+            data: dataInscripcion, 
+            error: errorInscripcion, 
+            loading: loadingInscripcion } = useQuery(INCRIPCIONES_USUARIO,{variables:{estudiante}});
+    const [eliminarInscripcion,{
+            data,
+            error,
+            loading }]=useMutation(ELIMINAR_INSCRIPCION)
+    
+    const submit=(_id)=>{
+        if (_id != null) {
             confirmAlert({
-                title: 'Inscripcion a proyecto',
-                message: '¿Confirmas tu inscripción a este proyecto?',
+                title: 'Borrar Inscripción',
+                message: '¿Confirmas borrar la inscripción a este proyecto?',
                 buttons: [
                     {
                         label: 'Sí',
                         onClick: () => {
                             {
-                                console.log('entro al alert y el id del proyecto es:', inscripcionProyecto);
-                                console.log('y el del estudiantes es: ', estudiante);
+                                console.log('ent');
+                                console.log('as');
                             }
-                            inscribirEstudiante(
+                            eliminarInscripcion(
                                 {
-                                    variables: { inscripcionProyecto, estudiante }
+                                    variables: { _id }
                                 }
                             )
                             alert('Inscripción exitosa')
+                            window.location.reload();
                         }
                     },
                     {
@@ -49,9 +57,22 @@ function EstudianteConsulta() {
         }
     };
 
+    if (loadingInscripcion) {
+        toast.info('Cargando Datos', {toastId: 'LOADING',});
+    }
+    if (errorInscripcion) {
+        toast.error('Cargando Datos', {toastId: 'ERROR',});
+    }
+    
+
     return (
         <>
             <PrivateRoute rolelist={["ESTUDIANTE"]}>
+            <ToastContainer
+                position="bottom-right"
+                autoClose={2000}
+                hideProgressBar={false}
+            />
                 <div className="flex items-center flex-col text-middle">
 
                     <div className="box pt-6">
@@ -84,16 +105,19 @@ function EstudianteConsulta() {
                                                 ID
                                             </th>
                                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Nombre del proyectos
+                                                Nombre Proyecto 
                                             </th>
                                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Líder
+                                                Lider
                                             </th>
                                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Estado
+                                                Fase proyecto
                                             </th>
                                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Fase
+                                                Estado  proyecto
+                                            </th>
+                                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Estado inscripción
                                             </th>
                                             <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Acciones
@@ -101,7 +125,7 @@ function EstudianteConsulta() {
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
-                                        {dataProjects && dataProjects.Proyectos.map((u) => {
+                                        {dataInscripcion && dataInscripcion.InscripcionesOneUser.map((u) => {
                                             return (
                                                 <tr key={u._id}>
                                                     <td className="hidden">
@@ -111,35 +135,33 @@ function EstudianteConsulta() {
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                            {u.nombre_proyecto}
+                                                            {u.inscripcion_proyecto.nombre_proyecto}
                                                         </span>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-50 text-green-800">
-                                                            {u.lider_proyecto.nombre_usuario + " " + u.lider_proyecto.apellido_usuario}
+                                                            {u.inscripcion_proyecto.lider_proyecto.nombre_usuario + " " + u.inscripcion_proyecto.lider_proyecto.apellido_usuario}
                                                         </span>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-50 text-green-800">
-                                                            {u.estado_proyecto}
+                                                            {u.inscripcion_proyecto.fase_proyecto}
                                                         </span>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-50 text-green-800">
-                                                            {u.fase_proyecto}
+                                                            {u.inscripcion_proyecto.estado_proyecto}
+                                                        </span>
+                                                    </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap">
+                                                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-50 text-green-800">
+                                                            {u.estado_inscripcion}
                                                         </span>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                                                        {u.estado_proyecto == "ACTIVO" ?
-                                                            <>
-                                                                <button href="#" className="inline-block" onClick={() => submit(u._id)}>
-                                                                    <AiIcons.AiFillPlusCircle size={25} /></button>
-                                                                <a href="#" className="inline-block"
-                                                                ><FaIcons.FaEdit size={25} /></a>
-                                                                <a href="#" className="inline-block"
-                                                                ><FaIcons.FaTrash size={25} /></a>
-                                                            </>
-                                                            : null}
+                                                        <button onClick={() => submit(u._id)}>
+                                                        <FaIcons.FaRegTrashAlt size={25} />
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             )

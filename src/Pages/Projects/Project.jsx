@@ -30,17 +30,17 @@ function Project() {
                                 <section className='flex flex-col pt-5 px-20 py-1'>
                                     <section className='flex flex-row justify-center my-auto space-x-10 inline-flex items-center px-8 py-6'>
                                         <PrivateComponent rolelist={["LIDER", "ADMINISTRADOR", "ESTUDIANTE"]}>
-                                            <button> <a href='/private/Proyecto/Consulta' className="py-2 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Consulta de Proyectos </a></button>
+                                            <button> <a href='/private/Proyecto/Consulta' className="py-2 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Consultar Proyectos </a></button>
                                         </PrivateComponent>
                                         <PrivateComponent rolelist={["LIDER"]}>
                                             <button> <a href="/private/Proyecto/Registroproyectos" className="py-2 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Registrar Proyecto</a></button>
                                         </PrivateComponent>
                                         
-                                        <PrivateComponent rolelist={["LIDER","ESTUDIANTE"]}>
-                                            <button> <a href="/private/Proyecto/Inscripciones" className="py-2 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Inscribete a un Proyecto</a></button>
+                                        <PrivateComponent rolelist={["ESTUDIANTE"]}>
+                                            <button> <a href="/private/Proyecto/Inscripciones" className="py-2 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Inscribir Proyecto</a></button>
                                         </PrivateComponent>
                                         <PrivateComponent rolelist={["LIDER","ESTUDIANTE"]}>
-                                            <button> <a href="/private/Proyecto/Avances" className="py-2 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Registra un Avance de Proyecto</a></button>
+                                            <button> <a href="/private/Proyecto/Avances" className="py-2 px-6 text-white font-bold rounded-full bg-blue-400 shadow-lg block md:inline-block">Registrar Avances de Proyecto</a></button>
                                         </PrivateComponent>
                                         <PrivateComponent rolelist={["LIDER","ESTUDIANTE"]}>
                                             <button> <a href="/private/Proyecto/AprobarRegistro" className="py-2 px-6 text-white font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block">Gestión de Registros</a></button>
