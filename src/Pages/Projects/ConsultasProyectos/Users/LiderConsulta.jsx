@@ -1,22 +1,39 @@
 import React from 'react'
-import "../../../../index.css";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { GET_PROYECTOS_LIDER } from '../../../../graphql/projects/queriesProjects';
 import { useUser } from '../../../../context/userContext';
 import PrivateRoute from '../../../../components/PrivateRoute/PrivateRoute';
+import "../../../../index.css";
 
 function LiderConsulta() {
 
     const { userData } = useUser();
     const liderProyecto = userData._id;
-    const { data: dataP_Lider, error: errorP_Lider, loading: loadingP_Lider } = useQuery(GET_PROYECTOS_LIDER, { variables: { liderProyecto } },);
+    const {
+        data: dataP_Lider,
+        error: errorP_Lider,
+        loading: loadingP_Lider } = useQuery(GET_PROYECTOS_LIDER, { variables: { liderProyecto } },);
 
+    if (loadingP_Lider) {
+        toast.info('Cargando Datos', { toastId: 'LOADING', });
+    }
+    if (errorP_Lider) {
+        toast.error('Cargando Datos', { toastId: 'ERROR', });
+    }
     return (
         <>
             <PrivateRoute rolelist={["LIDER"]}>
+                <ToastContainer
+                    position="bottom-right"
+                    autoClose={2000}
+                    hideProgressBar={false}
+                />
                 <div className="flex items-center flex-col text-middle">
                     <div className="box pt-6">
                         <div className="box-wrapper">
@@ -98,25 +115,27 @@ function LiderConsulta() {
                                                     <td
                                                         className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium "                                 >
 
-                                                        {u.estado_proyecto == "ACTIVO" ?
+                                                        {/* {u.estado_proyecto == "ACTIVO" ?
                                                             <>
 
-                                                                <a href="#" className="inline-block"
-                                                                ><AiIcons.AiFillPlusCircle size={25} /></a>
-                                                                {u.estado_proyecto == "ACTIVO" ? <Link to={`/private/Proyecto/InformacionLider/${u._id}`}>
+                                                                <a href="#" className="inline-block"><AiIcons.AiFillPlusCircle size={25} /></a>
+                                                                
+                                                                {u.estado_proyecto == "ACTIVO" ? 
+                                                                <Link to={`/private/Proyecto/InformacionLider/${u._id}`}>
                                                                     <FaIcons.FaEdit size={25} />
                                                                 </Link> : null}
-                                                                <a href="#" className="inline-block"
-                                                                ><FaIcons.FaTrash size={25} /></a>
+
+                                                                <a href="#" className="inline-block">
+                                                                    <FaIcons.FaTrash size={25} />
+                                                                </a>
                                                             </>
-                                                            : null}
-                                                    </td>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium ">
+                                                            : null} */}
                                                         <Link to={`/private/Proyecto/InformacionLider/${u._id}`}>
                                                             <FaIcons.FaEdit size={25} />
                                                         </Link>
 
                                                     </td>
+
                                                 </tr>
                                             )
                                         })}

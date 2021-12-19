@@ -49,8 +49,8 @@ function SearchUser() {
                                         <tr key={u._id}>
                                             <td className="px-6 py-4 whitespace-nowrap">{u.nombre_usuario}</td>
                                             <td className="px-6 py-4 whitespace-nowrap">{u.apellido_usuario}</td>
-                                            <td className="px-6 py-4 whitespace-nowrap">{u.documento_usuario}</td>
                                             <td className="px-6 py-4 whitespace-nowrap">{u.email_usuario}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">{u.documento_usuario}</td>
                                             <td className="px-6 py-4 whitespace-nowrap">{u.estado_usuario}</td>
                                             <td className="px-6 py-4 whitespace-nowrap">{u.rol_usuario}</td>
                                             <td className="px-6 py-4 whitespace-nowrap">
