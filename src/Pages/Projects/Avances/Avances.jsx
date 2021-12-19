@@ -74,7 +74,7 @@ function Avances() {
 
     if (queryLoading) return <div className='min-h-screen flex justify-center items-center bg-gray-500'>
         <div className='bg-yellow-400 rounded-full flex min-w-max p-2'>
-            <img src={imagenes.imag1} alt="Logo empresa" className='md:p-1 h-20 w-20 animate-pulse' />
+            <img src={imagenes.imag1} alt="Logo empresa" className='md:p-1 h-20 w-20 animate-pulse'/>
             <p className='md:p-7 animate-pulse text-2xl font-bold'>Cargando Login...just wait</p>
         </div>
     </div>;

@@ -30,20 +30,20 @@ function Project() {
                                 <section className='flex flex-col pt-5 px-20 py-1'>
                                     <section className='flex flex-row justify-center my-auto space-x-10 items-center px-8 py-6'>
                                         <PrivateComponent rolelist={["LIDER", "ADMINISTRADOR", "ESTUDIANTE"]}>
-                                            <button> <a href='/private/Proyecto/Consulta' className="py-1 px-10 text-gray-700 font-bold rounded-full bg-yellow-400 shadow md:shadow-2xl block md:inline-block">Consultar Proyectos </a></button>
+                                            <button> <a href='/private/Proyecto/Consulta' className="py-1 px-10 text-gray-700 font-bold rounded-full bg-yellow-400 shadow md:shadow-2xl block md:inline-block text-lg">Consultar Proyectos </a></button>
                                         </PrivateComponent>
                                         <PrivateComponent rolelist={["LIDER"]}>
-                                            <button> <a href="/private/Proyecto/Registroproyectos" className="py-1 px-10 text-gray-700 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block">Registrar Proyecto</a></button>
+                                            <button> <a href="/private/Proyecto/Registroproyectos" className="py-1 px-10 text-gray-700 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block text-lg">Registrar Proyecto</a></button>
                                         </PrivateComponent>
                                         
                                         <PrivateComponent rolelist={["ESTUDIANTE"]}>
-                                            <button> <a href="/private/Proyecto/Inscripciones" className="py-1 px-10 text-gray-700 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block">Inscribir Proyecto</a></button>
+                                            <button> <a href="/private/Proyecto/Inscripciones" className="py-1 px-10 text-gray-700 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block text-lg">Inscribir Proyecto</a></button>
                                         </PrivateComponent>
                                         <PrivateComponent rolelist={["LIDER","ESTUDIANTE"]}>
-                                            <button> <a href="/private/Proyecto/Avances" className="py-1 px-10 text-gray-700 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block">Avances de Proyecto</a></button>
+                                            <button> <a href="/private/Proyecto/Avances" className="py-1 px-10 text-gray-700 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block text-lg">Avances de Proyecto</a></button>
                                         </PrivateComponent>
                                         <PrivateComponent rolelist={["LIDER","ESTUDIANTE"]}>
-                                            <button> <a href="/private/Proyecto/AprobarRegistro" className="py-1 px-12 text-gray-700 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block">Gestión de Registros</a></button>
+                                            <button> <a href="/private/Proyecto/AprobarRegistro" className="py-1 px-12 text-gray-700 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block text-lg">Gestión de Registros</a></button>
                                         </PrivateComponent>
                                     </section>
                                 </section>
