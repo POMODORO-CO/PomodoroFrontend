@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ReactTooltip from 'react-tooltip';
 
 import { GET_PROYECTOS_LIDER } from '../../../../graphql/projects/queriesProjects';
 import { useUser } from '../../../../context/userContext';
@@ -130,8 +131,11 @@ function LiderConsulta() {
                                                                 </a>
                                                             </>
                                                             : null} */}
-                                                        <Link to={`/private/Proyecto/InformacionLider/${u._id}`}>
+                                                        <Link to={`/private/Proyecto/InformacionLider/${u._id}`} data-tip="React-tooltip">
                                                             <FaIcons.FaSearch size={25} />
+                                                            <ReactTooltip place="top" type="info" effect="solid">
+                                                                <span>Ver Proyecto</span>
+                                                            </ReactTooltip>
                                                         </Link>
 
                                                     </td>

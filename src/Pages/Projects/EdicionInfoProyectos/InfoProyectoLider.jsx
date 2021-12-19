@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import * as FaIcons from "react-icons/fa";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import ReactTooltip from 'react-tooltip';
 
 import Navbar from '../../../components/Navbar/Navbar'
 import imagenes from '../../../assets/img/imagenes';
@@ -14,7 +15,7 @@ import useFormData from '../../../components/UseForm/useForm';
 import { EDITAR_PROYECTO_LIDER } from '../../../graphql/projects/mutationsprojects';
 import PrivateRoute from '../../../components/PrivateRoute/PrivateRoute';
 import { INSCRIPCIONES_PENDIENTES, INSCRIPCIONES_ACEPTADAS } from '../../../graphql/incriptions/queriesIncriptions'
-import {APROBAR_INSCRIPCION, NEGAR_INSCRIPCION} from '../../../graphql/incriptions/mutationInscription'
+import { APROBAR_INSCRIPCION, NEGAR_INSCRIPCION } from '../../../graphql/incriptions/mutationInscription'
 
 
 function InfoProyectoLider() {
@@ -46,16 +47,16 @@ function InfoProyectoLider() {
             loading: MutationLoading,
             error: mutationError }] = useMutation(EDITAR_PROYECTO_LIDER);
 
-    const [aprobarInscripcion,{
-                data:dataAprobar,
-                error:errorAprobar,
-                loading:loadingAprobar }]=useMutation(APROBAR_INSCRIPCION)
-    
-    const [negarInscripcion,{
-        data:dataNegar,
-        error:errorNegar,
-        loading:loadingNegar }]=useMutation(NEGAR_INSCRIPCION)
-    
+    const [aprobarInscripcion, {
+        data: dataAprobar,
+        error: errorAprobar,
+        loading: loadingAprobar }] = useMutation(APROBAR_INSCRIPCION)
+
+    const [negarInscripcion, {
+        data: dataNegar,
+        error: errorNegar,
+        loading: loadingNegar }] = useMutation(NEGAR_INSCRIPCION)
+
     //Hook that is build in the file useForm that i need 3 variables
     const { form, formData, updateFormData } = useFormData(null);
 
@@ -116,7 +117,7 @@ function InfoProyectoLider() {
     if (loadingPendientes) {
         toast.info('Cargando inscripciones', { toastId: 'carga-conPen-inscripciones', });
     }
-    const submit1=(_id)=>{
+    const submit1 = (_id) => {
         if (_id != null) {
             confirmAlert({
                 title: 'Negar la Inscripción',
@@ -146,7 +147,7 @@ function InfoProyectoLider() {
             });
         }
     };
-    const submit2=(_id)=>{
+    const submit2 = (_id) => {
         if (_id != null) {
             confirmAlert({
                 title: 'Aprobar Inscripción',
@@ -178,11 +179,7 @@ function InfoProyectoLider() {
     };
     return (
         <PrivateRoute rolelist={["LIDER"]}>
-            <ToastContainer
-                position="bottom-right"
-                autoClose={2000}
-                hideProgressBar={false}
-            />
+            <ToastContainer position="top-right" autoClose={2000} hideProgressBar={false}/>
             <div>
                 <Navbar />
 
@@ -355,15 +352,19 @@ function InfoProyectoLider() {
                                                                                             </td>
                                                                                             <td className="px-6 py-4 whitespace-nowrap">
                                                                                                 <div className="text-sm text-center text-gray-900">
-                                                                                                    <button onClick={() => submit1(u._id)}>
-                                                                                                        rechazar
+                                                                                                    <button onClick={() => submit1(u._id)} data-tip data-for="down">
+
                                                                                                         <FaIcons.FaRegThumbsDown size={25} />
-                                                                                                        
+                                                                                                        <ReactTooltip id='down' place="top" type="warning" effect="solid">
+                                                                                                            <span>Rechazar Solicitud</span>
+                                                                                                        </ReactTooltip>
                                                                                                     </button>
-                                                                                                    <button onClick={() => submit2(u._id)}>
-                                                                                                        aceptar
-                                                                                                        <FaIcons.FaRegThumbsUp size={25} />
+                                                                                                    <button onClick={() => submit2(u._id)} data-tip data-for="up">
                                                                                                         
+                                                                                                        <FaIcons.FaRegThumbsUp size={25} />
+                                                                                                        <ReactTooltip id='up' place="top" type="success" effect="solid">
+                                                                                                            <span>Aceptar Solicitud</span>
+                                                                                                        </ReactTooltip>
                                                                                                     </button>
                                                                                                 </div>
                                                                                             </td>

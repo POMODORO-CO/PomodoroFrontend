@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ReactTooltip from 'react-tooltip';
 
 import "../../../../index.css";
 import { GET_PROYECTOS } from '../../../../graphql/projects/queriesProjects';
@@ -111,8 +112,11 @@ function AdministradorConsulta() {
                                                         </span>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                                                        <Link to={`/private/Proyecto/InformacionAdmin/${u._id}`}>
+                                                        <Link to={`/private/Proyecto/InformacionAdmin/${u._id}`} data-tip="React-tooltip">
                                                             <FaIcons.FaEdit size={25} />
+                                                            <ReactTooltip place="top" type="success" effect="solid">
+                                                                <span>Modificar Estado o Fase </span>
+                                                            </ReactTooltip>
                                                         </Link>
 
                                                     </td>
