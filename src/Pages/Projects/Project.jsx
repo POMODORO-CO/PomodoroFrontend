@@ -39,10 +39,10 @@ function Project() {
                                         <PrivateComponent rolelist={["ESTUDIANTE"]}>
                                             <button> <a href="/private/Proyecto/Inscripciones" className="py-1 px-10 text-gray-700 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block text-lg">Inscribir Proyecto</a></button>
                                         </PrivateComponent>
-                                        <PrivateComponent rolelist={["LIDER","ESTUDIANTE"]}>
+                                        <PrivateComponent rolelist={["ESTUDIANTE"]}>
                                             <button> <a href="/private/Proyecto/Avances" className="py-1 px-10 text-gray-700 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block text-lg">Avances de Proyecto</a></button>
                                         </PrivateComponent>
-                                        <PrivateComponent rolelist={["LIDER","ESTUDIANTE"]}>
+                                        <PrivateComponent rolelist={["NAdie"]}>
                                             <button> <a href="/private/Proyecto/AprobarRegistro" className="py-1 px-12 text-gray-700 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block text-lg">Gestión de Registros</a></button>
                                         </PrivateComponent>
                                     </section>
