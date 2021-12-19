@@ -57,8 +57,8 @@ function Consulta() {
         <>
             <Navbar />
             <div>
-                RETORNOOOO
-                {/* {toastr.warning("Usuario sin permisos")} */}
+                Usuario sin permisos
+                
             </div>
         </>
     )

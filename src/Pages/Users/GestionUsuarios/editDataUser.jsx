@@ -1,16 +1,21 @@
 import react, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useMutation, useQuery } from '@apollo/client';
+import { useNavigate } from "react-router";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { GET_USUARIO } from "../../../graphql/users/queries.js";
 import useFormData from "../../../components/UseForm/useForm.js";
-import { EDITAR_USUARIO } from "../../../graphql/users/mutations.js";
+import { EDITAR_ESTADO_USUARIO } from "../../../graphql/users/mutations.js";
 import Navbar from '../../../components/Navbar/Navbar';
 import PrivateRoute from '../../../components/PrivateRoute/PrivateRoute.jsx';
 
-function EditDataUser() {
 
+function EditDataUser() {
+    const navigate= useNavigate();
     //Hook that is build in the file useForm that i need 3 variables
-    const { form, formData, updateFormData } = useFormData(null);
+    const { form, formData, updateFormData } = useFormData();
 
     // is the last part of the link i use before /pruebaBack/editar/${u._id} take the _id variable 
     const { _id } = useParams();
@@ -26,28 +31,54 @@ function EditDataUser() {
     const [editarUsuario,
         { data: mutationData,
             loading: MutationLoading,
-            error: mutationError }] = useMutation(EDITAR_USUARIO)
+            error: mutationError }] = useMutation(EDITAR_ESTADO_USUARIO)
 
     // function that sumit the info into the variable editarUsuario
     const submitForm = (e) => {
         e.preventDefault();
+        const estadoUsuario = formData.estadoUsuario ;
         editarUsuario({
-            variables: { _id, ...formData }
+            variables: { _id, estadoUsuario }
         })
     };
 
     //execute every time the variable mutationData change
     useEffect(() => {
-        console.log("mutacion edicion ", mutationData)
+        console.log("mut",mutationData)
+        if(mutationData){
+            toast.info('Estado Editado completada', {
+                toastId: 'mutation-estado',
+            });
+            navigate('/private/GestionUsuarios');
+        }
     }, [mutationData])
 
     //loading initial information in the queary
     if (queryLoading) return (<div>Cargando........</div>)
+    if (MutationLoading) {
+        toast.info('Editando Estado usuario', {
+          toastId: 'loading',
+      });
+      }
+      if (mutationError) {
+        toast.error('Error estado usuario', {
+          toastId: 'error',
+      });
+      }
 
-
+      if(queryError){
+        toast.error('No se puede traer informacion del usuario', {
+            toastId: 'error',
+        });
+      }
     return (
         <>
-            <PrivateRoute rolelist={["ADMINISTRADOR"]}>
+            <PrivateRoute rolelist={["ADMINISTRADOR","LIDER"]}>
+            <ToastContainer
+                position="bottom-right"
+                autoClose={2000}
+                hideProgressBar={false}
+            />
                 <Navbar />
                 <div className='min-h-screen grid place-content-center bg-gray-500 px-7 py-1'>
                     <div>
@@ -55,60 +86,60 @@ function EditDataUser() {
                             Editando usuario número:
                         </div>
                         <div className='text-black px-11 py-3 bg-yellow-400 rounded-lg m-1 font-bold'> {_id} </div>
+
+
                         <form className="w-full max-w-lg" onSubmit={submitForm} onChange={updateFormData} ref={form}>
-                            <div className="flex flex-wrap -mx-3 mb-3">
-                                <label className="text-white text-sm font-bold mb-1">Nombre</label>
-                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-                                    defaultValue={queryData.Usuario.nombre_usuario} type="text" name="nombreUsuario" readOnly/>
+
+                            <label className="text-white text-sm font-bold mb-1">Nombre</label>
+                            <input className='shadow appearance-none border rounded w-full py-2 px-3 bg-gray-300 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                                defaultValue={queryData.Usuario.nombre_usuario} type="text" name="nombreUsuario" />
+
+                            <label className="text-white text-sm font-bold mb-1">Apellido</label>
+                            <input className='shadow appearance-none border rounded w-full py-2 px-3 bg-gray-300 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                                defaultValue={queryData.Usuario.apellido_usuario} type="text" name="apellidoUsuario" />
+
+
+                            <label className="text-white text-sm font-bold mb-1"> Documento </label>
+                            <input className='shadow appearance-none border rounded w-full py-2 px-3 bg-gray-300 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                                defaultValue={queryData.Usuario.documento_usuario} type="text" name="documentoUsuario" />
+
+                            <label className="text-white text-sm font-bold mb-1"> Tipo Documento </label>
+                            <input className='shadow appearance-none border rounded w-full py-2 px-3 bg-gray-300 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                                defaultValue={queryData.Usuario.tipo_documento_usuario}
+                                type="text"
+                                name="tipoDocumentoUsuario" />
+
+                            <label className="text-white text-sm font-bold mb-1"> Rol usuario </label>
+                            <input className='shadow appearance-none border rounded w-full py-2 px-3 bg-gray-300 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                                defaultValue={queryData.Usuario.rol_usuario}
+                                type="text"
+                                name="rolUsuario" />
+
+                            <label className="text-white text-sm font-bold mb-1"> Email </label>
+                            <input className='shadow appearance-none border rounded w-full py-2 px-3 bg-gray-300 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                                defaultValue={queryData.Usuario.email_usuario}
+                                type="text"
+                                name="emailUsuario" />
+
+                            <label className="text-white text-sm font-bold mb-1"> Estado usuario </label>
+                            <select className="block appearance-none w-full bg-white-200 border border-blue-900 text-gray-700 py-2 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                defaultValue={queryData.Usuario.estado_usuario}
+                                name="estadoUsuario">
+                                <option>AUTORIZADO</option>
+                                <option>NO_AUTORIZADO</option>
+                                <option>PENDIENTE</option>
+                            </select>
+
+                            <div className="py-2 px-6">
+                            <button type='submit' className="py-2 px-6 text-white font-bold rounded-full bg-blue-900 shadow-lg block md:inline-block">Editar Estado</button>
+                            <Link to={`/private/GestionUsuarios`}>
+                                <button className="py-2 px-6 text-white font-bold rounded-full bg-blue-900 shadow-lg block md:inline-block">Ir atrás</button>
+                            </Link>
+
                             </div>
-                            <div className="flex flex-wrap -mx-3 mb-3">
-                                <label className="text-white text-sm font-bold mb-1">Apellido</label>
-                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-                                    defaultValue={queryData.Usuario.apellido_usuario} type="text" name="apellidoUsuario" readOnly/>
-                            </div>
-                            <div className="flex flex-wrap -mx-3 mb-3">
-                                <label className="text-white text-sm font-bold mb-1"> Documento </label>
-                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-                                    defaultValue={queryData.Usuario.documento_usuario} type="text" name="documentoUsuario" readOnly/>
-                            </div>
-                            <div className="flex flex-wrap -mx-3 mb-3">
-                                <label className="text-white text-sm font-bold mb-1"> Tipo Documento </label>
-                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-                                    defaultValue={queryData.Usuario.tipo_documento_usuario}
-                                    type="text"
-                                    name="tipoDocumentoUsuario" readOnly/>
-                            </div>
-                            {/* <div className="flex flex-wrap -mx-3 mb-3">
-                                <label className="text-white text-sm font-bold mb-1"> Password </label>
-                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-                                    defaultValue={queryData.Usuario.password_usuario}
-                                    type="password"
-                                    name="passwordUsuario" />
-                            </div> */}
-                            <div className="flex flex-wrap -mx-3 mb-3">
-                                <label className="text-white text-sm font-bold mb-1"> Rol usuario </label>
-                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-                                    defaultValue={queryData.Usuario.rol_usuario}
-                                    type="text"
-                                    name="rolUsuario" readOnly/>
-                            </div>
-                            <div className="flex flex-wrap -mx-3 mb-3">
-                                <label className="text-white text-sm font-bold mb-1"> Email </label>
-                                <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-                                    defaultValue={queryData.Usuario.email_usuario}
-                                    type="text"
-                                    name="emailUsuario" readOnly/>
-                            </div>
-                            <div className="flex flex-wrap -mx-3 mb-16 place-content-center">
-                                <div className="py-2 px-6">
-                                    <button className="py-2 px-6 text-white font-bold rounded-full bg-blue-900 shadow-lg block md:inline-block">Editar</button>
-                                </div>
-                                <div className="py-2 px-6">
-                                    <Link to={`/private/GestionUsuarios`}>
-                                        <button className="py-2 px-6 text-white font-bold rounded-full bg-blue-900 shadow-lg block md:inline-block">Ir atrás</button></Link>
-                                </div>
-                            </div>
+
                         </form>
+                        
                     </div>
                 </div>
             </PrivateRoute>

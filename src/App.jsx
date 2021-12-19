@@ -18,8 +18,8 @@ import Avances from './Pages/Projects/Avances/Avances';
 import Home from "./Pages/Home/Home";
 import Landingpage from "./Pages/Landingpage/Landingpage";  
 import AprobarRegistro from "./Pages/Projects/AprobarRegistro"
-import InfoProyectoAdmin from "./Pages/Projects/InfoProyectoAdmin";
-import InfoProyectoLider from "./Pages/Projects/InfoProyectoLider";
+import InfoProyectoAdmin from "./Pages/Projects/EdicionInfoProyectos/InfoProyectoAdmin";
+import InfoProyectoLider from "./Pages/Projects/EdicionInfoProyectos/InfoProyectoLider";
 import Registroproyectos from "./Pages/Projects/RegistroProyectos/Registroproyectos";
 import EditPerfil from './Pages/Users/Miperfil/EditPerfil'
 

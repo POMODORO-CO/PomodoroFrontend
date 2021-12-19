@@ -22,7 +22,7 @@ function EditPerfil() {
         data: queryData,
         error: queryError,
         loading: queryLoading } = useQuery(GET_USUARIO, { variables: { _id , rolUsuario} })
-        console.log(queryData)
+    
 
     const [editarUsuario,
         { data: mutationData,
@@ -36,7 +36,7 @@ function EditPerfil() {
 //
 
     const submitForm=(e)=>{
-        e.preventDefault(); 
+        e.preventDefault();    
         formData._id = userData._id;
         formData.rolUsuario = userData.rol_usuario;
         editarUsuario({variables:{...formData}
@@ -46,10 +46,11 @@ function EditPerfil() {
     useEffect(()=>{
         if(mutationData){
 
-            navigate('/private/MiPerfil');
+            
             toast.info('Edicion completada', {
                 toastId: 'mutation',
             });
+            navigate('/private/MiPerfil');
         };
     },[mutationData,setToken,navigate])
 
