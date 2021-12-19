@@ -21,12 +21,31 @@ const AvanceLider = () => {
         loading: loadingAvances,
         error: errorAvances } = useQuery(AVANCES_PROJECTO, { variables: { proyecto } })
 
+
+    
+
+    
+
+
+
+
     useEffect(() => {
         console.log("Datos avances", dataAvances)
     }, [dataAvances])
 
-    
-    if (loadingAvances) return (<div>Cargando........</div>)
+    if (errorObservacion) {
+        toast.error('No se pudieron extraer los avances del proyecto', { toastId: 'error-obser', });
+    }
+    if (loadingObservacion) {
+        toast.info('Subiendo observaciones', { toastId: 'loading-obser', });
+    }
+    if (loadingAvances) return (<div className='min-h-screen flex justify-center items-center bg-gray-500'>
+        <div className='bg-yellow-400 rounded-full flex min-w-max p-2'>
+            <img src={imagenes.imag1} alt="Logo empresa" className='md:p-1 h-20 w-20 animate-pulse' />
+            <p className='md:p-7 animate-pulse text-2xl font-bold'>Cargando Login...just wait</p>
+        </div>
+    </div>)
+
     if (errorAvances) {
         toast.error('No se pudieron extraer los avances del proyecto', {
             toastId: 'error',
@@ -68,8 +87,6 @@ const AvanceLider = () => {
 
                         <div className="py-2 align-middle inline-block min-w-auto sm:px-6 lg:px-12">
 
-
-
                             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
 
                                 <table className="min-w-auto divide-y divide-gray-200">
@@ -79,7 +96,6 @@ const AvanceLider = () => {
                                             <th scope="col" className="px-15 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ">
                                                 Nombre Estudiante
                                             </th>
-
 
                                             <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ">
                                                 Descripción Avance
@@ -139,6 +155,7 @@ const AvanceLider = () => {
                                         })}
                                     </tbody>
                                 </table>
+
 
 
                             </div>
