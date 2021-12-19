@@ -5,28 +5,29 @@ import 'react-toastify/dist/ReactToastify.css';
 import * as FaIcons from "react-icons/fa";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import ReactTooltip from 'react-tooltip';
 
 import "../../../../index.css";
 import { INCRIPCIONES_USUARIO } from '../../../../graphql/incriptions/queriesIncriptions';
 import { useUser } from '../../../../context/userContext'
 import PrivateRoute from '../../../../components/PrivateRoute/PrivateRoute';
-import {ELIMINAR_INSCRIPCION} from '../../../../graphql/incriptions/mutationInscription'
+import { ELIMINAR_INSCRIPCION } from '../../../../graphql/incriptions/mutationInscription'
 
 function EstudianteConsulta() {
 
     const { userData } = useUser();
     const estudiante = userData._id;
 
-    const { 
-            data: dataInscripcion, 
-            error: errorInscripcion, 
-            loading: loadingInscripcion } = useQuery(INCRIPCIONES_USUARIO,{variables:{estudiante}});
-    const [eliminarInscripcion,{
-            data,
-            error,
-            loading }]=useMutation(ELIMINAR_INSCRIPCION)
-    
-    const submit=(_id)=>{
+    const {
+        data: dataInscripcion,
+        error: errorInscripcion,
+        loading: loadingInscripcion } = useQuery(INCRIPCIONES_USUARIO, { variables: { estudiante } });
+    const [eliminarInscripcion, {
+        data,
+        error,
+        loading }] = useMutation(ELIMINAR_INSCRIPCION)
+
+    const submit = (_id) => {
         if (_id != null) {
             confirmAlert({
                 title: 'Borrar Inscripción',
@@ -58,21 +59,18 @@ function EstudianteConsulta() {
     };
 
     if (loadingInscripcion) {
-        toast.info('Cargando Datos', {toastId: 'LOADING',});
+        toast.info('Cargando Datos', { toastId: 'LOADING', });
     }
     if (errorInscripcion) {
-        toast.error('Cargando Datos', {toastId: 'ERROR',});
+        toast.error('Cargando Datos', { toastId: 'ERROR', });
     }
-    
+
 
     return (
         <>
             <PrivateRoute rolelist={["ESTUDIANTE"]}>
-            <ToastContainer
-                position="bottom-right"
-                autoClose={2000}
-                hideProgressBar={false}
-            />
+                <ToastContainer position="bottom-right" autoClose={2000} hideProgressBar={false} />
+
                 <div className="flex items-center flex-col text-middle">
 
                     <div className="box pt-6">
@@ -159,8 +157,11 @@ function EstudianteConsulta() {
                                                         </span>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                                                        <button onClick={() => submit(u._id)}>
-                                                        <FaIcons.FaRegTrashAlt size={25} />
+                                                        <button onClick={() => submit(u._id)} data-tip="React-tooltip">
+                                                            <FaIcons.FaRegTrashAlt size={25} />
+                                                            <ReactTooltip place="top" type="warning" effect="solid">
+                                                                <span>Borrar Inscripcion</span>
+                                                            </ReactTooltip>
                                                         </button>
                                                     </td>
                                                 </tr>
