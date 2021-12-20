@@ -12,7 +12,7 @@ function GestionUsuarios() {
                 <img src={imagenes.imag1} alt="Logo empresa" className='py-3 px-3 h-20 w-20' />
                 <h1 className='px-2 text-xl text-center my-auto uppercase font-bold'>Pomodoro Projects</h1>
             </section>
-            <section className='text-center '>
+            <section className='text-center'>
                 <h1 className='text-3xl font-bold pt-1'>
                     MODULO DE GESTIÓN DE USUARIOS
                 </h1>
