@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react'
+import { useQuery } from '@apollo/client';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Navbar from '../../../components/Navbar/Navbar'
 import imagenes from '../../../assets/img/imagenes';
-import { useQuery } from '@apollo/client';
 import { GET_USUARIO } from '../../../graphql/users/queries.js';
 import { useUser } from '../../../context/userContext';
 import PrivateRoute from '../../../components/PrivateRoute/PrivateRoute'
+
 function MiPerfil() {
 
     const { userData } = useUser();
@@ -17,7 +21,9 @@ function MiPerfil() {
 
 
     useEffect(() => {
-        console.log("datos del servidor: ", queryData);
+        if (queryData) {
+            toast.success('Datos actualizados', { toastId: 'error', });
+        }
     }, [queryData]);
 
     //encaso de que halla un error ejecute esto
@@ -42,43 +48,44 @@ function MiPerfil() {
     return (
         <div>
             <PrivateRoute rolelist={["ESTUDIANTE", "ADMINISTRADOR", "LIDER"]}>
+                <ToastContainer position="top-right" autoClose={2000} hideProgressBar={false} />
                 <Navbar />
                 <div className='bg-gray-400 text-white min-h-screen'>
                     <div className='container mx-auto px-10'>
                         <section className='flex flex-row justify-between py-1'>
                             <section className='flex flex-col my-auto p-8'>
                                 <form className="rounded px-8 pt-6 pb-8 mb-4">
-                                <p className='bg-blue-900 text-white font-semibold text-center px-12 p-2 rounded-full m-2'> Mi perfil </p>
-                                <div className="mb-4 py-5">
-                                    <label className="block text-white text-sm font-bold py-1" htmlFor="username">
-                                        Nombre
-                                    </label>
-                                    <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" defaultValue={queryData.Usuario.nombre_usuario} disabled="disabled" />
+                                    <p className='bg-blue-900 text-white font-semibold text-center px-12 p-2 rounded-full m-2'> Mi perfil </p>
+                                    <div className="mb-4 py-5">
+                                        <label className="block text-white text-sm font-bold py-1" htmlFor="username">
+                                            Nombre
+                                        </label>
+                                        <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" defaultValue={queryData.Usuario.nombre_usuario} disabled="disabled" />
 
-                                    <label className="block text-white text-sm font-bold py-1" htmlFor="Apellido">
-                                        Apellido
-                                    </label>
-                                    <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="Apellido" type="text" defaultValue={queryData.Usuario.apellido_usuario} disabled="disabled" />
-                                    <label className="block text-white text-sm font-bold py-1" htmlFor="Documento">
-                                        Documento
-                                    </label>
-                                    <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="Documento" type="number" defaultValue={queryData.Usuario.documento_usuario} disabled="disabled" />
-                                    <label className="block text-white text-sm font-bold py-1" htmlFor="Correo">
-                                        Correo electrónico
-                                    </label>
-                                    <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="correo" type="text" defaultValue={queryData.Usuario.email_usuario} disabled="disabled" />
-                                    <label className="block text-white text-sm font-bold py-1" htmlFor="Estado">
-                                        Estado
-                                    </label>
-                                    <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="Estado" type="text" defaultValue={queryData.Usuario.estado_usuario} disabled="disabled" />
-                                    <label className="block text-white text-sm font-bold py-1" htmlFor="Rol">
-                                        Rol
-                                    </label>
-                                    <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="rol" type="text" defaultValue={queryData.Usuario.rol_usuario} disabled="disabled" />
-                                    <section className='inline-flex items-center px-8 py-6'>
-                                        <button><a href='/private/EditPerfil' className="mx-3 py-2 px-6 text-blue-900 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block">Editar información</a></button>
-                                    </section>
-                                </div>
+                                        <label className="block text-white text-sm font-bold py-1" htmlFor="Apellido">
+                                            Apellido
+                                        </label>
+                                        <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="Apellido" type="text" defaultValue={queryData.Usuario.apellido_usuario} disabled="disabled" />
+                                        <label className="block text-white text-sm font-bold py-1" htmlFor="Documento">
+                                            Documento
+                                        </label>
+                                        <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="Documento" type="number" defaultValue={queryData.Usuario.documento_usuario} disabled="disabled" />
+                                        <label className="block text-white text-sm font-bold py-1" htmlFor="Correo">
+                                            Correo electrónico
+                                        </label>
+                                        <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="correo" type="text" defaultValue={queryData.Usuario.email_usuario} disabled="disabled" />
+                                        <label className="block text-white text-sm font-bold py-1" htmlFor="Estado">
+                                            Estado
+                                        </label>
+                                        <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="Estado" type="text" defaultValue={queryData.Usuario.estado_usuario} disabled="disabled" />
+                                        <label className="block text-white text-sm font-bold py-1" htmlFor="Rol">
+                                            Rol
+                                        </label>
+                                        <input className="shadow appearance-none border border-blue-900 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="rol" type="text" defaultValue={queryData.Usuario.rol_usuario} disabled="disabled" />
+                                        <section className='inline-flex items-center px-8 py-6'>
+                                            <button><a href='/private/EditPerfil' className="mx-3 py-2 px-6 text-blue-900 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block">Editar información</a></button>
+                                        </section>
+                                    </div>
                                 </form>
                             </section>
                             <section className='inline-flex items-center'>

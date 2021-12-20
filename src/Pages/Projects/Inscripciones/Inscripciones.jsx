@@ -44,7 +44,7 @@ function Inscripciones() {
     }
     useEffect(()=>{
         if (dataInscribir) {
-            console.log("asdas",dataInscribir)
+            
             toast.success('Inscripcion exitosa', {toastId: 'SUCCESS',});
         }
     },[dataInscribir])

@@ -7,14 +7,14 @@ import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 import { AVANCE } from "../../../graphql/advances/queriesAdvances";
-import { ACTUALIZAR_OBSERVACIONES } from '../../../graphql/advances/mutationsAdvances'
+import { ACTUALIZAR_DESCRIPCIONES } from '../../../graphql/advances/mutationsAdvances'
 import PrivateRoute from "../../../components/PrivateRoute/PrivateRoute";
 import useFormData from "../../../components/UseForm/useForm";
 import Navbar from "../../../components/Navbar/Navbar";
 import imagenes from "../../../assets/img/imagenes";
 
 
-const EditObservacionAvance = () => {
+const EditDescripcionAvance = () => {
     const { _id } = useParams();
     const { form, formData, updateFormData } = useFormData();
     
@@ -23,10 +23,10 @@ const EditObservacionAvance = () => {
         loading: loadingAvance,
         error: errorAvance } = useQuery(AVANCE, { variables: { _id } })
 
-    const [subirObservaciones, {
-        data: dataObservacion,
-        loading: loadingObservacion,
-        error: errorObservacion }] = useMutation(ACTUALIZAR_OBSERVACIONES)
+    const [subirDescripcion, {
+        data: dataDescripcion,
+        loading: loadingDescripcion,
+        error: errorDescripcion }] = useMutation(ACTUALIZAR_DESCRIPCIONES)
 
     useEffect(() => {
         if(dataAvance){
@@ -36,7 +36,7 @@ const EditObservacionAvance = () => {
     }, [dataAvance]);
 
 
-    if (loadingAvance){ 
+    if (loadingAvance){
         return (
             <div className='min-h-screen flex justify-center items-center bg-gray-500'>
             <div className='bg-yellow-400 rounded-full flex min-w-max p-2'>
@@ -49,10 +49,10 @@ const EditObservacionAvance = () => {
     if (errorAvance) {
         toast.error('No se pudieron extraer los avances del proyecto', {toastId: 'error',});
     }
-    if (errorObservacion) {
+    if (errorDescripcion) {
         toast.error('No se pudieron extraer los avances del proyecto', { toastId: 'error-obser', });
     }
-    if (loadingObservacion) {
+    if (loadingDescripcion) {
         toast.info('Subiendo observaciones', { toastId: 'loading-obser', });
     }
 
@@ -60,9 +60,9 @@ const EditObservacionAvance = () => {
     const submitForm = (e) => {
         e.preventDefault();
         
-        const observacionesAvance =formData.observacionesAvance;
+        const descripcionAvance =formData.descripcionAvance;
 
-        if (formData.observacionesAvance) {
+        if (formData.descripcionAvance) {
             confirmAlert({
                 title: 'Actualizar Observación',
                 message: '¿Confirmas la observación del avance al proyecto?',
@@ -74,9 +74,9 @@ const EditObservacionAvance = () => {
                                 console.log('ent');
                                 console.log('as');
                             }
-                            subirObservaciones(
+                            subirDescripcion(
                                 {
-                                    variables: { _id, observacionesAvance }
+                                    variables: { _id, descripcionAvance }
                                 }
                             )
                             
@@ -96,7 +96,7 @@ const EditObservacionAvance = () => {
     return (
         <>
 
-            <PrivateRoute rolelist={["LIDER"]}>
+            <PrivateRoute rolelist={["ESTUDIANTE"]}>
 
                 <ToastContainer position="bottom-right" autoClose={2000} hideProgressBar={false} />
                 <Navbar />
@@ -131,7 +131,7 @@ const EditObservacionAvance = () => {
                                 <form onSubmit={submitForm} onChange={updateFormData} ref={form}>
                                     <label >Modificar Observaciones:</label>
                                     <div>
-                                    <input name="observacionesAvance" type="text" className="w-80 h-80 bg-blue-400" defaultValue={dataAvance.Avance.observaciones_avance}/>
+                                    <input name="descripcionAvance" type="text" className="w-80 h-80 bg-blue-400" defaultValue={dataAvance.Avance.descripcion_avance}/>
                                     </div>
                                     <br />
                                     <button type="submit" className="appearance-none block w-full bg-blue-600 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"> modificar</button>
@@ -140,7 +140,7 @@ const EditObservacionAvance = () => {
                             </div>
 
                         }
-                        <NavLink to={`/private/Proyecto/Avances/${dataAvance.Avance.proyecto._id}`} className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"> ir atras</NavLink>
+                        <NavLink to={`/private/Proyecto/Avances/estudiante/${dataAvance.Avance.proyecto._id}`} className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"> ir atras</NavLink>
                     </div>
                     <br />
                 </section>
@@ -149,4 +149,4 @@ const EditObservacionAvance = () => {
         </>
     )
 }
-export default EditObservacionAvance;
+export default EditDescripcionAvance;

@@ -17,13 +17,15 @@ import Registro from "./Pages/Login/Registro";
 import Avances from './Pages/Projects/Avances/Avances';
 import Home from "./Pages/Home/Home";
 import Landingpage from "./Pages/Landingpage/Landingpage";  
-import AprobarRegistro from "./Pages/Projects/AprobarRegistro"
+
 import InfoProyectoAdmin from "./Pages/Projects/EdicionInfoProyectos/InfoProyectoAdmin";
 import InfoProyectoLider from "./Pages/Projects/EdicionInfoProyectos/InfoProyectoLider";
 import Registroproyectos from "./Pages/Projects/RegistroProyectos/Registroproyectos";
 import EditPerfil from './Pages/Users/Miperfil/EditPerfil'
 import AvanceLider from "./Pages/Projects/Avances/rol/AvanceLider";
 import EditObservacionAvance from "./Pages/Projects/Avances/EditObservacionAvance";
+import EditDescripcionAvance from "./Pages/Projects/Avances/EditDescripcionAvance"
+import AvanceEstudiante from "./Pages/Projects/Avances/rol/AvanceEstudiante"
 
 import AuthLayout from "./layouts/AuthLayout";
 import PrivateLayout from "./layouts/PrivateLayout";
@@ -101,17 +103,19 @@ function App() {
                   <Route path="EditPerfil" element={<EditPerfil />} />
                   <Route path="GestionUsuarios" element={<GestionUsuarios />} />
                   <Route path="GestionUsuarios/editar/:_id" element={<EditDataUser />} />
+
                   <Route path="Proyecto" element={<Proyecto />} />
                   <Route path="Proyecto/Consulta" element={<Consulta />} />
                   <Route path="Proyecto/Inscripciones" element={<Inscripciones />} />
                   <Route path="Proyecto/Registroproyectos" element={<Registroproyectos />} />
-                  <Route path="Proyecto/AprobarRegistro" element={<AprobarRegistro/>}/>
                   <Route path="Proyecto/InformacionAdmin/:_id" element={<InfoProyectoAdmin/>}/>
                   <Route path="Proyecto/InformacionLider/:_id" element={<InfoProyectoLider/>}/>
+
                   <Route path="Proyecto/Avances" element={<Avances />} />
-                  
                   <Route path="Proyecto/Avances/:_id" element={<AvanceLider />} />
                   <Route path="Proyecto/Avances/observacion/:_id" element={<EditObservacionAvance />}/>
+                  <Route path="Proyecto/Avances/estudiante/:_id" element={<AvanceEstudiante/>}/>
+                  <Route path="Proyecto/Avances/descripcion/:_id" element={<EditDescripcionAvance/>}/>
                   <Route path="Home" element={<Home />} />
                   <Route path="CerrarSesion" element={<Logout />} />
                 </Route>

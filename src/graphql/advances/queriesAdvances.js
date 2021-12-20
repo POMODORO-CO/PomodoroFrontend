@@ -2,21 +2,22 @@ import { gql } from '@apollo/client'
 
 const AVANCES_PROJECTO=gql`
 query AvancesOneProject(
-    $proyecto: String!
+  $proyecto: String!
+  ) {
+  AvancesOneProject(
+    proyecto: $proyecto
     ) {
-    AvancesOneProject(
-      proyecto: $proyecto
-      ) {
+    _id
+    usuario_avance {
       _id
-      usuario_avance {
-        nombre_usuario
-        apellido_usuario
-      }
-      descripcion_avance
-      fecha_avance
-      observaciones_avance
+      nombre_usuario
+      apellido_usuario
     }
+    descripcion_avance
+    fecha_avance
+    observaciones_avance
   }
+}
 `;
 const AVANCE=gql`
 query Avance(

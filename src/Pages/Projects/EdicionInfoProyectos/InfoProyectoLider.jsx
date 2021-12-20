@@ -90,7 +90,7 @@ function InfoProyectoLider() {
     };
     const cambioToogle = () => {
         setTooglePendientes(!tooglePendientes);
-        console.log(tooglePendientes)//falso son aceptados
+        //falso son aceptados
     };
 
     if (errorP) {
@@ -112,7 +112,7 @@ function InfoProyectoLider() {
         toast.info('Cargando inscripciones', { toastId: 'carga-con-inscripciones', });
     }
     if (errorPendientes) {
-        console.log("errores",errorPendientes)
+        
         toast.error('Error inscripciones pendientes', { toastId: 'error-conPen-inscripciones', });
     }
     if (loadingPendientes) {
@@ -136,8 +136,8 @@ function InfoProyectoLider() {
                                     variables: { _id }
                                 }
                             )
-                            alert('Inscripción negada')
-                            window.location.reload();
+                            //alert('Inscripción negada')
+                            //window.location.reload();
                         }
                     },
                     {
@@ -166,8 +166,8 @@ function InfoProyectoLider() {
                                     variables: { _id }
                                 }
                             )
-                            alert('Inscripción aprobada')
-                            window.location.reload();
+                            //alert('Inscripción aprobada')
+                            //window.location.reload();
                         }
                     },
                     {

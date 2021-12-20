@@ -1,91 +1,59 @@
 import React, { useEffect } from 'react'
+import { useQuery } from '@apollo/client';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import "../../../index.css";
 import Navbar from '../../../components/Navbar/Navbar'
-import * as FaIcons from "react-icons/fa";
 import imagenes from '../../../assets/img/imagenes';
-import { useMutation } from '@apollo/client';
-import { useNavigate } from "react-router";
-import useFormData from '../../../components/UseForm/useForm.js';
-import { CREAR_AVANCE } from "../../../graphql/projects/mutationsprojects";
-import { useAuth } from "../../../context/authContext";
-import { GET_USUARIO } from '../../../graphql/users/queries.js';
-import { useQuery } from '@apollo/client';
 import { useUser } from '../../../context/userContext';
-import { GET_PROYECTOS } from '../../../graphql/projects/queriesProjects.js';
 import PrivateRoute from '../../../components/PrivateRoute/PrivateRoute';
-import {INSCRIPCIONES_ACEPTADAS_ONEUSER} from '../../../graphql/incriptions/queriesIncriptions'
+import { INSCRIPCIONES_ACEPTADAS_ONEUSER } from '../../../graphql/incriptions/queriesIncriptions'
+import { NavLink } from 'react-router-dom';
 
 
 function Avances() {
 
     const { userData } = useUser();
 
-    const estudiante = userData._id;
-    
+    const estudiante = String(userData._id);
+
     const {
         data: queryData,
         error: queryError,
         loading: queryLoading } = useQuery(INSCRIPCIONES_ACEPTADAS_ONEUSER, { variables: { estudiante } })
-    
 
-        useEffect(() => {
-            if(queryData){
-                console.log("datos del servidor: ", queryData);
-            }
-        }, [queryData]);
-    
-        //encaso de que halla un error ejecute esto
-        useEffect(() => {
-            if (queryError) {
+
+    useEffect(() => {
+        if (queryData) {
+            toast.success('Datos actualizados', { toastId: 'error', });
+        }
+    }, [queryData]);
+
+    //encaso de que halla un error ejecute esto
+    useEffect(() => {
+        if (queryError) {
+            return (
                 <div> Error consultando Usuario</div>
-            }
-        }, [queryError])
-    
-        if (queryLoading) return <div className='min-h-screen flex justify-center items-center bg-gray-500'>
-            <div className='bg-yellow-400 rounded-full flex min-w-max p-2'>
-                <img src={imagenes.imag1} alt="Logo empresa" className='md:p-1 h-20 w-20 animate-pulse' />
-                <p className='md:p-7 animate-pulse text-2xl font-bold'>Cargando Login...just wait</p>
+            )
+        }
+    }, [queryError])
+
+    if (queryLoading) {
+        return (
+            <div className='min-h-screen flex justify-center items-center bg-gray-500'>
+                <div className='bg-yellow-400 rounded-full flex min-w-max p-2'>
+                    <img src={imagenes.imag1} alt="Logo empresa" className='md:p-1 h-20 w-20 animate-pulse' />
+                    <p className='md:p-7 animate-pulse text-2xl font-bold'>Cargando Login...just wait</p>
+                </div>
             </div>
-        </div>;
-    // console.log(queryData)
-    // const { data: dataProjects, error: errorProjects, loading: loadingProjects } = useQuery(GET_PROYECTOS);
+        )
+    };
 
-    // const [crearAvance,
-    //     { data: mutationData,
-    //         loading: MutationLoading,
-    //         error: mutationError }] = useMutation(CREAR_AVANCE);
-
-    // const { setToken } = useAuth();
-    // const navigate = useNavigate();
-    // const { form, formData, updateFormData } = useFormData();
-
-    
-
-    // const submitForm = (e) => {
-    //     e.preventDefault();
-    //     console.log(formData)
-    //     formData.usuarioAvance = userData._id;
-    //     formData.fechaAvance = dataProjects.fechaAvance;
-    //     formData.proyecto = dataProjects.nombre_proyecto;
-    //     formData.descripcionAvance = dataProjects.descripcionAvance;
-    //     crearAvance({
-    //         variables: { ...formData }
-    //     })
-    // };
-
-    // useEffect(() => {
-    //     if (mutationData) {
-    //         if (mutationData.crearAvance.token) {
-    //             setToken(mutationData.crearAvance.token);
-    //             navigate('./private/MiPerfil');
-    //         }
-    //     };
-    // }, [mutationData, setToken, navigate])
-
-    
 
     return (
         <PrivateRoute rolelist={["ESTUDIANTE"]}>
+            <ToastContainer position="top-right" autoClose={2000} hideProgressBar={false} />
             <div>
                 <Navbar />
                 <section className='flex flex-row justify-center'>
@@ -124,50 +92,51 @@ function Avances() {
                             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                 {/* <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={submitForm} onChange={updateFormData} ref={form}> */}
 
-                                    <table className="min-w-auto divide-y divide-gray-200">
-                                        <thead className="bg-gray-50">
-                                            <tr>
+                                <table className="min-w-auto divide-y divide-gray-200">
+                                    <thead className="bg-gray-50">
+                                        <tr>
 
-                                                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Nombre del proyecto
-                                                </th>
-                                                <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Estado de Inscripción
-                                                </th>
-                                                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Fase del proyecto
-                                                </th>
-                                                <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                    Ver avances
-                                                </th>
-                                             
-                                            </tr>
-                                        </thead>
-                                        <tbody className="bg-white divide-y divide-gray-200">
+                                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Nombre del proyecto
+                                            </th>
+                                            <th scope="col" className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Estado de Inscripción
+                                            </th>
+                                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Fase del proyecto
+                                            </th>
+                                            <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Ver avances
+                                            </th>
 
-                                            {queryData && queryData.InscripcionAprobadaProyecto.map((u, index) => {
-                                                return (
-                                                    <tr key={index}>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="bg-white divide-y divide-gray-200">
 
-                                                        <td className="px-6 py-4 whitespace-nowrap">
-                                                            <div className="text-sm text-gray-900">{u.inscripcion_proyecto.nombre_proyecto}</div>
-                                                        </td>
-                                                        <td className="px-6 py-4 whitespace-nowrap">
-                                                            <div className="text-sm text-gray-900">{u.estado_inscripcion}</div>
-                                                        </td>
-                                                        <td className="px-6 py-4 whitespace-nowrap">
-                                                            <div className="text-sm text-gray-900">{u.inscripcion_proyecto.fase_proyecto}</div>
-                                                        </td>
-                                                        <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                                                            <a><button className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline">
-                                                                ver
-                                                            </button></a>
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            })}
-                                        </tbody>
-                                    </table>
+                                        {queryData && queryData.InscripcionAprobadaProyecto.map((u, index) => {
+                                            return (
+                                                <tr key={index}>
+
+                                                    <td className="px-6 py-4 whitespace-nowrap">
+                                                        <div className="text-sm text-gray-900">{u.inscripcion_proyecto.nombre_proyecto}</div>
+                                                    </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap">
+                                                        <div className="text-sm text-gray-900">{u.estado_inscripcion}</div>
+                                                    </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap">
+                                                        <div className="text-sm text-gray-900">{u.inscripcion_proyecto.fase_proyecto}</div>
+                                                    </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+
+                                                        <NavLink to={`/private/Proyecto/Avances/estudiante/${u.inscripcion_proyecto._id}`} className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline">
+                                                            ver
+                                                        </NavLink>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })}
+                                    </tbody>
+                                </table>
                                 {/* </form> */}
                             </div>
                         </div>

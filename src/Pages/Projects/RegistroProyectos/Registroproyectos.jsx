@@ -21,61 +21,63 @@ function Registroproyectos() {
     error: queryError,
     loading: queryLoading } = useQuery(GET_USUARIOS)
 
-  const {setToken}=useAuth();
-  const navigate= useNavigate();
-  const {form, formData, updateFormData}=useFormData();
+  const { setToken } = useAuth();
+  const navigate = useNavigate();
+  const { form, formData, updateFormData } = useFormData();
 
   const [crearProyecto,
     { data: mutationData,
-        loading: mutationLoading,
-        error: mutationError }] = useMutation(CREAR_PROYECTO);
+      loading: mutationLoading,
+      error: mutationError }] = useMutation(CREAR_PROYECTO);
 
-  const submitForm=(e)=>{
+  const submitForm = (e) => {
     e.preventDefault();
-    console.log(formData)
-        console.log(formData.objetivosProyecto)
-        let objetivosGen = [{
-        tipo: "GENERAL",
-        descripcion: formData.objetivosPrim
-      },{
-        tipo: "ESPECIFICO",
-        descripcion: formData.objetivosSec
-      }
+    let objetivosGen = [{
+      tipo: "GENERAL",
+      descripcion: formData.objetivosPrim
+    }, {
+      tipo: "ESPECIFICO",
+      descripcion: formData.objetivosSec
+    }
     ]
     formData.objetivosProyecto = objetivosGen;
     formData.liderProyecto = userData._id;
     formData.presupuestoProyecto = parseFloat(formData.presupuestoProyecto);
-    crearProyecto({variables:{...formData}
+    crearProyecto({
+      variables: { ...formData }
     })
   };
 
-  useEffect(()=>{
-      if(mutationData){
-            
+  useEffect(() => {
+    if (mutationData) {
+
       toast.success('Proyecto creado Proyecto', {
-        toastId: 'creacion-proyecto',});
-        navigate('/private/Proyecto/');
+        toastId: 'creacion-proyecto',
+      });
+      navigate('/private/Proyecto/');
 
     };
-  },[mutationData,setToken,navigate])
+  }, [mutationData, setToken, navigate])
 
-  if(mutationLoading){
+  if (mutationLoading) {
     toast.info('Creando Proyecto', {
-      toastId: 'creacion-proyecto',});
+      toastId: 'creacion-proyecto',
+    });
   }
-  if(mutationError){
+  if (mutationError) {
     toast.error('Error no se creo el proyecto', {
-      toastId: 'error-proyecto',});
+      toastId: 'error-proyecto',
+    });
   }
 
   return (
     <div>
       <PrivateRoute rolelist={["LIDER", "ADMINISTRADOR"]}>
-      <ToastContainer
-                position="bottom-right"
-                autoClose={2000}
-                hideProgressBar={false}
-            />
+        <ToastContainer
+          position="bottom-right"
+          autoClose={2000}
+          hideProgressBar={false}
+        />
         <Navbar />
         <section className='flex flex-row justify-center'>
           <img src={imagenes.imag1} alt="Logo empresa" className='py-3 px-3 h-20 w-20' />
@@ -88,7 +90,7 @@ function Registroproyectos() {
         </section>
         <section className='min-h-screen grid place-content-left bg-white px-10 justify-center'>
 
-        <form className="w-full max-w-lg " onSubmit={submitForm} onChange={updateFormData} ref={form}>
+          <form className="w-full max-w-lg " onSubmit={submitForm} onChange={updateFormData} ref={form}>
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full  px-3">
                 <label className="text-Black text-sm font-bold mb-2" >
@@ -140,7 +142,7 @@ function Registroproyectos() {
                 </button>
               </div>
             </div>
-        </form>
+          </form>
         </section>
       </PrivateRoute>
     </div>

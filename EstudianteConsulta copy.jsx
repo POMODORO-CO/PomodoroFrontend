@@ -40,8 +40,8 @@ function EstudianteConsulta() {
                         label: 'Sí',
                         onClick: () => {
                             {
-                                console.log('entro al alert y el id del proyecto es:', inscripcionProyecto);
-                                console.log('y el del estudiantes es: ', estudiante);
+                                console.log('entro ');
+                                console.log('y el ');
                             }
                             inscribirEstudiante(
                                 {

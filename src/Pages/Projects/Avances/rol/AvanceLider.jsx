@@ -22,7 +22,9 @@ const AvanceLider = () => {
         error: errorAvances } = useQuery(AVANCES_PROJECTO, { variables: { proyecto } })
 
     useEffect(() => {
-        console.log("Datos avances", dataAvances)
+        if (dataAvances) {
+            toast.success('Datos actualizados', { toastId: 'error', });
+        }
     }, [dataAvances])
 
 
@@ -108,7 +110,7 @@ const AvanceLider = () => {
                                             dataAvances.AvancesOneProject.map((u, index) => {
                                                 return (
                                                     <tr key={index}>
-                                                        
+
                                                         <td className="px-6 py-4 whitespace-nowrap">
                                                             <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                                                 {u.usuario_avance.nombre_usuario + " " + u.usuario_avance.apellido_usuario}

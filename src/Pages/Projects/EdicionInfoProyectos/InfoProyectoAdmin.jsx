@@ -35,8 +35,9 @@ function InfoProyectoAdmin() {
     const { form, formData, updateFormData } = useFormData(null);
 
     useEffect(() => {
-        console.log("get proyecto ", dataP)
-        
+        if(dataP){
+            toast.success('Datos actualizados', { toastId: 'errorq', });
+        }        
     }, [dataP])
 
     useEffect(() => {
@@ -44,7 +45,7 @@ function InfoProyectoAdmin() {
             toast.success('Datos actualizados', {toastId: 'error',});
         }
     }, [mutationEData])
-    console.log("get proyecto ", dataP)
+    
     useEffect(() => {
         if(mutationFData){
             toast.success('Datos actualizados', {toastId: 'error',});
