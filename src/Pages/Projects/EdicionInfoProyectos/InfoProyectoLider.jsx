@@ -106,13 +106,14 @@ function InfoProyectoLider() {
         toast.error('Error cambiando proyecto', { toastId: 'errorEdicion', });
     }
     if (errorAceptadas) {
-        toast.error('Error inscripciones', { toastId: 'error-con-inscripciones', });
+        toast.error('Error inscripciones aceptadas', { toastId: 'error-con-inscripciones', });
     }
     if (loadingAceptadas) {
         toast.info('Cargando inscripciones', { toastId: 'carga-con-inscripciones', });
     }
     if (errorPendientes) {
-        toast.error('Error inscripciones', { toastId: 'error-conPen-inscripciones', });
+        console.log("errores",errorPendientes)
+        toast.error('Error inscripciones pendientes', { toastId: 'error-conPen-inscripciones', });
     }
     if (loadingPendientes) {
         toast.info('Cargando inscripciones', { toastId: 'carga-conPen-inscripciones', });

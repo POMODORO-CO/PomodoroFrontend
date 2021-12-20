@@ -61,4 +61,21 @@ query InscripcionesOneProject(
   }
 }
 `;
-export {INCRIPCIONES_USUARIO,INSCRIPCIONES_PENDIENTES,INSCRIPCIONES_ACEPTADAS};
+const INSCRIPCIONES_ACEPTADAS_ONEUSER=gql`
+query InscripcionAprobadaProyecto(
+  $estudiante: String!
+  ) {
+  InscripcionAprobadaProyecto(
+    estudiante: $estudiante
+    ) {
+    _id
+    estado_inscripcion
+    inscripcion_proyecto {
+      nombre_proyecto
+      _id
+      fase_proyecto
+    }
+  }
+}
+`;
+export {INCRIPCIONES_USUARIO,INSCRIPCIONES_PENDIENTES,INSCRIPCIONES_ACEPTADAS,INSCRIPCIONES_ACEPTADAS_ONEUSER};

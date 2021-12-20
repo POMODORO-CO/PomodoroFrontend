@@ -29,15 +29,17 @@ const EditObservacionAvance = () => {
         error: errorObservacion }] = useMutation(ACTUALIZAR_OBSERVACIONES)
 
     useEffect(() => {
-        console.log("Datos avances", dataAvance)
+        if(dataAvance){
+            console.log("Datos avances", dataAvance)
+            toast.info('Observacion Realizada', {toastId: 'error',});
+        }
+        
     }, [dataAvance]);
 
 
     if (loadingAvance) return (<div>Cargando........</div>)
     if (errorAvance) {
-        toast.error('No se pudieron extraer los avances del proyecto', {
-            toastId: 'error',
-        });
+        toast.error('No se pudieron extraer los avances del proyecto', {toastId: 'error',});
     }
     if (errorObservacion) {
         toast.error('No se pudieron extraer los avances del proyecto', { toastId: 'error-obser', });
@@ -49,10 +51,10 @@ const EditObservacionAvance = () => {
 
     const submitForm = (e) => {
         e.preventDefault();
-        formData._id=String(_id);
-        formData.observacionesAvance=String(formData.observacionesAvance);
-        console.log("cosas",formData)
-        if (formData) {
+        
+        const observacionesAvance =formData.observacionesAvance;
+
+        if (formData.observacionesAvance) {
             confirmAlert({
                 title: 'Actualizar Observación',
                 message: '¿Confirmas la observación del avance al proyecto?',
@@ -66,7 +68,7 @@ const EditObservacionAvance = () => {
                             }
                             subirObservaciones(
                                 {
-                                    variables: { formData }
+                                    variables: { _id, observacionesAvance }
                                 }
                             )
                             console.log(dataObservacion)
