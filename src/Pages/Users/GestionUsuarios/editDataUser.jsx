@@ -44,7 +44,7 @@ function EditDataUser() {
 
     //execute every time the variable mutationData change
     useEffect(() => {
-        console.log("mut",mutationData)
+        
         if(mutationData){
             toast.info('Estado Editado completada', {
                 toastId: 'mutation-estado',

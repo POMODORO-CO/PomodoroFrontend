@@ -15,4 +15,18 @@ mutation EditarAvanceObservaciones(
   }
 }
 `;
-export {ACTUALIZAR_OBSERVACIONES};
+const ACTUALIZAR_DESCRIPCIONES=gql`
+mutation EditarAvance(
+  $id: String!, 
+  $descripcionAvance: String!
+  ) {
+  editarAvance(
+    _id: $id, 
+    descripcion_avance: $descripcionAvance
+    ) {
+    _id
+    descripcion_avance
+  }
+}
+`;
+export {ACTUALIZAR_OBSERVACIONES, ACTUALIZAR_DESCRIPCIONES};

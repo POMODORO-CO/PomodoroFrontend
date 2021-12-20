@@ -112,24 +112,7 @@ function LiderConsulta() {
                                                             {u.fase_proyecto}
                                                         </span>
                                                     </td>
-                                                    <td
-                                                        className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium "                                 >
-
-                                                        {/* {u.estado_proyecto == "ACTIVO" ?
-                                                            <>
-
-                                                                <a href="#" className="inline-block"><AiIcons.AiFillPlusCircle size={25} /></a>
-                                                                
-                                                                {u.estado_proyecto == "ACTIVO" ? 
-                                                                <Link to={`/private/Proyecto/InformacionLider/${u._id}`}>
-                                                                    <FaIcons.FaEdit size={25} />
-                                                                </Link> : null}
-
-                                                                <a href="#" className="inline-block">
-                                                                    <FaIcons.FaTrash size={25} />
-                                                                </a>
-                                                            </>
-                                                            : null} */}
+                                                    <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                                         <Link to={`/private/Proyecto/InformacionLider/${u._id}`} data-tip="React-tooltip">
                                                             <FaIcons.FaSearch size={25} />
                                                             <ReactTooltip place="top" type="info" effect="solid">

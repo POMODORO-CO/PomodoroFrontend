@@ -41,7 +41,9 @@ const PrivateLayout = () => {
     }, [mutationData, setToken, loadingAuth, navigate]);
 
     useEffect(() => {
-        console.log("token actual", authToken)
+        if(authToken){
+            //console.log("token actual", authToken)
+        }
     }, [authToken]);
 
     if (mutationLoading || loadingAuth) return <div className='min-h-screen flex justify-center items-center bg-gray-500'>

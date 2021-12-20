@@ -56,7 +56,9 @@ function EditPerfil() {
     }, [mutationData, setToken, navigate])
 
     useEffect(() => {
-        console.log("datos del servidor: ", queryData);
+        if(queryData){
+            toast.success('Datos actualizados', { toastId: 'error', });
+        }
     }, [queryData]);
 
     //encaso de que halla un error ejecute esto
