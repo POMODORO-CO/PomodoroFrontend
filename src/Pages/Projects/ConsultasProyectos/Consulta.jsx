@@ -17,8 +17,9 @@ function Consulta() {
         return (
             <>
                 <Navbar />
-                <div className='consulta'>
-                    <h1>CONSULTA DE PROYECTOS</h1>
+                
+                <div className='consulta text-center'>
+                <h1 className='text-3xl font-bold pt-1'>CONSULTA DE PROYECTOS</h1>
                 </div>
                 <PrivateRoute rolelist={["LIDER"]}>
                     <LiderConsulta />
@@ -29,8 +30,8 @@ function Consulta() {
         return (
             <>
                 <Navbar />
-                <div className='consulta'>
-                    <h1>CONSULTA PROYECTOS INSCRITOS</h1>
+                <div className='text-center'>
+                    <h1 className='text-3xl font-bold pt-1'>CONSULTA PROYECTOS INSCRITOS</h1>
                 </div>
                 <PrivateRoute rolelist={["ESTUDIANTE"]}>
                     <EstudianteConsulta />
@@ -41,8 +42,8 @@ function Consulta() {
         return (
             <>
                 <Navbar />
-                <div className='consulta'>
-                    <h1>CONSULTA DE PROYECTOS</h1>
+                <div className='text-center'>
+                    <h1 className='text-3xl font-bold pt-1'>CONSULTA PROYECTOS INSCRITOS</h1>
                 </div>
                 <PrivateRoute rolelist={["ADMINISTRADOR"]}>
                     <AdministradorConsulta/>
