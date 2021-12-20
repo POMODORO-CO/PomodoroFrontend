@@ -104,13 +104,11 @@ const AvanceLider = () => {
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
 
-                                        {dataAvances && dataAvances.AvancesOneProject.map((u) => {
-                                            return (
-                                                <>
-                                                    <tr key={u._id}>
-
-
-
+                                        {dataAvances &&
+                                            dataAvances.AvancesOneProject.map((u, index) => {
+                                                return (
+                                                    <tr key={index}>
+                                                        
                                                         <td className="px-6 py-4 whitespace-nowrap">
                                                             <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                                                 {u.usuario_avance.nombre_usuario + " " + u.usuario_avance.apellido_usuario}
@@ -141,9 +139,9 @@ const AvanceLider = () => {
 
                                                     </tr>
 
-                                                </>
-                                            )
-                                        })}
+
+                                                )
+                                            })}
                                     </tbody>
                                 </table>
 

@@ -23,14 +23,11 @@ function AdministradorConsulta() {
     if (errorProjects) {
         toast.error('Cargando Datos', {toastId: 'ERROR',});
     }
+
     return (
         <>
             <PrivateRoute rolelist={["ADMINISTRADOR"]}>
-            <ToastContainer
-                position="bottom-right"
-                autoClose={2000}
-                hideProgressBar={false}
-            />
+            <ToastContainer position="bottom-right" autoClose={2000} hideProgressBar={false}/>
                 <div className="flex items-center flex-col text-middle">
 
                     <div className="box pt-6">
@@ -66,16 +63,16 @@ function AdministradorConsulta() {
                                                 ID
                                             </th>
                                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Nombre del proyectos
+                                                Nombre del proyecto
                                             </th>
                                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Líder
                                             </th>
                                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Estado
+                                                Estado del proyecto
                                             </th>
                                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Fase
+                                                Fase del proyecto
                                             </th>
                                             <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercasetracking-wider">
                                                 Acciones
