@@ -29,4 +29,22 @@ mutation EditarAvance(
   }
 }
 `;
-export {ACTUALIZAR_OBSERVACIONES, ACTUALIZAR_DESCRIPCIONES};
+const CREAR_AVANCE=gql`
+mutation CrearAvance(
+  $proyecto: String!, 
+  $usuarioAvance: String!, 
+  $fechaAvance: Date!, 
+  $descripcionAvance: String!
+  ) {
+  crearAvance(
+    proyecto: $proyecto, 
+    usuario_avance: $usuarioAvance, 
+    fecha_avance: $fechaAvance, 
+    descripcion_avance: $descripcionAvance
+    ) {
+    _id
+    descripcion_avance
+  }
+}
+`;
+export {ACTUALIZAR_OBSERVACIONES, ACTUALIZAR_DESCRIPCIONES,CREAR_AVANCE};

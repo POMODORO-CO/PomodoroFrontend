@@ -74,7 +74,9 @@ const AvanceEstudiante = () => {
                     <div className="-my-1 overflow-x-auto sm:-mx-6 lg:-mx-2 py-4">
 
                         <div className="py-2 align-middle inline-block min-w-auto sm:px-6 lg:px-12">
-
+                        <NavLink to={`/private/Proyecto/Avances/add/${_id}`} className="mx-3 py-2 px-6 text-blue-900 font-bold rounded-full bg-yellow-400 shadow-lg block md:inline-block">
+                                añadir avance
+                            </NavLink>
                             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
 
                                 <table className="min-w-auto divide-y divide-gray-200">
@@ -134,7 +136,7 @@ const AvanceEstudiante = () => {
                                                                     <NavLink to={`/private/Proyecto/Avances/descripcion/${u._id}`} data-tip="React-tooltip">
                                                                         <FaIcons.FaRegFileAlt size={25} />
                                                                         <ReactTooltip place="top" type="info" effect="solid">
-                                                                            <span>Añadir o Modificar Descripción del avance</span>
+                                                                            <span>Modificar Descripción del avance</span>
                                                                         </ReactTooltip>
                                                                     </NavLink>
 
@@ -151,15 +153,9 @@ const AvanceEstudiante = () => {
                                                                         </button>
                                                                     </div>
                                                                 </>
-
                                                             }
-
                                                         </td>
-
-
                                                     </tr>
-
-
                                                 )
                                             })}
                                     </tbody>
@@ -168,7 +164,7 @@ const AvanceEstudiante = () => {
 
 
                             </div>
-
+                            
                         </div>
                     </div>
                 </div>
