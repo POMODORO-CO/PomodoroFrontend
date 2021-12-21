@@ -26,6 +26,7 @@ import AvanceLider from "./Pages/Projects/Avances/rol/AvanceLider";
 import EditObservacionAvance from "./Pages/Projects/Avances/EditObservacionAvance";
 import EditDescripcionAvance from "./Pages/Projects/Avances/EditDescripcionAvance"
 import AvanceEstudiante from "./Pages/Projects/Avances/rol/AvanceEstudiante"
+import AddAvance from "./Pages/Projects/Avances/AddAvance";
 
 import AuthLayout from "./layouts/AuthLayout";
 import PrivateLayout from "./layouts/PrivateLayout";
@@ -116,6 +117,8 @@ function App() {
                   <Route path="Proyecto/Avances/observacion/:_id" element={<EditObservacionAvance />}/>
                   <Route path="Proyecto/Avances/estudiante/:_id" element={<AvanceEstudiante/>}/>
                   <Route path="Proyecto/Avances/descripcion/:_id" element={<EditDescripcionAvance/>}/>
+                  <Route path="Proyecto/Avances/add/:_id" element={<AddAvance/>}/>
+
                   <Route path="Home" element={<Home />} />
                   <Route path="CerrarSesion" element={<Logout />} />
                 </Route>
