@@ -136,7 +136,7 @@ function InfoProyectoAdmin() {
                                                 <label className="text-black text-sm font-bold mb-2" htmlFor="Presupuesto">
                                                     Estado del proyecto
                                                 </label>
-                                                <select defaultValue={dataP.Proyecto.estado_proyecto} name="estadoProyecto" className="bg-white rounded flex items-center w-FULL p-3 shadow-sm border border-gray-200" placeholder={dataP.Proyecto.estado_proyecto}>
+                                                <select defaultValue={dataP.Proyecto.estado_proyecto} name="estadoProyecto" className="bg-white rounded flex items-center w-FULL p-3 shadow-sm border-3 border-black " placeholder={dataP.Proyecto.estado_proyecto}>
                                                     <option value="ACTIVO">ACTIVO</option>
                                                     <option value="INACTIVO">INACTIVO</option>
                                                 </select>
@@ -145,7 +145,7 @@ function InfoProyectoAdmin() {
                                                 <label className="text-black text-sm font-bold mb-2" htmlFor="Presupuesto">
                                                     Fase del proyecto
                                                 </label>
-                                                <select defaultValue={dataP.Proyecto.fase_proyecto} name="faseProyecto" className="bg-white rounded flex items-center w-FULL p-3 shadow-sm border border-gray-200" placeholder={dataP.Proyecto.estado_proyecto}>
+                                                <select defaultValue={dataP.Proyecto.fase_proyecto} name="faseProyecto" className="bg-white rounded flex items-center w-FULL p-3 shadow-sm border-3 border-black" placeholder={dataP.Proyecto.estado_proyecto}>
                                                     <option value="INICIADO">INICIADO</option>
                                                     <option value="DESARROLLO">DESARROLLO</option>
                                                     <option value="TERMINADO">TERMINADO</option>
