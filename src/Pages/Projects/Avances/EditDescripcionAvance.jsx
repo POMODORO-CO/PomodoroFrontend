@@ -101,15 +101,13 @@ const EditDescripcionAvance = () => {
                 <ToastContainer position="bottom-right" autoClose={2000} hideProgressBar={false} />
                 <Navbar />
                 <br />
-                <section className=' item-row'>
+                <section className='item-row bg-gray-900'>
                     <div className="flex items-center flex-col text-middle">
-
-
-
                         {dataAvance &&
-
                             <div>
-                                <h1 >{`Avance del proyecto: ${dataAvance.Avance.proyecto.nombre_proyecto}`}</h1>
+                                <div className='bg-black inline-flex justify-center items-center rounded-full'>
+                                <h1>{`Avance del proyecto: ${dataAvance.Avance.proyecto.nombre_proyecto}`}</h1>
+                                </div>
                                 <br />
                                 <h1>{`Realizado por : ${dataAvance.Avance.usuario_avance.nombre_usuario} ${dataAvance.Avance.usuario_avance.apellido_usuario}`}</h1>
                                 <h1>{`Fecha del Avance: ${dataAvance.Avance.fecha_avance.split("T")[0]}`}</h1>

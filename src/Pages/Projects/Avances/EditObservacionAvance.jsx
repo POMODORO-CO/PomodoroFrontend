@@ -95,52 +95,63 @@ const EditObservacionAvance = () => {
     };
     return (
         <>
-
             <PrivateRoute rolelist={["LIDER"]}>
-
                 <ToastContainer position="bottom-right" autoClose={2000} hideProgressBar={false} />
                 <Navbar />
-                <br />
-                <section className=' item-row'>
-                    <div className="flex items-center flex-col text-middle">
-
-
-
+                <section>
+                    <div className="flex items-center flex-col">
                         {dataAvance &&
-
-                            <div>
-                                <h1 >{`Avance del proyecto: ${dataAvance.Avance.proyecto.nombre_proyecto}`}</h1>
-                                <br />
-                                <h1>{`Realizado por : ${dataAvance.Avance.usuario_avance.nombre_usuario} ${dataAvance.Avance.usuario_avance.apellido_usuario}`}</h1>
-                                <h1>{`Fecha del Avance: ${dataAvance.Avance.fecha_avance.split("T")[0]}`}</h1>
-                                <br />
-                                <label>Descripcion del avance: </label>
-                                <p>{`Avance del proyecto: ${dataAvance.Avance.descripcion_avance}`}
-
-                                </p>
-                                <div>
-                                    <br />
-                                    <label> observaciones anteriores:</label>
-                                    <br />
-                                    <p className="bg-blue-300">
+                            <div className="justify-center items-center">
+                                <div className='bg-gray-500 text-white font-semibold px-3 py-2 rounded-lg m-1'>
+                                    <section className='inline-flex justify-center items-center rounded-lg'>
+                                        <section className='bg-gray-500 text-white font-semibold px-3 py-2 rounded-lg m-1'>
+                                            Avance del proyecto :
+                                        </section>
+                                        <p className='text-black px-3 py-2 bg-yellow-400 rounded-full m-1 font-bold'>{dataAvance.Avance.proyecto.nombre_proyecto}</p>
+                                    </section>
+                                    <section className='inline-flex justify-center items-center rounded-lg'>
+                                        <section className='bg-gray-500 text-white font-semibold px-3 py-2 rounded-lg m-1'>
+                                            Realizado por :
+                                        </section>
+                                        <p className='text-black px-3 py-2 bg-yellow-400 rounded-full m-1 font-bold'>{dataAvance.Avance.usuario_avance.nombre_usuario} {dataAvance.Avance.usuario_avance.apellido_usuario}</p>
+                                    </section>
+                                </div>
+                                <div className="bg-gray-500 text-white font-semibold px-3 py-2 rounded-lg m-1">
+                                <section className='inline-flex justify-center items-center rounded-full'>
+                                    <section className='bg-gray-500 text-white font-semibold px-3 py-2 rounded-lg m-1'>
+                                    Fecha del Avance :
+                                    </section>
+                                    <p className='text-black px-3 py-2 bg-yellow-400 rounded-full m-1 font-bold'>{dataAvance.Avance.fecha_avance.split("T")[0]}</p>
+                                </section>
+                                <section className='inline-flex justify-center items-center'>
+                                    <section className='text-white font-semibold px-2 m-1'>
+                                    Descripcion del avance:
+                                    </section>
+                                    <p className='text-black px-3 py-2 bg-yellow-400 rounded-full m-1 font-bold'>{dataAvance.Avance.descripcion_avance}</p>
+                                </section>
+                                </div>
+                                <div className="bg-gray-500 text-white font-semibold px-3 py-2 rounded-lg m-1">
+                                    <label className='text-white font-semibold px-3 py-2 rounded-lg m-1'>Observaciones anteriores:</label>
+                                    <p className='text-black py-2 bg-yellow-400 m-1 px-2 rounded-lg font-bold'>
                                         {dataAvance.Avance.observaciones_avance}
                                     </p>
-                                    <br />
                                 </div>
-
+                                <div className="bg-gray-500 text-white font-semibold px-3 py-2 rounded-lg m-1">
                                 <form onSubmit={submitForm} onChange={updateFormData} ref={form}>
-                                    <label >Modificar Observaciones:</label>
                                     <div>
-                                    <input name="observacionesAvance" type="text" className="w-80 h-80 bg-blue-400" defaultValue={dataAvance.Avance.observaciones_avance}/>
+                                    <label>Modificar Observaciones:</label>
                                     </div>
-                                    <br />
-                                    <button type="submit" className="appearance-none block w-full bg-blue-600 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"> modificar</button>
-                                    <br />
+                                    <div className="mb-3 pt-0">
+                                    <input name="observacionesAvance" type="text" className='px-3 py-3 text-black bg-white rounded text-sm border border-blueGray-300 w-full' defaultValue={dataAvance.Avance.observaciones_avance}/>
+                                    </div>
                                 </form>
+                                </div>
+                                <button type="submit" className="appearance-none block w-full bg-blue-600 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"> Modificar</button>
                             </div>
-
                         }
+                        <div>
                         <NavLink to={`/private/Proyecto/Avances/${dataAvance.Avance.proyecto._id}`} className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"> ir atras</NavLink>
+                        </div>
                     </div>
                     <br />
                 </section>

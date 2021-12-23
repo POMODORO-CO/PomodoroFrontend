@@ -3,7 +3,8 @@ import { NavLink, useParams } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import * as FaIcons from "react-icons/fa";
+import * as FaIcons from "react-icons/cg";
+import * as Ticons from "react-icons/ti";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import ReactTooltip from 'react-tooltip';
@@ -121,8 +122,8 @@ function InfoProyectoLider() {
     const submit1 = (_id) => {
         if (_id != null) {
             confirmAlert({
-                title: 'Negar la Inscripción',
-                message: '¿Confirmas borrar la inscripción del usuario al proyecto?',
+                title: 'Rechazar la Inscripción',
+                message: '¿Confirmar el rechazo a la inscripción del proyecto?',
                 buttons: [
                     {
                         label: 'Sí',
@@ -327,7 +328,7 @@ function InfoProyectoLider() {
                                                                                 Solicitud
                                                                             </th>
                                                                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-                                                                                Acción
+                                                                                Aprobación
                                                                             </th>
                                                                         </tr>
                                                                     </thead>
@@ -350,20 +351,18 @@ function InfoProyectoLider() {
                                                                                             <td className="px-6 py-4 whitespace-nowrap">
                                                                                                 <div className="text-sm text-center text-gray-900">{u.estado_inscripcion}</div>
                                                                                             </td>
-                                                                                            <td className="px-6 py-4 whitespace-nowrap">
-                                                                                                <div className="text-sm text-center text-gray-900">
-                                                                                                    <button onClick={() => submit1(u._id)} data-tip data-for="down">
-
-                                                                                                        <FaIcons.FaRegThumbsDown size={25} />
-                                                                                                        <ReactTooltip id='down' place="top" type="warning" effect="solid">
-                                                                                                            <span>Rechazar Solicitud</span>
+                                                                                            <td className="px-12 py-4 whitespace-nowrap justify-between content-center">
+                                                                                                <div className="flex items-stretch">
+                                                                                                    <button onClick={() => submit2(u._id)} data-tip data-for="up">
+                                                                                                    <FaIcons.CgCheckO size={23} color='gray'/>  
+                                                                                                        <ReactTooltip id='up' place="top" type="success" effect="solid" backgroundColor='gray'>
+                                                                                                            <span>Aceptar Solicitud</span>
                                                                                                         </ReactTooltip>
                                                                                                     </button>
-                                                                                                    <button onClick={() => submit2(u._id)} data-tip data-for="up">
-
-                                                                                                        <FaIcons.FaRegThumbsUp size={25} />
-                                                                                                        <ReactTooltip id='up' place="top" type="success" effect="solid">
-                                                                                                            <span>Aceptar Solicitud</span>
+                                                                                                    <button onClick={() => submit1(u._id)} data-tip data-for="down">
+                                                                                                        <Ticons.TiDeleteOutline size={28} color='red'/>
+                                                                                                        <ReactTooltip id='down' place="top" type="warning" effect="solid" backgroundColor='red'>
+                                                                                                            <span>Rechazar Solicitud</span>
                                                                                                         </ReactTooltip>
                                                                                                     </button>
                                                                                                 </div>
