@@ -122,8 +122,8 @@ function InfoProyectoLider() {
     const submit1 = (_id) => {
         if (_id != null) {
             confirmAlert({
-                title: 'Negar la Inscripción',
-                message: '¿Confirmas borrar la inscripción del usuario al proyecto?',
+                title: 'Rechazar la Inscripción',
+                message: '¿Confirmar el rechazo a la inscripción del proyecto?',
                 buttons: [
                     {
                         label: 'Sí',
@@ -355,7 +355,7 @@ function InfoProyectoLider() {
                                                                                                 <div className="flex items-stretch">
                                                                                                     <button onClick={() => submit2(u._id)} data-tip data-for="up">
                                                                                                     <FaIcons.CgCheckO size={23} color='gray'/>  
-                                                                                                        <ReactTooltip id='up' place="top" type="success" effect="solid" backgroundColor='blue'>
+                                                                                                        <ReactTooltip id='up' place="top" type="success" effect="solid" backgroundColor='gray'>
                                                                                                             <span>Aceptar Solicitud</span>
                                                                                                         </ReactTooltip>
                                                                                                     </button>
