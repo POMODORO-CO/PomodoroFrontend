@@ -95,56 +95,41 @@ const EditDescripcionAvance = () => {
     };
     return (
         <>
-
             <PrivateRoute rolelist={["ESTUDIANTE"]}>
-
                 <ToastContainer position="bottom-right" autoClose={2000} hideProgressBar={false} />
                 <Navbar />
                 <br />
-                <section className=' item-row'>
+                <section className='item-row bg-gray-900'>
                     <div className="flex items-center flex-col text-middle">
-
-
-
                         {dataAvance &&
-
                             <div>
-                                <h1 >{`Avance del proyecto: ${dataAvance.Avance.proyecto.nombre_proyecto}`}</h1>
-                                <br />
+                                <div className='bg-black inline-flex justify-center items-center rounded-full'>
+                                <h1>{`Avance del proyecto: ${dataAvance.Avance.proyecto.nombre_proyecto}`}</h1>
+                                </div>
+                                <h1>{`Realizado por : ${dataAvance.Avance.usuario_avance.nombre_usuario} ${dataAvance.Avance.usuario_avance.apellido_usuario}`}</h1>
                                 <h1>{`Realizado por : ${dataAvance.Avance.usuario_avance.nombre_usuario} ${dataAvance.Avance.usuario_avance.apellido_usuario}`}</h1>
                                 <h1>{`Fecha del Avance: ${dataAvance.Avance.fecha_avance.split("T")[0]}`}</h1>
-                                <br />
                                 <label>Descripcion del avance: </label>
                                 <p>{`Avance del proyecto: ${dataAvance.Avance.descripcion_avance}`}
-
                                 </p>
                                 <div>
-                                    <br />
                                     <label> observaciones anteriores:</label>
-                                    <br />
                                     <p className="bg-blue-300">
                                         {dataAvance.Avance.observaciones_avance}
                                     </p>
-                                    <br />
                                 </div>
-
                                 <form onSubmit={submitForm} onChange={updateFormData} ref={form}>
                                     <label >Modificar Observaciones:</label>
                                     <div>
                                     <input name="descripcionAvance" type="text" className="w-80 h-80 bg-blue-400" defaultValue={dataAvance.Avance.descripcion_avance}/>
                                     </div>
-                                    <br />
                                     <button type="submit" className="appearance-none block w-full bg-blue-600 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"> modificar</button>
-                                    <br />
                                 </form>
                             </div>
-
                         }
                         <NavLink to={`/private/Proyecto/Avances/estudiante/${dataAvance.Avance.proyecto._id}`} className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"> ir atras</NavLink>
                     </div>
-                    <br />
                 </section>
-
             </PrivateRoute>
         </>
     )

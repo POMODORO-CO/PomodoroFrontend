@@ -41,7 +41,7 @@ function Landingpage() {
 
                 <section className='flex flex-row justify-between '>
                     <section className='flex flex-col my-auto'>
-                        <section className=''>
+                        <section>
                             <section className='bg-white inline-flex justify-center items-center rounded-full'>
                                 <section className='bg-white text-black font-semibold px-2 rounded-full m-1 '>
                                     ¡ES TIEMPO!
