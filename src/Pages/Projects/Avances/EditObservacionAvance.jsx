@@ -17,7 +17,7 @@ import imagenes from "../../../assets/img/imagenes";
 const EditObservacionAvance = () => {
     const { _id } = useParams();
     const { form, formData, updateFormData } = useFormData();
-    
+
     const {
         data: dataAvance,
         loading: loadingAvance,
@@ -29,25 +29,25 @@ const EditObservacionAvance = () => {
         error: errorObservacion }] = useMutation(ACTUALIZAR_OBSERVACIONES)
 
     useEffect(() => {
-        if(dataAvance){
-            toast.info('Observacion Realizada', {toastId: 'error',});
+        if (dataAvance) {
+            toast.info('Observacion Realizada', { toastId: 'error', });
         }
-        
+
     }, [dataAvance]);
 
 
-    if (loadingAvance){ 
+    if (loadingAvance) {
         return (
             <div className='min-h-screen flex justify-center items-center bg-gray-500'>
-            <div className='bg-yellow-400 rounded-full flex min-w-max p-2'>
-                <img src={imagenes.imag1} alt="Logo empresa" className='md:p-1 h-20 w-20 animate-pulse' />
-                <p className='md:p-7 animate-pulse text-2xl font-bold'>Cargando Login...just wait</p>
+                <div className='bg-yellow-400 rounded-full flex min-w-max p-2'>
+                    <img src={imagenes.imag1} alt="Logo empresa" className='md:p-1 h-20 w-20 animate-pulse' />
+                    <p className='md:p-7 animate-pulse text-2xl font-bold'>Cargando Login...just wait</p>
+                </div>
             </div>
-        </div>
         )
     };
     if (errorAvance) {
-        toast.error('No se pudieron extraer los avances del proyecto', {toastId: 'error',});
+        toast.error('No se pudieron extraer los avances del proyecto', { toastId: 'error', });
     }
     if (errorObservacion) {
         toast.error('No se pudieron extraer los avances del proyecto', { toastId: 'error-obser', });
@@ -59,8 +59,8 @@ const EditObservacionAvance = () => {
 
     const submitForm = (e) => {
         e.preventDefault();
-        
-        const observacionesAvance =formData.observacionesAvance;
+
+        const observacionesAvance = formData.observacionesAvance;
 
         if (formData.observacionesAvance) {
             confirmAlert({
@@ -79,9 +79,9 @@ const EditObservacionAvance = () => {
                                     variables: { _id, observacionesAvance }
                                 }
                             )
-                            
+
                             //alert('Inscripción negada')
-                            
+
                             //window.location.reload();
                         }
                     },
@@ -98,11 +98,11 @@ const EditObservacionAvance = () => {
             <PrivateRoute rolelist={["LIDER"]}>
                 <ToastContainer position="bottom-right" autoClose={2000} hideProgressBar={false} />
                 <Navbar />
-                <section>
+                <section className="py-7">
                     <div className="flex items-center flex-col">
                         {dataAvance &&
                             <div className="justify-center items-center">
-                                <div className='bg-gray-500 text-white font-semibold px-3 py-2 rounded-lg m-1'>
+                                <div className='bg-gray-500 text-white font-semibold px-3 py-5 rounded-lg m-1'>
                                     <section className='inline-flex justify-center items-center rounded-lg'>
                                         <section className='bg-gray-500 text-white font-semibold px-3 py-2 rounded-lg m-1'>
                                             Avance del proyecto :
@@ -117,18 +117,18 @@ const EditObservacionAvance = () => {
                                     </section>
                                 </div>
                                 <div className="bg-gray-500 text-white font-semibold px-3 py-2 rounded-lg m-1">
-                                <section className='inline-flex justify-center items-center rounded-full'>
-                                    <section className='bg-gray-500 text-white font-semibold px-3 py-2 rounded-lg m-1'>
-                                    Fecha del Avance :
+                                    <section className='inline-flex justify-center items-center rounded-full'>
+                                        <section className='bg-gray-500 text-white font-semibold px-3 py-2 rounded-lg m-1'>
+                                            Fecha del Avance :
+                                        </section>
+                                        <p className='text-black px-3 py-2 bg-yellow-400 rounded-full m-1 font-bold'>{dataAvance.Avance.fecha_avance.split("T")[0]}</p>
                                     </section>
-                                    <p className='text-black px-3 py-2 bg-yellow-400 rounded-full m-1 font-bold'>{dataAvance.Avance.fecha_avance.split("T")[0]}</p>
-                                </section>
-                                <section className='inline-flex justify-center items-center'>
-                                    <section className='text-white font-semibold px-2 m-1'>
-                                    Descripcion del avance:
+                                    <section className='inline-flex justify-center items-center'>
+                                        <section className='text-white font-semibold px-2 m-1'>
+                                            Descripcion del avance:
+                                        </section>
+                                        <p className='text-black px-3 py-2 bg-yellow-400 rounded-full m-1 font-bold'>{dataAvance.Avance.descripcion_avance}</p>
                                     </section>
-                                    <p className='text-black px-3 py-2 bg-yellow-400 rounded-full m-1 font-bold'>{dataAvance.Avance.descripcion_avance}</p>
-                                </section>
                                 </div>
                                 <div className="bg-gray-500 text-white font-semibold px-3 py-2 rounded-lg m-1">
                                     <label className='text-white font-semibold px-3 py-2 rounded-lg m-1'>Observaciones anteriores:</label>
@@ -137,25 +137,29 @@ const EditObservacionAvance = () => {
                                     </p>
                                 </div>
                                 <div className="bg-gray-500 text-white font-semibold px-3 py-2 rounded-lg m-1">
-                                <form onSubmit={submitForm} onChange={updateFormData} ref={form}>
-                                    <div>
-                                    <label>Modificar Observaciones:</label>
-                                    </div>
-                                    <div className="mb-3 pt-0">
-                                    <input name="observacionesAvance" type="text" className='px-3 py-3 text-black bg-white rounded text-sm border border-blueGray-300 w-full' defaultValue={dataAvance.Avance.observaciones_avance}/>
-                                    </div>
-                                </form>
+                                    <form onSubmit={submitForm} onChange={updateFormData} ref={form}>
+                                        <div>
+                                            <label>Modificar Observaciones:</label>
+                                        </div>
+                                        <div className="mb-3 pt-0">
+                                            <input name="observacionesAvance" type="text" className='px-3 py-3 text-black bg-white rounded text-sm border border-blueGray-300 w-full' defaultValue={dataAvance.Avance.observaciones_avance} />
+                                        </div>
+                                    </form>
                                 </div>
-                                <button type="submit" className="appearance-none block w-full bg-blue-600 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"> Modificar</button>
                             </div>
                         }
                         <div>
-                        <NavLink to={`/private/Proyecto/Avances/${dataAvance.Avance.proyecto._id}`} className="appearance-none block w-full bg-blue-900 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"> ir atras</NavLink>
+                            <div className="flex flex-col justify-center md:flex-row pb-4 mb-4 py-3">
+                                <button className="mx-3 py-2 px-5 text-white font-bold rounded-full bg-blue-900 shadow-lg block md:inline-block" type='submit'>
+                                    Modificar
+                                </button>
+                                <div>
+                                    <NavLink to={`/private/Proyecto/Avances/${dataAvance.Avance.proyecto._id}`} className="py-2 px-6 text-white font-bold rounded-full bg-blue-900 shadow-lg block md:inline-block">Regresar</NavLink>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <br />
                 </section>
-
             </PrivateRoute>
         </>
     )

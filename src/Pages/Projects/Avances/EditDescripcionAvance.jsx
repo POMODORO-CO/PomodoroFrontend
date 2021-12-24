@@ -131,9 +131,7 @@ const EditDescripcionAvance = () => {
                                     <div>
                                     <input name="descripcionAvance" type="text" className="w-80 h-80 bg-blue-400" defaultValue={dataAvance.Avance.descripcion_avance}/>
                                     </div>
-                                    <br />
-                                    <button type="submit" className="appearance-none block w-full bg-blue-600 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"> modificar</button>
-                                    <br />
+                                    <button type="submit" className="appearance-none block w-full bg-blue-600 hover:bg-yellow-400 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline">Modificar</button>
                                 </form>
                             </div>
 
